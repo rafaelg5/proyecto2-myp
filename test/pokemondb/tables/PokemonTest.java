@@ -503,11 +503,11 @@ public class PokemonTest {
         String n = "" + num;
         ResultSet rs = pokemon.selectAll("" + num);
         while (rs.next()) {
-            assertTrue(rs.getString("DexNumber").contains(n));
+            assertTrue(rs.getString("#").contains(n));
         }
         ResultSet rs2 = pokemon.selectAll("saur");
         while (rs2.next()) {
-            assertTrue(rs2.getString("PokemonName").contains("saur"));
+            assertTrue(rs2.getString("Nombre").contains("saur"));
         }
     }
 
@@ -522,17 +522,30 @@ public class PokemonTest {
         ResultSet rs = pokemon.selectPreevolutions();
 
         conn = ConnectionDB.open();
-        String sql = "SELECT PokemonName AS Name, PokemonSprite AS Sprite "
+        String sql = "SELECT PokemonName AS Nombre, PokemonSprite AS Sprite "
                 + "FROM Pokemon A LEFT JOIN Preevolutions B ON A.PokemonID = "
                 + "B.PreevolutionID WHERE B.PokemonID = "
                 + pokemon.getPokemonID() + ";";
         ResultSet rs2 = conn.createStatement().executeQuery(sql);
 
+        String sql2 = "SELECT count(*) FROM Pokemon A LEFT JOIN "
+                + "Preevolutions B ON A.PokemonID = B.PreevolutionID WHERE "
+                + "B.PokemonID = " + pokemon.getPokemonID() + ";";
+
+        int count = 0;
         while (rs.next()) {
-            assertEquals(rs2.getString("Name"), rs.getString(1));
-            assertEquals(rs2.getString("Sprite"), rs.getString(2));
+            count++;
         }
 
+        assertFalse(conn.createStatement().executeQuery(sql2).getInt(1) != count);
+        rs = pokemon.selectPreevolutions();
+
+        for (int i = 0; i < count; i++) {
+            rs.next();
+            rs2.next();
+            assertEquals(rs2.getString("Nombre"), rs.getString("Nombre"));
+            assertEquals(rs2.getString("Sprite"), rs.getString("Sprite"));
+        }
     }
 
     /**
@@ -546,15 +559,29 @@ public class PokemonTest {
         ResultSet rs = pokemon.selectEvolutions();
 
         conn = ConnectionDB.open();
-        String sql = "SELECT PokemonName AS Name, PokemonSprite AS Sprite "
+        String sql = "SELECT PokemonName AS Nombre, PokemonSprite AS Sprite "
                 + "FROM Pokemon A LEFT JOIN Evolutions B ON A.PokemonID = "
-                + "B.EvolutionID WHERE B.PokemonID = " + pokemon.getPokemonID() 
+                + "B.EvolutionID WHERE B.PokemonID = " + pokemon.getPokemonID()
                 + ";";
         ResultSet rs2 = conn.createStatement().executeQuery(sql);
 
+        String sql2 = "SELECT count(*) FROM Pokemon A LEFT JOIN "
+                + "Evolutions B ON A.PokemonID = B.EvolutionID WHERE "
+                + "B.PokemonID = " + pokemon.getPokemonID() + ";";
+
+        int count = 0;
         while (rs.next()) {
-            assertEquals(rs2.getString("Name"), rs.getString(1));
-            assertEquals(rs2.getString("Sprite"), rs.getString(2));
+            count++;
+        }
+
+        assertFalse(conn.createStatement().executeQuery(sql2).getInt(1) != count);
+        rs = pokemon.selectEvolutions();
+
+        for (int i = 0; i < count; i++) {
+            rs.next();
+            rs2.next();
+            assertEquals(rs2.getString("Nombre"), rs.getString("Nombre"));
+            assertEquals(rs2.getString("Sprite"), rs.getString("Sprite"));
         }
 
     }
@@ -570,15 +597,29 @@ public class PokemonTest {
         ResultSet rs = pokemon.selectAlternateForms();
 
         conn = ConnectionDB.open();
-        String sql = "SELECT PokemonName AS Name, PokemonSprite AS Sprite "
+        String sql = "SELECT PokemonName AS Nombre, PokemonSprite AS Sprite "
                 + "FROM Pokemon A LEFT JOIN AlternateForms B ON A.PokemonID = "
-                + "B.AlternateFormID WHERE B.PokemonID = " 
+                + "B.AlternateFormID WHERE B.PokemonID = "
                 + pokemon.getPokemonID() + ";";
         ResultSet rs2 = conn.createStatement().executeQuery(sql);
 
+        String sql2 = "SELECT count(*) FROM Pokemon A LEFT JOIN "
+                + "AlternateForms B ON A.PokemonID = B.AlternateFormID WHERE "
+                + "B.PokemonID = " + pokemon.getPokemonID() + ";";
+
+        int count = 0;
         while (rs.next()) {
-            assertEquals(rs2.getString("Name"), rs.getString(1));
-            assertEquals(rs2.getString("Sprite"), rs.getString(2));
+            count++;
+        }
+
+        assertFalse(conn.createStatement().executeQuery(sql2).getInt(1) != count);
+        rs = pokemon.selectAlternateForms();
+
+        for (int i = 0; i < count; i++) {
+            rs.next();
+            rs2.next();
+            assertEquals(rs2.getString("Nombre"), rs.getString("Nombre"));
+            assertEquals(rs2.getString("Sprite"), rs.getString("Sprite"));
         }
     }
 
@@ -593,15 +634,30 @@ public class PokemonTest {
         ResultSet rs = pokemon.selectAbilities();
 
         conn = ConnectionDB.open();
-        String sql = "SELECT SpanishName AS Ability, AbilityDescription AS"
-                + "Description FROM Abilities A LEFT JOIN "
+        String sql = "SELECT SpanishName AS Habilidad, AbilityDescription AS "
+                + "Descripción FROM Abilities A LEFT JOIN "
                 + "Pokemon_Abilities B ON A.AbilityID = B.AbilityID "
                 + "WHERE B.PokemonID = " + pokemon.getPokemonID() + ";";
         ResultSet rs2 = conn.createStatement().executeQuery(sql);
 
+        String sql2 = "SELECT count(*) FROM Abilities A LEFT JOIN "
+                + "Pokemon_Abilities B ON A.AbilityID = B.AbilityID WHERE "
+                + "B.PokemonID = " + pokemon.getPokemonID() + ";";
+
+        int count = 0;
         while (rs.next()) {
-            assertEquals(rs2.getString("Ability"), rs.getString(1));
-            assertEquals(rs2.getString("Description"), rs.getString(2));
+            count++;
+        }
+
+        assertFalse(conn.createStatement().executeQuery(sql2).getInt(1) != count);
+        rs = pokemon.selectAbilities();
+
+        for (int i = 0; i < count; i++) {
+            rs.next();
+            rs2.next();
+            assertEquals(rs2.getString("Habilidad"), rs.getString("Habilidad"));
+            assertEquals(rs2.getString("Descripción"),
+                    rs.getString("Descripción"));
         }
     }
 
@@ -616,14 +672,29 @@ public class PokemonTest {
         ResultSet rs = pokemon.selectTypes();
 
         conn = ConnectionDB.open();
-        String sql = "SELECT SpanishName AS Type, TypeSprite AS Sprite "
+        String sql = "SELECT SpanishName AS Tipo, TypeSprite AS Sprite "
                 + "FROM Types A LEFT JOIN Pokemon_Types B ON A.TypeID = "
-                + "B.TypeID WHERE B.PokemonID = " + pokemon.getPokemonID() + ";";
+                + "B.TypeID WHERE B.PokemonID = " 
+                + pokemon.getPokemonID() + ";";
         ResultSet rs2 = conn.createStatement().executeQuery(sql);
+        
+        String sql2 = "SELECT count(*) FROM Types A LEFT JOIN Pokemon_Types B "
+                + "ON A.TypeID = B.TypeID WHERE B.PokemonID = " 
+                + pokemon.getPokemonID() + ";";
 
+        int count = 0;
         while (rs.next()) {
-            assertEquals(rs2.getString("Type"), rs.getString(1));
-            assertEquals(rs2.getString("Sprite"), rs.getString(2));
+            count++;
+        }
+
+        assertFalse(conn.createStatement().executeQuery(sql2).getInt(1) != count);
+        rs = pokemon.selectTypes();
+
+        for (int i = 0; i < count; i++) {
+            rs.next();
+            rs2.next();
+            assertEquals(rs2.getString("Tipo"), rs.getString("Tipo"));
+            assertEquals(rs2.getString("Sprite"), rs.getString("Sprite"));
         }
     }
 

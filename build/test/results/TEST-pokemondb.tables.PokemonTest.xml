@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="6" failures="0" hostname="localhost.localdomain" name="pokemondb.tables.PokemonTest" skipped="0" tests="34" time="0.601" timestamp="2015-10-20T20:05:41">
+<testsuite errors="0" failures="0" hostname="localhost.localdomain" name="pokemondb.tables.PokemonTest" skipped="0" tests="34" time="0.584" timestamp="2015-10-20T21:51:35">
   <properties>
     <property name="libs.jsp-compiler.javadoc" value="" />
     <property name="netbeans.autoupdate.country" value="US" />
@@ -70,7 +70,7 @@
     <property name="libs.j2me_common_ant.maven-pom" value="" />
     <property name="libs.spring-webmvc3.0.maven-pom" value="" />
     <property name="libs.swing-layout.maven-pom" value="" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner pokemondb.tables.PokemonTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/rgarcia/Documents/Tercer Semestre/proyecto2/build/test/results/TEST-pokemondb.tables.PokemonTest.xml crashfile=/home/rgarcia/Documents/Tercer Semestre/proyecto2/build/junitvmwatcher8495559570791449864.properties propsfile=/home/rgarcia/Documents/Tercer Semestre/proyecto2/build/junit7366868838460144659.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner pokemondb.tables.PokemonTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/rgarcia/Documents/Tercer Semestre/proyecto2/build/test/results/TEST-pokemondb.tables.PokemonTest.xml crashfile=/home/rgarcia/Documents/Tercer Semestre/proyecto2/build/junitvmwatcher1772045523855813852.properties propsfile=/home/rgarcia/Documents/Tercer Semestre/proyecto2/build/junit7321614027224527061.properties" />
     <property name="build.classes.dir" value="build/classes" />
     <property name="netbeans.accept_license_class" value="org.netbeans.license.AcceptLicense" />
     <property name="build.sysclasspath" value="ignore" />
@@ -115,7 +115,7 @@
     <property name="javadoc.splitindex" value="true" />
     <property name="file.separator" value="/" />
     <property name="libs.Java-EE-GlassFish-v3-Prelude.maven-pom" value="" />
-    <property name="javac.includesfile.binary" value="/home/rgarcia/Documents/Tercer Semestre/proyecto2/null1905994456" />
+    <property name="javac.includesfile.binary" value="/home/rgarcia/Documents/Tercer Semestre/proyecto2/null1454411741" />
     <property name="libs.junit_4.maven-pom" value="" />
     <property name="mkdist.disabled" value="false" />
     <property name="ant.file.proyecto2-impl" value="/home/rgarcia/Documents/Tercer Semestre/proyecto2/nbproject/build-impl.xml" />
@@ -452,64 +452,40 @@
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit" />
     <property name="libs.javaee-web-api-7.0.javadoc" value="/usr/local/netbeans-8.0.2/enterprise/docs/javaee-doc-api.jar" />
   </properties>
-  <testcase classname="pokemondb.tables.PokemonTest" name="testSetPokemonName" time="0.273" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testGetPokemonSprite" time="0.003" />
+  <testcase classname="pokemondb.tables.PokemonTest" name="testSelectPreevolutions" time="0.275" />
+  <testcase classname="pokemondb.tables.PokemonTest" name="testSelectEvolutions" time="0.005" />
+  <testcase classname="pokemondb.tables.PokemonTest" name="testSelectAlternateForms" time="0.005" />
+  <testcase classname="pokemondb.tables.PokemonTest" name="testSelectAbilities" time="0.007" />
+  <testcase classname="pokemondb.tables.PokemonTest" name="testSelectTypes" time="0.005" />
+  <testcase classname="pokemondb.tables.PokemonTest" name="testSetPokemonName" time="0.003" />
+  <testcase classname="pokemondb.tables.PokemonTest" name="testGetPokemonSprite" time="0.002" />
   <testcase classname="pokemondb.tables.PokemonTest" name="testSetPokemonSprite" time="0.004" />
   <testcase classname="pokemondb.tables.PokemonTest" name="testGetPokemonDescription" time="0.002" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testSetPokemonDescription" time="0.004" />
+  <testcase classname="pokemondb.tables.PokemonTest" name="testSetPokemonDescription" time="0.003" />
   <testcase classname="pokemondb.tables.PokemonTest" name="testGetPokemonID" time="0.003" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testSetPokemonID" time="0.004" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testGetDexNumber" time="0.003" />
+  <testcase classname="pokemondb.tables.PokemonTest" name="testSetPokemonID" time="0.003" />
+  <testcase classname="pokemondb.tables.PokemonTest" name="testGetDexNumber" time="0.002" />
   <testcase classname="pokemondb.tables.PokemonTest" name="testSetDexNumber" time="0.004" />
   <testcase classname="pokemondb.tables.PokemonTest" name="testGetBaseHP" time="0.002" />
   <testcase classname="pokemondb.tables.PokemonTest" name="testSetBaseHP" time="0.003" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testGetBaseAtk" time="0.003" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testSetBaseAtk" time="0.003" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testGetBaseDef" time="0.003" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testSetBaseDef" time="0.003" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testGetBaseSpAtk" time="0.002" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testSetBaseSpAtk" time="0.003" />
+  <testcase classname="pokemondb.tables.PokemonTest" name="testGetBaseAtk" time="0.002" />
+  <testcase classname="pokemondb.tables.PokemonTest" name="testSetBaseAtk" time="0.004" />
+  <testcase classname="pokemondb.tables.PokemonTest" name="testGetBaseDef" time="0.002" />
+  <testcase classname="pokemondb.tables.PokemonTest" name="testSetBaseDef" time="0.004" />
+  <testcase classname="pokemondb.tables.PokemonTest" name="testGetBaseSpAtk" time="0.003" />
+  <testcase classname="pokemondb.tables.PokemonTest" name="testSetBaseSpAtk" time="0.004" />
   <testcase classname="pokemondb.tables.PokemonTest" name="testGetBaseSpDef" time="0.003" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testSetBaseSpDef" time="0.003" />
+  <testcase classname="pokemondb.tables.PokemonTest" name="testSetBaseSpDef" time="0.005" />
   <testcase classname="pokemondb.tables.PokemonTest" name="testGetBaseSpd" time="0.002" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testSetBaseSpd" time="0.003" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testGetAlternateForm" time="0.002" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testSetAlternateForm" time="0.003" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testGetPokemonName" time="0.002" />
+  <testcase classname="pokemondb.tables.PokemonTest" name="testSetBaseSpd" time="0.004" />
+  <testcase classname="pokemondb.tables.PokemonTest" name="testGetAlternateForm" time="0.003" />
+  <testcase classname="pokemondb.tables.PokemonTest" name="testSetAlternateForm" time="0.004" />
   <testcase classname="pokemondb.tables.PokemonTest" name="testGetHeight" time="0.002" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testSetHeight" time="0.003" />
+  <testcase classname="pokemondb.tables.PokemonTest" name="testSetHeight" time="0.004" />
   <testcase classname="pokemondb.tables.PokemonTest" name="testGetWeight" time="0.002" />
   <testcase classname="pokemondb.tables.PokemonTest" name="testSetWeight" time="0.004" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testSelectAll" time="0.012">
-    <error type="java.lang.NullPointerException">java.lang.NullPointerException
-	at pokemondb.tables.PokemonTest.testSelectAll(PokemonTest.java:505)
-</error>
-  </testcase>
-  <testcase classname="pokemondb.tables.PokemonTest" name="testSelectPreevolutions" time="0.007">
-    <error type="java.lang.NullPointerException">java.lang.NullPointerException
-	at pokemondb.tables.PokemonTest.testSelectPreevolutions(PokemonTest.java:531)
-</error>
-  </testcase>
-  <testcase classname="pokemondb.tables.PokemonTest" name="testSelectEvolutions" time="0.006">
-    <error type="java.lang.NullPointerException">java.lang.NullPointerException
-	at pokemondb.tables.PokemonTest.testSelectEvolutions(PokemonTest.java:555)
-</error>
-  </testcase>
-  <testcase classname="pokemondb.tables.PokemonTest" name="testSelectAlternateForms" time="0.006">
-    <error type="java.lang.NullPointerException">java.lang.NullPointerException
-	at pokemondb.tables.PokemonTest.testSelectAlternateForms(PokemonTest.java:579)
-</error>
-  </testcase>
-  <testcase classname="pokemondb.tables.PokemonTest" name="testSelectAbilities" time="0.006">
-    <error type="java.lang.NullPointerException">java.lang.NullPointerException
-	at pokemondb.tables.PokemonTest.testSelectAbilities(PokemonTest.java:602)
-</error>
-  </testcase>
-  <testcase classname="pokemondb.tables.PokemonTest" name="testSelectTypes" time="0.005">
-    <error type="java.lang.NullPointerException">java.lang.NullPointerException
-	at pokemondb.tables.PokemonTest.testSelectTypes(PokemonTest.java:624)
-</error>
-  </testcase>
+  <testcase classname="pokemondb.tables.PokemonTest" name="testSelectAll" time="0.004" />
+  <testcase classname="pokemondb.tables.PokemonTest" name="testGetPokemonName" time="0.001" />
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
