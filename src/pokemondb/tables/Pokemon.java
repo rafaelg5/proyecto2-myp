@@ -36,12 +36,12 @@ public class Pokemon {
     private int BaseSpDef;
     private int BaseSpd;
     private int AlternateForm;
-    private float Height;
-    private float Weight;
+    private double Height;
+    private double Weight;
 
     public Pokemon(String name, String sprite, String desc, int id, int num,
             int hp, int atk, int def, int spAtk, int spDef, int spd,
-            int altForm, float height, float weight) {
+            int altForm, double height, double weight) {
 
         PokemonName = name;
         PokemonSprite = sprite;
@@ -230,28 +230,28 @@ public class Pokemon {
     /**
      * @return the Height
      */
-    public float getHeight() {
+    public double getHeight() {
         return Height;
     }
 
     /**
      * @param Height the Height to set
      */
-    public void setHeight(float Height) {
+    public void setHeight(double Height) {
         this.Height = Height;
     }
 
     /**
      * @return the Weight
      */
-    public float getWeight() {
+    public double getWeight() {
         return Weight;
     }
 
     /**
      * @param Weight the Weight to set
      */
-    public void setWeight(float Weight) {
+    public void setWeight(double Weight) {
         this.Weight = Weight;
     }
 
@@ -263,44 +263,56 @@ public class Pokemon {
      * @throws java.sql.SQLException
      */
     public ResultSet selectAll(String condition) throws SQLException {
-        Connection conn = ConnectionDB.open();
-        Statement st = conn.createStatement();
-        String sql = "SELECT * FROM " + TABLE + " WHERE DexNumber == '"
-                + condition + "' OR PokemonName LIKE '%" + condition + "%';";
-        ResultSet rs = st.executeQuery(sql);
-        return rs;
+        return null;
     }
     
     /**
-     * Returns the a Pokemon's evolutions table.
+     * Returns the a Pokemon's pre-evolution table.
      *
-     * @param condition the PokemonName.
      * @return the table as a ResultSet.
      * @throws java.sql.SQLException
      */
-    public ResultSet selectEvolutions(String condition) throws SQLException {
+    public ResultSet selectPreevolutions() throws SQLException {
+        return null;
+    }
+    
+    /**
+     * Returns the a Pokemon's evolution(s) table.
+     *
+     * @return the table as a ResultSet.
+     * @throws java.sql.SQLException
+     */
+    public ResultSet selectEvolutions() throws SQLException {
+        return null;
+    }
+    
+    /**
+     * Returns the a Pokemon's alternate form(s) table.
+     *
+     * @return the table as a ResultSet.
+     * @throws java.sql.SQLException
+     */
+    public ResultSet selectAlternateForms() throws SQLException {
         return null;
     }
     
     /**
      * Returns a Pokemon's abilities table.
      *
-     * @param condition the PokemonName.
      * @return the table as a ResultSet.
      * @throws java.sql.SQLException
      */
-    public ResultSet selectAbilities(String condition) throws SQLException {
+    public ResultSet selectAbilities() throws SQLException {
         return null;
     }
     
     /**
      * Returns a Pokemon's type(s) table.
      *
-     * @param condition the PokemonName.
      * @return the table as a ResultSet.
      * @throws java.sql.SQLException
      */
-    public ResultSet selectTypes(String condition) throws SQLException {
+    public ResultSet selectTypes() throws SQLException {
         return null;
     }
 

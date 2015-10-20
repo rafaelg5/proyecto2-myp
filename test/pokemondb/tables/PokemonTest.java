@@ -19,6 +19,7 @@ package pokemondb.tables;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Random;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -46,6 +47,7 @@ public class PokemonTest {
 
     private Pokemon randomPoke() throws SQLException {
         ResultSet rs = getPokemonInfo();
+
         values = new String[rs.getMetaData().getColumnCount()];
 
         for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
@@ -57,8 +59,10 @@ public class PokemonTest {
                 Integer.parseInt(values[5]), Integer.parseInt(values[6]),
                 Integer.parseInt(values[7]), Integer.parseInt(values[8]),
                 Integer.parseInt(values[9]), Integer.parseInt(values[10]),
-                Integer.parseInt(values[11]), Float.parseFloat(values[12]),
-                Float.parseFloat(values[13]));
+                Integer.parseInt(values[11]), Double.parseDouble(values[12]),
+                Double.parseDouble(values[13]));
+
+        ConnectionDB.close();
         return pokemon;
     }
 
@@ -104,6 +108,7 @@ public class PokemonTest {
         String s = rs.getString(NAME + 1);
         pokemon.setPokemonName(s);
         assertEquals(pokemon.getPokemonName(), s);
+        ConnectionDB.close();
     }
 
     /**
@@ -133,6 +138,7 @@ public class PokemonTest {
         String s = rs.getString(SPRITE + 1);
         pokemon.setPokemonSprite(s);
         assertEquals(pokemon.getPokemonSprite(), s);
+        ConnectionDB.close();
     }
 
     /**
@@ -162,6 +168,7 @@ public class PokemonTest {
         String s = rs.getString(DESCRIPTION + 1);
         pokemon.setPokemonDescription(s);
         assertEquals(pokemon.getPokemonDescription(), s);
+        ConnectionDB.close();
     }
 
     /**
@@ -190,6 +197,7 @@ public class PokemonTest {
         int n = rs.getInt(ID + 1);
         pokemon.setPokemonID(n);
         assertEquals(pokemon.getPokemonID(), n);
+        ConnectionDB.close();
     }
 
     /**
@@ -218,6 +226,7 @@ public class PokemonTest {
         int n = rs.getInt(NUM_DEX + 1);
         pokemon.setDexNumber(n);
         assertEquals(pokemon.getDexNumber(), n);
+        ConnectionDB.close();
     }
 
     /**
@@ -246,6 +255,7 @@ public class PokemonTest {
         int n = rs.getInt(HP + 1);
         pokemon.setBaseHP(n);
         assertEquals(pokemon.getBaseHP(), n);
+        ConnectionDB.close();
     }
 
     /**
@@ -274,6 +284,7 @@ public class PokemonTest {
         int n = rs.getInt(ATK + 1);
         pokemon.setBaseAtk(n);
         assertEquals(pokemon.getBaseAtk(), n);
+        ConnectionDB.close();
     }
 
     /**
@@ -302,6 +313,7 @@ public class PokemonTest {
         int n = rs.getInt(DEF + 1);
         pokemon.setBaseDef(n);
         assertEquals(pokemon.getBaseDef(), n);
+        ConnectionDB.close();
     }
 
     /**
@@ -330,6 +342,7 @@ public class PokemonTest {
         int n = rs.getInt(SP_ATK + 1);
         pokemon.setBaseSpAtk(n);
         assertEquals(pokemon.getBaseSpAtk(), n);
+        ConnectionDB.close();
     }
 
     /**
@@ -358,6 +371,7 @@ public class PokemonTest {
         int n = rs.getInt(SP_DEF + 1);
         pokemon.setBaseSpDef(n);
         assertEquals(pokemon.getBaseSpDef(), n);
+        ConnectionDB.close();
     }
 
     /**
@@ -386,6 +400,7 @@ public class PokemonTest {
         int n = rs.getInt(SPEED + 1);
         pokemon.setBaseSpd(n);
         assertEquals(pokemon.getBaseSpd(), n);
+        ConnectionDB.close();
     }
 
     /**
@@ -415,6 +430,7 @@ public class PokemonTest {
         int n = rs.getInt(ALT_FORM + 1);
         pokemon.setAlternateForm(n);
         assertEquals(pokemon.getAlternateForm(), n);
+        ConnectionDB.close();
     }
 
     /**
@@ -425,7 +441,7 @@ public class PokemonTest {
     @Test
     public void testGetHeight() throws SQLException {
         Pokemon pokemon = randomPoke();
-        float n1 = Float.parseFloat(values[HEIGHT]),
+        double n1 = Double.parseDouble(values[HEIGHT]),
                 n2 = pokemon.getHeight();
         assertTrue(n1 == n2);
     }
@@ -438,11 +454,12 @@ public class PokemonTest {
     @Test
     public void testSetHeight() throws SQLException {
         Pokemon pokemon = randomPoke();
-        assertTrue(pokemon.getHeight() == Float.parseFloat(values[HEIGHT]));
+        assertTrue(pokemon.getHeight() == Double.parseDouble(values[HEIGHT]));
         ResultSet rs = getPokemonInfo();
-        float n = rs.getFloat(HEIGHT + 1);
+        double n = rs.getDouble(HEIGHT + 1);
         pokemon.setHeight(n);
         assertTrue(pokemon.getHeight() == n);
+        ConnectionDB.close();
     }
 
     /**
@@ -453,55 +470,161 @@ public class PokemonTest {
     @Test
     public void testGetWeight() throws SQLException {
         Pokemon pokemon = randomPoke();
-        float n1 = Float.parseFloat(values[WEIGHT]),
+        double n1 = Double.parseDouble(values[WEIGHT]),
                 n2 = pokemon.getWeight();
         assertTrue(n1 == n2);
     }
 
     /**
      * Test of setWeight method, of class Pokemon.
+     *
      * @throws java.sql.SQLException
      */
     @Test
     public void testSetWeight() throws SQLException {
         Pokemon pokemon = randomPoke();
-        assertTrue(pokemon.getWeight() == Float.parseFloat(values[WEIGHT]));
+        assertTrue(pokemon.getWeight() == Double.parseDouble(values[WEIGHT]));
         ResultSet rs = getPokemonInfo();
-        float n = rs.getFloat(WEIGHT + 1);
+        double n = rs.getDouble(WEIGHT + 1);
         pokemon.setWeight(n);
         assertTrue(pokemon.getWeight() == n);
+        ConnectionDB.close();
     }
 
     /**
      * Test of selectAll method, of class Pokemon.
+     *
+     * @throws java.sql.SQLException
      */
     @Test
-    public void testSelectAll() throws Exception {
+    public void testSelectAll() throws SQLException {
+        Pokemon pokemon = randomPoke();
+        int num = rand.nextInt(171) + 1;
+        String n = "" + num;
+        ResultSet rs = pokemon.selectAll("" + num);
+        while (rs.next()) {
+            assertTrue(rs.getString("DexNumber").contains(n));
+        }
+        ResultSet rs2 = pokemon.selectAll("saur");
+        while (rs2.next()) {
+            assertTrue(rs2.getString("PokemonName").contains("saur"));
+        }
+    }
+
+    /**
+     * Test of selectPreevolutions method,
+     *
+     * @throws java.sql.SQLException
+     */
+    @Test
+    public void testSelectPreevolutions() throws SQLException {
+        Pokemon pokemon = randomPoke();
+        ResultSet rs = pokemon.selectPreevolutions();
+
+        conn = ConnectionDB.open();
+        String sql = "SELECT PokemonName AS Name, PokemonSprite AS Sprite "
+                + "FROM Pokemon A LEFT JOIN Preevolutions B ON A.PokemonID = "
+                + "B.PreevolutionID WHERE B.PokemonID = "
+                + pokemon.getPokemonID() + ";";
+        ResultSet rs2 = conn.createStatement().executeQuery(sql);
+
+        while (rs.next()) {
+            assertEquals(rs2.getString("Name"), rs.getString(1));
+            assertEquals(rs2.getString("Sprite"), rs.getString(2));
+        }
 
     }
 
     /**
-     * Test of selectEvolutions method, of class Pokemon.
+     * Test of selectEvolutions method,
+     *
+     * @throws java.sql.SQLException
      */
     @Test
-    public void testSelectEvolutions() throws Exception {
+    public void testSelectEvolutions() throws SQLException {
+        Pokemon pokemon = randomPoke();
+        ResultSet rs = pokemon.selectEvolutions();
 
+        conn = ConnectionDB.open();
+        String sql = "SELECT PokemonName AS Name, PokemonSprite AS Sprite "
+                + "FROM Pokemon A LEFT JOIN Evolutions B ON A.PokemonID = "
+                + "B.EvolutionID WHERE B.PokemonID = " + pokemon.getPokemonID() 
+                + ";";
+        ResultSet rs2 = conn.createStatement().executeQuery(sql);
+
+        while (rs.next()) {
+            assertEquals(rs2.getString("Name"), rs.getString(1));
+            assertEquals(rs2.getString("Sprite"), rs.getString(2));
+        }
+
+    }
+
+    /**
+     * Test of selectAlternateForms method,
+     *
+     * @throws java.sql.SQLException
+     */
+    @Test
+    public void testSelectAlternateForms() throws SQLException {
+        Pokemon pokemon = randomPoke();
+        ResultSet rs = pokemon.selectAlternateForms();
+
+        conn = ConnectionDB.open();
+        String sql = "SELECT PokemonName AS Name, PokemonSprite AS Sprite "
+                + "FROM Pokemon A LEFT JOIN AlternateForms B ON A.PokemonID = "
+                + "B.AlternateFormID WHERE B.PokemonID = " 
+                + pokemon.getPokemonID() + ";";
+        ResultSet rs2 = conn.createStatement().executeQuery(sql);
+
+        while (rs.next()) {
+            assertEquals(rs2.getString("Name"), rs.getString(1));
+            assertEquals(rs2.getString("Sprite"), rs.getString(2));
+        }
     }
 
     /**
      * Test of selectAbilities method, of class Pokemon.
+     *
+     * @throws java.sql.SQLException
      */
     @Test
-    public void testSelectAbilities() throws Exception {
+    public void testSelectAbilities() throws SQLException {
+        Pokemon pokemon = randomPoke();
+        ResultSet rs = pokemon.selectAbilities();
 
+        conn = ConnectionDB.open();
+        String sql = "SELECT SpanishName AS Ability, AbilityDescription AS"
+                + "Description FROM Abilities A LEFT JOIN "
+                + "Pokemon_Abilities B ON A.AbilityID = B.AbilityID "
+                + "WHERE B.PokemonID = " + pokemon.getPokemonID() + ";";
+        ResultSet rs2 = conn.createStatement().executeQuery(sql);
+
+        while (rs.next()) {
+            assertEquals(rs2.getString("Ability"), rs.getString(1));
+            assertEquals(rs2.getString("Description"), rs.getString(2));
+        }
     }
 
     /**
      * Test of selectTypes method, of class Pokemon.
+     *
+     * @throws java.sql.SQLException
      */
     @Test
-    public void testSelectTypes() throws Exception {
+    public void testSelectTypes() throws SQLException {
+        Pokemon pokemon = randomPoke();
+        ResultSet rs = pokemon.selectTypes();
 
+        conn = ConnectionDB.open();
+        String sql = "SELECT SpanishName AS Type, TypeSprite AS Sprite "
+                + "FROM Types A LEFT JOIN Pokemon_Types B ON A.TypeID = "
+                + "B.TypeID WHERE B.PokemonID = " + pokemon.getPokemonID() + ";";
+        ResultSet rs2 = conn.createStatement().executeQuery(sql);
+
+        while (rs.next()) {
+            assertEquals(rs2.getString("Type"), rs.getString(1));
+            assertEquals(rs2.getString("Sprite"), rs.getString(2));
+        }
     }
 
 }

@@ -18,10 +18,6 @@ package pokemondb.tables;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -34,7 +30,6 @@ public class ConnectionDBTest {
     /**
      * Test of open method, of class ConnectionDB.
      *
-     * @throws java.sql.SQLException
      */
     @Test
     public void testOpen() {

@@ -24,6 +24,7 @@ import javafx.scene.control.ButtonType;
 public class ConnectionDB {
 
     private static Connection conn = null;
+    
     private final static String msg = "Hubo un problema al conectar a la base "
             + "de datos. Revise que el archivo Pokemon.db está en: "
             + "proyecto2/lib/Pokemon.db.\n"
@@ -54,7 +55,7 @@ public class ConnectionDB {
                     .filter(response -> response == ButtonType.OK);
                 return;
             }
-
+            conn.commit();
             conn.close();
 
         } catch (SQLException e) {
