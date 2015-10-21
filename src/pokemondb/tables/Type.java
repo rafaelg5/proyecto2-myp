@@ -129,7 +129,7 @@ public class Type {
     }
 
     /**
-     * Returns the Pokemon Type table.
+     * Returns the Pokemon_Type table.
      *
      * @return the table as a ResultSet.
      * @throws java.sql.SQLException
