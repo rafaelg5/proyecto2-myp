@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="localhost.localdomain" name="pokemondb.tables.AttackTest" skipped="0" tests="17" time="0.517" timestamp="2015-10-21T01:46:59">
+<testsuite errors="0" failures="0" hostname="localhost.localdomain" name="pokemondb.tables.AttackTest" skipped="0" tests="17" time="0.533" timestamp="2015-10-21T03:16:36">
   <properties>
     <property name="libs.jsp-compiler.javadoc" value="" />
     <property name="netbeans.autoupdate.country" value="US" />
@@ -70,7 +70,7 @@
     <property name="libs.j2me_common_ant.maven-pom" value="" />
     <property name="libs.spring-webmvc3.0.maven-pom" value="" />
     <property name="libs.swing-layout.maven-pom" value="" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner pokemondb.tables.AttackTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/rgarcia/Documents/Tercer Semestre/proyecto2/build/test/results/TEST-pokemondb.tables.AttackTest.xml crashfile=/home/rgarcia/Documents/Tercer Semestre/proyecto2/build/junitvmwatcher4854380676460857424.properties propsfile=/home/rgarcia/Documents/Tercer Semestre/proyecto2/build/junit9155843934757463404.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner pokemondb.tables.AttackTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/rgarcia/Documents/Tercer Semestre/proyecto2/build/test/results/TEST-pokemondb.tables.AttackTest.xml crashfile=/home/rgarcia/Documents/Tercer Semestre/proyecto2/build/junitvmwatcher9082797720388745152.properties propsfile=/home/rgarcia/Documents/Tercer Semestre/proyecto2/build/junit5233465022700134019.properties" />
     <property name="build.classes.dir" value="build/classes" />
     <property name="netbeans.accept_license_class" value="org.netbeans.license.AcceptLicense" />
     <property name="build.sysclasspath" value="ignore" />
@@ -115,7 +115,7 @@
     <property name="javadoc.splitindex" value="true" />
     <property name="file.separator" value="/" />
     <property name="libs.Java-EE-GlassFish-v3-Prelude.maven-pom" value="" />
-    <property name="javac.includesfile.binary" value="/home/rgarcia/Documents/Tercer Semestre/proyecto2/null1385862846" />
+    <property name="javac.includesfile.binary" value="/home/rgarcia/Documents/Tercer Semestre/proyecto2/null2139697187" />
     <property name="libs.junit_4.maven-pom" value="" />
     <property name="mkdist.disabled" value="false" />
     <property name="ant.file.proyecto2-impl" value="/home/rgarcia/Documents/Tercer Semestre/proyecto2/nbproject/build-impl.xml" />
@@ -452,23 +452,27 @@
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit" />
     <property name="libs.javaee-web-api-7.0.javadoc" value="/usr/local/netbeans-8.0.2/enterprise/docs/javaee-doc-api.jar" />
   </properties>
-  <testcase classname="pokemondb.tables.AttackTest" name="testSetTypeID" time="0.289" />
-  <testcase classname="pokemondb.tables.AttackTest" name="testGetAtkCategoryID" time="0.002" />
-  <testcase classname="pokemondb.tables.AttackTest" name="testSetAtkCategoryID" time="0.004" />
-  <testcase classname="pokemondb.tables.AttackTest" name="testGetAttackName" time="0.002" />
-  <testcase classname="pokemondb.tables.AttackTest" name="testSetAttackName" time="0.004" />
+  <testcase classname="pokemondb.tables.AttackTest" name="testGetAttackID" time="0.308" />
   <testcase classname="pokemondb.tables.AttackTest" name="testGetSpanishName" time="0.002" />
   <testcase classname="pokemondb.tables.AttackTest" name="testSetSpanishName" time="0.004" />
-  <testcase classname="pokemondb.tables.AttackTest" name="testGetAttackDescription" time="0.002" />
+  <testcase classname="pokemondb.tables.AttackTest" name="testGetAttackDescription" time="0.003" />
   <testcase classname="pokemondb.tables.AttackTest" name="testSetAttackDescription" time="0.004" />
-  <testcase classname="pokemondb.tables.AttackTest" name="testSelectAll" time="0.0" />
-  <testcase classname="pokemondb.tables.AttackTest" name="testSetAttackID" time="0.004" />
-  <testcase classname="pokemondb.tables.AttackTest" name="testGetPower" time="0.002" />
-  <testcase classname="pokemondb.tables.AttackTest" name="testSetPower" time="0.003" />
+  <testcase classname="pokemondb.tables.AttackTest" name="testSelectAll" time="0.009" />
+  <testcase classname="pokemondb.tables.AttackTest" name="testSetAtkCategoryID" time="0.002" />
+  <testcase classname="pokemondb.tables.AttackTest" name="testGetAttackName" time="0.002" />
+  <testcase classname="pokemondb.tables.AttackTest" name="testSetAttackName" time="0.004" />
   <testcase classname="pokemondb.tables.AttackTest" name="testGetAccuracy" time="0.002" />
-  <testcase classname="pokemondb.tables.AttackTest" name="testSetAccuracy" time="0.004" />
+  <testcase classname="pokemondb.tables.AttackTest" name="testSetAccuracy" time="0.003" />
   <testcase classname="pokemondb.tables.AttackTest" name="testGetTypeID" time="0.002" />
-  <testcase classname="pokemondb.tables.AttackTest" name="testGetAttackID" time="0.003" />
-  <system-out><![CDATA[]]></system-out>
+  <testcase classname="pokemondb.tables.AttackTest" name="testSetTypeID" time="0.004" />
+  <testcase classname="pokemondb.tables.AttackTest" name="testGetAtkCategoryID" time="0.002" />
+  <testcase classname="pokemondb.tables.AttackTest" name="testSetAttackID" time="0.003" />
+  <testcase classname="pokemondb.tables.AttackTest" name="testGetPower" time="0.002" />
+  <testcase classname="pokemondb.tables.AttackTest" name="testSetPower" time="0.004" />
+  <system-out><![CDATA[SELECT A.SpanishName AS Nombre, AttackName AS 'Nombre (Inglés)', Power AS Poder, Accuracy AS Precisión, B.SpanishName AS Tipo, CategoryName AS Categoría, AttackDescription AS Descripción FROM Attacks A LEFT JOIN Types B ON A.TypeID = B.TypeID LEFT JOIN AtkCategory C ON A.AtkCategoryID = C.AtkCategoryID WHERE AttackName LIKE '%fire%' OR A.SpanishName LIKE '%fire%' OR AttackDescription LIKE '%fire%';
+SELECT A.SpanishName AS Nombre, AttackName AS 'Nombre (Inglés)', Power AS Poder, Accuracy AS Precisión, B.SpanishName AS Tipo, CategoryName AS Categoría, AttackDescription AS Descripción FROM Attacks A LEFT JOIN Types B ON A.TypeID = B.TypeID LEFT JOIN AtkCategory C ON A.AtkCategoryID = C.AtkCategoryID WHERE AttackName LIKE '%lol%' OR A.SpanishName LIKE '%lol%' OR AttackDescription LIKE '%lol%';
+SELECT A.SpanishName AS Nombre, AttackName AS 'Nombre (Inglés)', Power AS Poder, Accuracy AS Precisión, B.SpanishName AS Tipo, CategoryName AS Categoría, AttackDescription AS Descripción FROM Attacks A LEFT JOIN Types B ON A.TypeID = B.TypeID LEFT JOIN AtkCategory C ON A.AtkCategoryID = C.AtkCategoryID WHERE AttackName LIKE '%15%' OR A.SpanishName LIKE '%15%' OR AttackDescription LIKE '%15%';
+SELECT A.SpanishName AS Nombre, AttackName AS 'Nombre (Inglés)', Power AS Poder, Accuracy AS Precisión, B.SpanishName AS Tipo, CategoryName AS Categoría, AttackDescription AS Descripción FROM Attacks A LEFT JOIN Types B ON A.TypeID = B.TypeID LEFT JOIN AtkCategory C ON A.AtkCategoryID = C.AtkCategoryID WHERE AttackName LIKE '%800%' OR A.SpanishName LIKE '%800%' OR AttackDescription LIKE '%800%';
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

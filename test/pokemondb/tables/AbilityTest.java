@@ -189,17 +189,28 @@ public class AbilityTest {
     @Test
     public void testSelectAll() throws SQLException {
         Ability ability = randomAbility();
-        ResultSet rs = ability.selectAll("water");
+        String test = "water";
+        test = test.toLowerCase();
+        ResultSet rs = ability.selectAll(test);
+
         while (rs.next()) {
-            assertTrue(rs.getString("Nombre").contains("water")
-                    || rs.getString("Nombre (Inglés)").contains("water")
-                    || rs.getString("Descripción").contains("water"));
+            assertTrue(rs.getString("Nombre").toLowerCase()
+                    .contains(test)
+                    || rs.getString("Nombre (Inglés)").toLowerCase()
+                    .contains(test)
+                    || rs.getString("Descripción").toLowerCase()
+                    .contains(test));
         }
-        ResultSet rs2 = ability.selectAll("lol");
+
+        test = "lol";
+        test = test.toLowerCase();
+        ResultSet rs2 = ability.selectAll(test);
         while (rs2.next()) {
-            assertFalse(rs2.getString("Nombre").contains("lol")
-                    || rs2.getString("Nombre (Inglés)").contains("lol")
-                    || rs2.getString("Descripción").contains("lol"));
+            assertFalse(rs2.getString("Nombre").toLowerCase().contains(test)
+                    || rs2.getString("Nombre (Inglés)").toLowerCase()
+                    .contains(test)
+                    || rs2.getString("Descripción").toLowerCase()
+                    .contains(test));
         }
     }
 
@@ -220,14 +231,14 @@ public class AbilityTest {
                 + "BaseSpAtk AS 'At. Especial', BaseSpDef AS 'Def. Especial', "
                 + "BaseSpd AS Velocidad, PokemonDescription AS Descripción FROM "
                 + "Pokemon A LEFT JOIN Pokemon_Abilities B ON A.PokemonID = "
-                + "B.PokemonID WHERE B.TypeID = " + ability.getAbilityID()
+                + "B.PokemonID WHERE B.AbilityID = " + ability.getAbilityID()
                 + " ORDER BY DexNumber;";
 
         ResultSet rs2 = conn.createStatement().executeQuery(sql);
 
         String sql2 = "SELECT count(*) FROM "
                 + "Pokemon A LEFT JOIN Pokemon_Abilities B ON A.PokemonID = "
-                + "B.PokemonID WHERE B.TypeID = " + ability.getAbilityID() + ";";
+                + "B.PokemonID WHERE B.AbilityID = " + ability.getAbilityID() + ";";
 
         int count = 0;
         while (rs.next()) {

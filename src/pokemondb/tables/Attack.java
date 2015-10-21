@@ -16,11 +16,12 @@
  */
 package pokemondb.tables;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Attack {
-    
+
     public final String TABLE = "Attacks";
     private int AttackID;
     private int Power;
@@ -29,11 +30,11 @@ public class Attack {
     private int AtkCategoryID;
     private String AttackName;
     private String SpanishName;
-    private String AttackDescription;    
-    
+    private String AttackDescription;
+
     public Attack(int id, int pow, int acc, int type, int cat, String name,
-            String sname, String desc){
-        
+            String sname, String desc) {
+
         AttackID = id;
         Power = pow;
         Accuracy = acc;
@@ -155,17 +156,29 @@ public class Attack {
     public void setAttackDescription(String AttackDescription) {
         this.AttackDescription = AttackDescription;
     }
-    
+
     /**
      * Returns the attacks table.
      *
-     * @param condition the AttackName, SpanishName, AttackDescription, 
-     * TypeID or Power.
+     * @param condition the AttackName, SpanishName, AttackDescription, TypeID
+     * or Power.
      * @return the table as a ResultSet.
      * @throws java.sql.SQLException
      */
     public ResultSet selectAll(String condition) throws SQLException {
-        return null;
-    }    
-    
+        Connection conn = ConnectionDB.open();
+        String sql = "SELECT A.SpanishName AS Nombre, AttackName AS "
+                + "'Nombre (Inglés)', Power AS Poder, Accuracy AS Precisión, "
+                + "B.SpanishName AS Tipo, CategoryName AS Categoría, "
+                + "AttackDescription AS Descripción FROM " + TABLE + " A "
+                + "LEFT JOIN Types B ON A.TypeID = B.TypeID "
+                + "LEFT JOIN AtkCategory C ON A.AtkCategoryID = C.AtkCategoryID "
+                + "WHERE AttackName LIKE '%" + condition + "%' OR A.SpanishName "
+                + "LIKE '%" + condition + "%' OR AttackDescription LIKE "
+                + "'%" + condition + "%';";
+
+        ResultSet rs = conn.createStatement().executeQuery(sql);
+        return rs;
+    }
+
 }

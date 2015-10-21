@@ -318,26 +318,37 @@ public class AttackTest {
     @Test
     public void testSelectAll() throws SQLException {
         Attack attack = randomAttack();
-        ResultSet rs = attack.selectAll("fire");
+
+        String test = "fire";
+        test = test.toLowerCase();
+        ResultSet rs = attack.selectAll(test);
         while (rs.next()) {
-            assertTrue(rs.getString("Nombre").contains("fire")
-                    || rs.getString("Nombre (Inglés)").contains("fire")
-                    || rs.getString("Descripción").contains("fire"));
+            assertTrue(rs.getString("Nombre").toLowerCase().
+                    contains(test)
+                    || rs.getString("Nombre (Inglés)").toLowerCase()
+                    .contains(test)
+                    || rs.getString("Descripción").toLowerCase()
+                    .contains(test));
         }
-        
-        ResultSet rs2 = attack.selectAll("lol");
+
+        test = "lol";
+        test = test.toLowerCase();
+        ResultSet rs2 = attack.selectAll(test);
         while (rs2.next()) {
-            assertFalse(rs2.getString("Nombre").contains("lol")
-                    || rs2.getString("Nombre (Inglés)").contains("lol")
-                    || rs2.getString("Descripción").contains("lol"));
+            assertFalse(rs2.getString("Nombre").toLowerCase()
+                    .contains(test)
+                    || rs2.getString("Nombre (Inglés)").toLowerCase()
+                    .contains(test)
+                    || rs2.getString("Descripción").toLowerCase()
+                    .contains(test));
         }
-                
+
         ResultSet rs3 = attack.selectAll("15");
         while (rs3.next()) {
             assertTrue(rs3.getString("Tipo").contains("15")
                     || rs3.getString("Poder").contains("15"));
         }
-        
+
         ResultSet rs4 = attack.selectAll("800");
         while (rs4.next()) {
             assertFalse(rs4.getString("Tipo").contains("800")

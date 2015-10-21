@@ -21,7 +21,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Ability {
-    
+
     public final String TABLE = "Abilities";
     private int AbilityID;
     private String AbilityName;
@@ -90,7 +90,7 @@ public class Ability {
     public void setAbilityDescription(String AbilityDescription) {
         this.AbilityDescription = AbilityDescription;
     }
-    
+
     /**
      * Returns the abilities table.
      *
@@ -99,9 +99,17 @@ public class Ability {
      * @throws java.sql.SQLException
      */
     public ResultSet selectAll(String condition) throws SQLException {
-        return null;
+        Connection conn = ConnectionDB.open();
+        String sql = "SELECT SpanishName AS Nombre, AbilityName AS "
+                + "'Nombre (Inglés)', AbilityDescription AS Descripción FROM "
+                + TABLE + " WHERE AbilityName LIKE '%" + condition + "%' "
+                + "OR SpanishName LIKE '%" + condition + "%' "
+                + "OR AbilityDescription LIKE '%" + condition + "%'";
+
+        ResultSet rs = conn.createStatement().executeQuery(sql);
+        return rs;
     }
-    
+
     /**
      * Returns the Pokemon_Ability table.
      *
@@ -109,6 +117,17 @@ public class Ability {
      * @throws java.sql.SQLException
      */
     public ResultSet selectPokemon() throws SQLException {
-        return null;
+        Connection conn = ConnectionDB.open();
+        String sql = "SELECT DexNumber AS '#', PokemonName AS Nombre, "
+                + "Height AS 'Altura (m)', Weight AS 'Peso (kg)', "
+                + "BaseHP AS PS, BaseAtk AS Ataque, BaseDef AS Defensa, "
+                + "BaseSpAtk AS 'At. Especial', BaseSpDef AS 'Def. Especial', "
+                + "BaseSpd AS Velocidad, PokemonDescription AS Descripción FROM "
+                + "Pokemon A LEFT JOIN Pokemon_Abilities B ON A.PokemonID = "
+                + "B.PokemonID WHERE B.AbilityID = " + AbilityID + " ORDER BY "
+                + "DexNumber;";
+        
+        ResultSet rs = conn.createStatement().executeQuery(sql);
+        return rs;
     }
 }

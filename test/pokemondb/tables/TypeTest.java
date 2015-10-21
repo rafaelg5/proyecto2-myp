@@ -189,20 +189,23 @@ public class TypeTest {
     @Test
     public void testSelectAll() throws SQLException {
         Type type = randomType();
-        ResultSet rs = type.selectAll("er");
+
+        String test = "er";
+        test = test.toLowerCase();
+        ResultSet rs = type.selectAll(test);
         while (rs.next()) {
-            assertTrue(rs.getString("Nombre").contains("er")
-                    || rs.getString("Nombre (Inglés)").contains("er"));
+            assertTrue(rs.getString("Nombre").toLowerCase().contains(test)
+                    || rs.getString("Nombre (Inglés)").toLowerCase()
+                    .contains(test));
         }
-        ResultSet rs2 = type.selectAll("ma");
+
+        test = "lol";
+        test = test.toLowerCase();
+        ResultSet rs2 = type.selectAll(test);
         while (rs2.next()) {
-            assertTrue(rs2.getString("Nombre").contains("ma")
-                    || rs2.getString("Nombre (Inglés)").contains("ma"));
-        }
-        ResultSet rs3 = type.selectAll("lol");
-        while (rs3.next()) {
-            assertFalse(rs3.getString("Nombre").contains("lol")
-                    || rs3.getString("Nombre (Inglés)").contains("lol"));
+            assertFalse(rs2.getString("Nombre").toLowerCase().contains(test)
+                    || rs2.getString("Nombre (Inglés)").toLowerCase()
+                    .contains(test));
         }
     }
 

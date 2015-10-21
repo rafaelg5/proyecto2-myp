@@ -504,9 +504,12 @@ public class PokemonTest {
         while (rs.next()) {
             assertTrue(rs.getString("#").contains(n));
         }
-        ResultSet rs2 = pokemon.selectAll("saur");
+
+        n = "SaUR";
+        n = n.toLowerCase();
+        ResultSet rs2 = pokemon.selectAll(n);
         while (rs2.next()) {
-            assertTrue(rs2.getString("Nombre").contains("saur"));
+            assertTrue(rs2.getString("Nombre").toLowerCase().contains(n));
         }
     }
 

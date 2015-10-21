@@ -10,7 +10,7 @@
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
     <jar href="lib/junit-4.10.jar" size="253160" download="eager" />
     <jar href="lib/sqlite-jdbc-3.8.11.2.jar" size="5575351" download="eager" />
-    <jar href="proyecto2.jar" size="10145" download="eager" />
+    <jar href="proyecto2.jar" size="20553" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="proyecto2" >
     <param name="requiredFXVersion" value="8.0+"/>
