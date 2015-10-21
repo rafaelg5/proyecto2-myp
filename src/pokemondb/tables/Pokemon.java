@@ -19,7 +19,6 @@ package pokemondb.tables;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class Pokemon {
 
@@ -268,14 +267,14 @@ public class Pokemon {
                 + "Height AS Altura, Weight AS Peso, BaseHP AS PS, "
                 + "BaseAtk AS Ataque, BaseDef AS Defensa, BaseSpAtk AS "
                 + "'At. Especial', BaseSpDef AS 'Def. Especial', BaseSpd AS "
-                + "Velocidad, PokemonDescription AS Descripción FROM Pokemon "
-                + "WHERE DexNumber LIKE '%"+ condition +"%' OR PokemonName "
-                + "LIKE '%"+ condition +"%'";
-        
+                + "Velocidad, PokemonDescription AS Descripción FROM " + TABLE
+                + " WHERE DexNumber LIKE '%" + condition + "%' OR PokemonName "
+                + "LIKE '%" + condition + "%'";
+
         ResultSet rs = conn.createStatement().executeQuery(sql);
         return rs;
     }
-    
+
     /**
      * Returns the a Pokemon's pre-evolution table.
      *
@@ -283,15 +282,16 @@ public class Pokemon {
      * @throws java.sql.SQLException
      */
     public ResultSet selectPreevolutions() throws SQLException {
-        
+
         Connection conn = ConnectionDB.open();
         String sql = "SELECT PokemonName AS Nombre, PokemonSprite AS Sprite "
-                + "FROM Pokemon A LEFT JOIN Preevolutions B ON A.PokemonID = "
-                + "B.PreevolutionID WHERE B.PokemonID = " + PokemonID + ";";
+                + "FROM " + TABLE + " A LEFT JOIN Preevolutions B ON "
+                + "A.PokemonID = B.PreevolutionID WHERE B.PokemonID = "
+                + PokemonID + ";";
         ResultSet rs = conn.createStatement().executeQuery(sql);
         return rs;
     }
-    
+
     /**
      * Returns the a Pokemon's evolution(s) table.
      *
@@ -301,12 +301,13 @@ public class Pokemon {
     public ResultSet selectEvolutions() throws SQLException {
         Connection conn = ConnectionDB.open();
         String sql = "SELECT PokemonName AS Nombre, PokemonSprite AS Sprite "
-                + "FROM Pokemon A LEFT JOIN Evolutions B ON A.PokemonID = "
-                + "B.EvolutionID WHERE B.PokemonID = " + PokemonID + ";";
+                + "FROM " + TABLE + " A LEFT JOIN Evolutions B ON "
+                + "A.PokemonID = B.EvolutionID WHERE B.PokemonID = "
+                + PokemonID + ";";
         ResultSet rs = conn.createStatement().executeQuery(sql);
         return rs;
     }
-    
+
     /**
      * Returns the a Pokemon's alternate form(s) table.
      *
@@ -316,12 +317,13 @@ public class Pokemon {
     public ResultSet selectAlternateForms() throws SQLException {
         Connection conn = ConnectionDB.open();
         String sql = "SELECT PokemonName AS Nombre, PokemonSprite AS Sprite "
-                + "FROM Pokemon A LEFT JOIN AlternateForms B ON A.PokemonID = "
-                + "B.AlternateFormID WHERE B.PokemonID = " + PokemonID + ";";
+                + "FROM " + TABLE + " A LEFT JOIN AlternateForms B ON "
+                + "A.PokemonID = B.AlternateFormID WHERE B.PokemonID = "
+                + PokemonID + ";";
         ResultSet rs = conn.createStatement().executeQuery(sql);
         return rs;
     }
-    
+
     /**
      * Returns a Pokemon's abilities table.
      *
@@ -337,7 +339,7 @@ public class Pokemon {
         ResultSet rs = conn.createStatement().executeQuery(sql);
         return rs;
     }
-    
+
     /**
      * Returns a Pokemon's type(s) table.
      *

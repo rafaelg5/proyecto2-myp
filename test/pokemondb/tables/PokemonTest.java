@@ -19,7 +19,6 @@ package pokemondb.tables;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Random;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -541,6 +540,7 @@ public class PokemonTest {
         rs = pokemon.selectPreevolutions();
 
         for (int i = 0; i < count; i++) {
+
             rs.next();
             rs2.next();
             assertEquals(rs2.getString("Nombre"), rs.getString("Nombre"));
@@ -674,12 +674,12 @@ public class PokemonTest {
         conn = ConnectionDB.open();
         String sql = "SELECT SpanishName AS Tipo, TypeSprite AS Sprite "
                 + "FROM Types A LEFT JOIN Pokemon_Types B ON A.TypeID = "
-                + "B.TypeID WHERE B.PokemonID = " 
+                + "B.TypeID WHERE B.PokemonID = "
                 + pokemon.getPokemonID() + ";";
         ResultSet rs2 = conn.createStatement().executeQuery(sql);
-        
+
         String sql2 = "SELECT count(*) FROM Types A LEFT JOIN Pokemon_Types B "
-                + "ON A.TypeID = B.TypeID WHERE B.PokemonID = " 
+                + "ON A.TypeID = B.TypeID WHERE B.PokemonID = "
                 + pokemon.getPokemonID() + ";";
 
         int count = 0;

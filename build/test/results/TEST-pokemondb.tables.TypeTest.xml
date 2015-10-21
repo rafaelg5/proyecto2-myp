@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="localhost.localdomain" name="pokemondb.tables.PokemonTest" skipped="0" tests="34" time="0.582" timestamp="2015-10-20T23:31:32">
+<testsuite errors="4" failures="0" hostname="localhost.localdomain" name="pokemondb.tables.TypeTest" skipped="0" tests="12" time="0.507" timestamp="2015-10-21T00:05:57">
   <properties>
     <property name="libs.jsp-compiler.javadoc" value="" />
     <property name="netbeans.autoupdate.country" value="US" />
@@ -10,7 +10,7 @@
     <property name="manifest.custom.codebase" value="*" />
     <property name="libs.junit.javadoc" value="/home/rgarcia/Documents/Tercer Semestre/proyecto2/lib/junit/junit-3.8.2-api.zip" />
     <property name="libs.spring-webmvc4.0.src" value="" />
-    <property name="javac.includes" value="pokemondb/tables/PokemonTest.java" />
+    <property name="javac.includes" value="pokemondb/tables/TypeTest.java" />
     <property name="ant.core.lib" value="/home/rgarcia/.netbeans/8.0.2/ant/lib/ant.jar" />
     <property name="javadoc.windowtitle" value="" />
     <property name="libs.jsp-compilation.javadoc" value="" />
@@ -70,7 +70,7 @@
     <property name="libs.j2me_common_ant.maven-pom" value="" />
     <property name="libs.spring-webmvc3.0.maven-pom" value="" />
     <property name="libs.swing-layout.maven-pom" value="" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner pokemondb.tables.PokemonTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/rgarcia/Documents/Tercer Semestre/proyecto2/build/test/results/TEST-pokemondb.tables.PokemonTest.xml crashfile=/home/rgarcia/Documents/Tercer Semestre/proyecto2/build/junitvmwatcher8624730545802000821.properties propsfile=/home/rgarcia/Documents/Tercer Semestre/proyecto2/build/junit4398026831145555147.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner pokemondb.tables.TypeTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/rgarcia/Documents/Tercer Semestre/proyecto2/build/test/results/TEST-pokemondb.tables.TypeTest.xml crashfile=/home/rgarcia/Documents/Tercer Semestre/proyecto2/build/junitvmwatcher1248337694903623132.properties propsfile=/home/rgarcia/Documents/Tercer Semestre/proyecto2/build/junit4335686211443106598.properties" />
     <property name="build.classes.dir" value="build/classes" />
     <property name="netbeans.accept_license_class" value="org.netbeans.license.AcceptLicense" />
     <property name="build.sysclasspath" value="ignore" />
@@ -95,7 +95,7 @@
     <property name="javafx.deploy.includeDT" value="true" />
     <property name="java.endorsed.dirs" value="/usr/java/jdk1.8.0_40/jre/lib/endorsed" />
     <property name="libs.Comet-GlassFish-v3.maven-pom" value="" />
-    <property name="test.includes" value="pokemondb/tables/PokemonTest.java" />
+    <property name="test.includes" value="pokemondb/tables/TypeTest.java" />
     <property name="netbeans.dynamic.classpath" value="/usr/local/netbeans-8.0.2/platform/core/core.jar:/usr/local/netbeans-8.0.2/platform/core/org-openide-filesystems.jar:/usr/local/netbeans-8.0.2/platform/core/locale/org-openide-filesystems_ja.jar:/usr/local/netbeans-8.0.2/platform/core/locale/core_pt_BR.jar:/usr/local/netbeans-8.0.2/platform/core/locale/core_ru.jar:/usr/local/netbeans-8.0.2/platform/core/locale/org-openide-filesystems_pt_BR.jar:/usr/local/netbeans-8.0.2/platform/core/locale/core_ja.jar:/usr/local/netbeans-8.0.2/platform/core/locale/core_zh_CN.jar:/usr/local/netbeans-8.0.2/platform/core/locale/org-openide-filesystems_zh_CN.jar:/usr/local/netbeans-8.0.2/platform/core/locale/org-openide-filesystems_ru.jar:/usr/local/netbeans-8.0.2/nb/core/org-netbeans-upgrader.jar:/usr/local/netbeans-8.0.2/nb/core/locale/core_nb.jar:/usr/local/netbeans-8.0.2/nb/core/locale/core_nb_ja.jar:/usr/local/netbeans-8.0.2/nb/core/locale/core_nb_pt_BR.jar:/usr/local/netbeans-8.0.2/nb/core/locale/org-netbeans-upgrader_pt_BR.jar:/usr/local/netbeans-8.0.2/nb/core/locale/core_nb_zh_CN.jar:/usr/local/netbeans-8.0.2/nb/core/locale/org-netbeans-upgrader_ru.jar:/usr/local/netbeans-8.0.2/nb/core/locale/org-netbeans-upgrader_zh_CN.jar:/usr/local/netbeans-8.0.2/nb/core/locale/org-netbeans-upgrader_ja.jar:/usr/local/netbeans-8.0.2/nb/core/locale/core_nb_ru.jar" />
     <property name="jnlp.enabled" value="false" />
     <property name="java.vm.specification.version" value="1.8" />
@@ -115,7 +115,7 @@
     <property name="javadoc.splitindex" value="true" />
     <property name="file.separator" value="/" />
     <property name="libs.Java-EE-GlassFish-v3-Prelude.maven-pom" value="" />
-    <property name="javac.includesfile.binary" value="/home/rgarcia/Documents/Tercer Semestre/proyecto2/null352675900" />
+    <property name="javac.includesfile.binary" value="/home/rgarcia/Documents/Tercer Semestre/proyecto2/null352230095" />
     <property name="libs.junit_4.maven-pom" value="" />
     <property name="mkdist.disabled" value="false" />
     <property name="ant.file.proyecto2-impl" value="/home/rgarcia/Documents/Tercer Semestre/proyecto2/nbproject/build-impl.xml" />
@@ -130,7 +130,7 @@
     <property name="libs.hibernate4-persistencemodelgen.javadoc" value="" />
     <property name="libs.jaxb.javadoc" value="/usr/local/netbeans-8.0.2/ide/docs/jaxb-api-doc.zip" />
     <property name="libs.struts.classpath" value="/usr/local/netbeans-8.0.2/enterprise/modules/ext/struts/antlr-2.7.2.jar:/usr/local/netbeans-8.0.2/enterprise/modules/ext/struts/bsf-2.3.0.jar:/usr/local/netbeans-8.0.2/enterprise/modules/ext/struts/commons-beanutils-1.8.0.jar:/usr/local/netbeans-8.0.2/enterprise/modules/ext/struts/commons-chain-1.2.jar:/usr/local/netbeans-8.0.2/enterprise/modules/ext/struts/commons-digester-1.8.jar:/usr/local/netbeans-8.0.2/enterprise/modules/ext/struts/commons-fileupload-1.1.1.jar:/usr/local/netbeans-8.0.2/enterprise/modules/ext/struts/commons-io-1.1.jar:/usr/local/netbeans-8.0.2/enterprise/modules/ext/struts/commons-logging-1.0.4.jar:/usr/local/netbeans-8.0.2/enterprise/modules/ext/struts/commons-validator-1.3.1.jar:/usr/local/netbeans-8.0.2/enterprise/modules/ext/struts/jstl-1.0.2.jar:/usr/local/netbeans-8.0.2/enterprise/modules/ext/struts/oro-2.0.8.jar:/usr/local/netbeans-8.0.2/enterprise/modules/ext/struts/standard-1.0.6.jar:/usr/local/netbeans-8.0.2/enterprise/modules/ext/struts/struts-core-1.3.10.jar:/usr/local/netbeans-8.0.2/enterprise/modules/ext/struts/struts-el-1.3.10.jar:/usr/local/netbeans-8.0.2/enterprise/modules/ext/struts/struts-extras-1.3.10.jar:/usr/local/netbeans-8.0.2/enterprise/modules/ext/struts/struts-faces-1.3.10.jar:/usr/local/netbeans-8.0.2/enterprise/modules/ext/struts/struts-mailreader-dao-1.3.10.jar:/usr/local/netbeans-8.0.2/enterprise/modules/ext/struts/struts-scripting-1.3.10.jar:/usr/local/netbeans-8.0.2/enterprise/modules/ext/struts/struts-taglib-1.3.10.jar:/usr/local/netbeans-8.0.2/enterprise/modules/ext/struts/struts-tiles-1.3.10.jar" />
-    <property name="javac.includes.binary" value="/home/rgarcia/Documents/Tercer Semestre/proyecto2/build/test/classes/pokemondb/tables/PokemonTest.class" />
+    <property name="javac.includes.binary" value="/home/rgarcia/Documents/Tercer Semestre/proyecto2/build/test/classes/pokemondb/tables/TypeTest.class" />
     <property name="ant.home" value="/home/rgarcia/.netbeans/8.0.2/ant" />
     <property name="libs.junit_4.src" value="/home/rgarcia/Documents/Tercer Semestre/proyecto2/lib/junit_4/junit-4.10-sources.jar" />
     <property name="javafx.run.height" value="600" />
@@ -452,40 +452,40 @@
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit" />
     <property name="libs.javaee-web-api-7.0.javadoc" value="/usr/local/netbeans-8.0.2/enterprise/docs/javaee-doc-api.jar" />
   </properties>
-  <testcase classname="pokemondb.tables.PokemonTest" name="testGetPokemonName" time="0.263" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testSetPokemonName" time="0.004" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testGetPokemonSprite" time="0.002" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testSetPokemonSprite" time="0.005" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testGetPokemonDescription" time="0.003" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testSetPokemonDescription" time="0.004" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testGetPokemonID" time="0.002" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testSetPokemonID" time="0.004" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testGetDexNumber" time="0.003" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testSetDexNumber" time="0.004" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testGetBaseHP" time="0.002" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testSetBaseHP" time="0.004" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testGetBaseAtk" time="0.002" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testSetBaseAtk" time="0.004" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testGetBaseDef" time="0.002" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testSetBaseDef" time="0.004" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testGetBaseSpAtk" time="0.003" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testSetBaseSpAtk" time="0.003" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testGetBaseSpDef" time="0.002" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testSetBaseSpDef" time="0.003" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testGetBaseSpd" time="0.003" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testSetBaseSpd" time="0.004" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testGetAlternateForm" time="0.002" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testSetAlternateForm" time="0.004" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testGetHeight" time="0.002" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testSetHeight" time="0.004" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testGetWeight" time="0.002" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testSetWeight" time="0.004" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testSelectAll" time="0.005" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testSelectPreevolutions" time="0.006" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testSelectEvolutions" time="0.005" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testSelectAlternateForms" time="0.006" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testSelectAbilities" time="0.008" />
-  <testcase classname="pokemondb.tables.PokemonTest" name="testSelectTypes" time="0.006" />
+  <testcase classname="pokemondb.tables.TypeTest" name="testSelectAll" time="0.312">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at pokemondb.tables.TypeTest.testSelectAll(TypeTest.java:193)
+</error>
+  </testcase>
+  <testcase classname="pokemondb.tables.TypeTest" name="testSelectAttacks" time="0.007">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at pokemondb.tables.TypeTest.testSelectAttacks(TypeTest.java:235)
+</error>
+  </testcase>
+  <testcase classname="pokemondb.tables.TypeTest" name="testSelectPokemon" time="0.007">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at pokemondb.tables.TypeTest.testSelectPokemon(TypeTest.java:282)
+</error>
+  </testcase>
+  <testcase classname="pokemondb.tables.TypeTest" name="testSelectDamageTaken" time="0.008">
+    <error message="[SQLITE_ERROR] SQL error or missing database (unrecognized token: &quot;&apos;Daño Recibido FROM Types A LEFT JOIN TypesDamage B ON A.TypeID = B.TypeID LEFT JOIN Types C ON B.AtkTypeID = C.TypeID WHERE B.TypeID = 7;&quot;)" type="java.sql.SQLException">java.sql.SQLException: [SQLITE_ERROR] SQL error or missing database (unrecognized token: &quot;&apos;Daño Recibido FROM Types A LEFT JOIN TypesDamage B ON A.TypeID = B.TypeID LEFT JOIN Types C ON B.AtkTypeID = C.TypeID WHERE B.TypeID = 7;&quot;)
+	at org.sqlite.core.DB.newSQLException(DB.java:890)
+	at org.sqlite.core.DB.newSQLException(DB.java:901)
+	at org.sqlite.core.DB.throwex(DB.java:868)
+	at org.sqlite.core.NativeDB.prepare(Native Method)
+	at org.sqlite.core.DB.prepare(DB.java:211)
+	at org.sqlite.jdbc3.JDBC3Statement.executeQuery(JDBC3Statement.java:81)
+	at pokemondb.tables.TypeTest.testSelectDamageTaken(TypeTest.java:327)
+</error>
+  </testcase>
+  <testcase classname="pokemondb.tables.TypeTest" name="testGetTypeSprite" time="0.002" />
+  <testcase classname="pokemondb.tables.TypeTest" name="testSetTypeSprite" time="0.003" />
+  <testcase classname="pokemondb.tables.TypeTest" name="testSetTypeID" time="0.003" />
+  <testcase classname="pokemondb.tables.TypeTest" name="testGetTypeName" time="0.001" />
+  <testcase classname="pokemondb.tables.TypeTest" name="testGetTypeID" time="0.001" />
+  <testcase classname="pokemondb.tables.TypeTest" name="testGetSpanishName" time="0.003" />
+  <testcase classname="pokemondb.tables.TypeTest" name="testSetSpanishName" time="0.004" />
+  <testcase classname="pokemondb.tables.TypeTest" name="testSetTypeName" time="0.003" />
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
