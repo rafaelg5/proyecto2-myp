@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="4" failures="0" hostname="localhost.localdomain" name="pokemondb.tables.TypeTest" skipped="0" tests="12" time="0.507" timestamp="2015-10-21T00:05:57">
+<testsuite errors="0" failures="0" hostname="localhost.localdomain" name="pokemondb.tables.TypeTest" skipped="0" tests="12" time="0.569" timestamp="2015-10-21T00:18:59">
   <properties>
     <property name="libs.jsp-compiler.javadoc" value="" />
     <property name="netbeans.autoupdate.country" value="US" />
@@ -70,7 +70,7 @@
     <property name="libs.j2me_common_ant.maven-pom" value="" />
     <property name="libs.spring-webmvc3.0.maven-pom" value="" />
     <property name="libs.swing-layout.maven-pom" value="" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner pokemondb.tables.TypeTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/rgarcia/Documents/Tercer Semestre/proyecto2/build/test/results/TEST-pokemondb.tables.TypeTest.xml crashfile=/home/rgarcia/Documents/Tercer Semestre/proyecto2/build/junitvmwatcher1248337694903623132.properties propsfile=/home/rgarcia/Documents/Tercer Semestre/proyecto2/build/junit4335686211443106598.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner pokemondb.tables.TypeTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/rgarcia/Documents/Tercer Semestre/proyecto2/build/test/results/TEST-pokemondb.tables.TypeTest.xml crashfile=/home/rgarcia/Documents/Tercer Semestre/proyecto2/build/junitvmwatcher1135987102754531591.properties propsfile=/home/rgarcia/Documents/Tercer Semestre/proyecto2/build/junit6070278855883640152.properties" />
     <property name="build.classes.dir" value="build/classes" />
     <property name="netbeans.accept_license_class" value="org.netbeans.license.AcceptLicense" />
     <property name="build.sysclasspath" value="ignore" />
@@ -115,7 +115,7 @@
     <property name="javadoc.splitindex" value="true" />
     <property name="file.separator" value="/" />
     <property name="libs.Java-EE-GlassFish-v3-Prelude.maven-pom" value="" />
-    <property name="javac.includesfile.binary" value="/home/rgarcia/Documents/Tercer Semestre/proyecto2/null352230095" />
+    <property name="javac.includesfile.binary" value="/home/rgarcia/Documents/Tercer Semestre/proyecto2/null1045782147" />
     <property name="libs.junit_4.maven-pom" value="" />
     <property name="mkdist.disabled" value="false" />
     <property name="ant.file.proyecto2-impl" value="/home/rgarcia/Documents/Tercer Semestre/proyecto2/nbproject/build-impl.xml" />
@@ -452,40 +452,18 @@
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit" />
     <property name="libs.javaee-web-api-7.0.javadoc" value="/usr/local/netbeans-8.0.2/enterprise/docs/javaee-doc-api.jar" />
   </properties>
-  <testcase classname="pokemondb.tables.TypeTest" name="testSelectAll" time="0.312">
-    <error type="java.lang.NullPointerException">java.lang.NullPointerException
-	at pokemondb.tables.TypeTest.testSelectAll(TypeTest.java:193)
-</error>
-  </testcase>
-  <testcase classname="pokemondb.tables.TypeTest" name="testSelectAttacks" time="0.007">
-    <error type="java.lang.NullPointerException">java.lang.NullPointerException
-	at pokemondb.tables.TypeTest.testSelectAttacks(TypeTest.java:235)
-</error>
-  </testcase>
-  <testcase classname="pokemondb.tables.TypeTest" name="testSelectPokemon" time="0.007">
-    <error type="java.lang.NullPointerException">java.lang.NullPointerException
-	at pokemondb.tables.TypeTest.testSelectPokemon(TypeTest.java:282)
-</error>
-  </testcase>
-  <testcase classname="pokemondb.tables.TypeTest" name="testSelectDamageTaken" time="0.008">
-    <error message="[SQLITE_ERROR] SQL error or missing database (unrecognized token: &quot;&apos;Daño Recibido FROM Types A LEFT JOIN TypesDamage B ON A.TypeID = B.TypeID LEFT JOIN Types C ON B.AtkTypeID = C.TypeID WHERE B.TypeID = 7;&quot;)" type="java.sql.SQLException">java.sql.SQLException: [SQLITE_ERROR] SQL error or missing database (unrecognized token: &quot;&apos;Daño Recibido FROM Types A LEFT JOIN TypesDamage B ON A.TypeID = B.TypeID LEFT JOIN Types C ON B.AtkTypeID = C.TypeID WHERE B.TypeID = 7;&quot;)
-	at org.sqlite.core.DB.newSQLException(DB.java:890)
-	at org.sqlite.core.DB.newSQLException(DB.java:901)
-	at org.sqlite.core.DB.throwex(DB.java:868)
-	at org.sqlite.core.NativeDB.prepare(Native Method)
-	at org.sqlite.core.DB.prepare(DB.java:211)
-	at org.sqlite.jdbc3.JDBC3Statement.executeQuery(JDBC3Statement.java:81)
-	at pokemondb.tables.TypeTest.testSelectDamageTaken(TypeTest.java:327)
-</error>
-  </testcase>
-  <testcase classname="pokemondb.tables.TypeTest" name="testGetTypeSprite" time="0.002" />
-  <testcase classname="pokemondb.tables.TypeTest" name="testSetTypeSprite" time="0.003" />
-  <testcase classname="pokemondb.tables.TypeTest" name="testSetTypeID" time="0.003" />
-  <testcase classname="pokemondb.tables.TypeTest" name="testGetTypeName" time="0.001" />
+  <testcase classname="pokemondb.tables.TypeTest" name="testSetTypeID" time="0.293" />
+  <testcase classname="pokemondb.tables.TypeTest" name="testSelectAll" time="0.004" />
+  <testcase classname="pokemondb.tables.TypeTest" name="testSelectAttacks" time="0.01" />
+  <testcase classname="pokemondb.tables.TypeTest" name="testSelectPokemon" time="0.009" />
+  <testcase classname="pokemondb.tables.TypeTest" name="testSelectDamageTaken" time="0.008" />
   <testcase classname="pokemondb.tables.TypeTest" name="testGetTypeID" time="0.001" />
-  <testcase classname="pokemondb.tables.TypeTest" name="testGetSpanishName" time="0.003" />
-  <testcase classname="pokemondb.tables.TypeTest" name="testSetSpanishName" time="0.004" />
-  <testcase classname="pokemondb.tables.TypeTest" name="testSetTypeName" time="0.003" />
+  <testcase classname="pokemondb.tables.TypeTest" name="testGetTypeName" time="0.002" />
+  <testcase classname="pokemondb.tables.TypeTest" name="testSetTypeName" time="0.004" />
+  <testcase classname="pokemondb.tables.TypeTest" name="testGetSpanishName" time="0.002" />
+  <testcase classname="pokemondb.tables.TypeTest" name="testSetSpanishName" time="0.003" />
+  <testcase classname="pokemondb.tables.TypeTest" name="testGetTypeSprite" time="0.003" />
+  <testcase classname="pokemondb.tables.TypeTest" name="testSetTypeSprite" time="0.004" />
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

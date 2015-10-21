@@ -99,33 +99,68 @@ public class Type {
      * @throws java.sql.SQLException
      */
     public ResultSet selectAll(String condition) throws SQLException {
-        return null;
+        Connection conn = ConnectionDB.open();
+        String sql = "SELECT SpanishName AS Nombre, TypeName AS "
+                + "'Nombre (Inglés)', TypeSprite AS Ícono FROM "
+                + TABLE + " WHERE TypeName LIKE '%" + condition + "%' "
+                + "OR SpanishName LIKE '%" + condition + "%'";
+
+        ResultSet rs = conn.createStatement().executeQuery(sql);
+        return rs;
     }
-    
+
     /**
      * Returns the Attacks' Type table.
+     *
      * @return the table as a ResultSet.
      * @throws java.sql.SQLException
      */
-    public ResultSet selectAttacks() throws SQLException{
-        return null;
+    public ResultSet selectAttacks() throws SQLException {
+        Connection conn = ConnectionDB.open();
+        String sql = "SELECT A.SpanishName AS Nombre, AttackName AS "
+                + "'Nombre (Inglés)', Power AS Poder, Accuracy AS Precisión, "
+                + "B.SpanishName AS Tipo, CategorySprite AS Categoría, "
+                + "AttackDescription AS Descripción FROM Attacks A LEFT JOIN "
+                + "Types B ON A.TypeID = B.TypeID LEFT JOIN AtkCategory C ON "
+                + "A.AtkCategoryID = C.AtkCategoryID WHERE B.TypeID = "
+                + TypeID + ";";
+        ResultSet rs = conn.createStatement().executeQuery(sql);
+        return rs;
     }
-    
+
     /**
      * Returns the Pokemon Type table.
+     *
      * @return the table as a ResultSet.
      * @throws java.sql.SQLException
      */
-    public ResultSet selectPokemon() throws SQLException{
-        return null;
+    public ResultSet selectPokemon() throws SQLException {
+        Connection conn = ConnectionDB.open();
+        String sql = "SELECT DexNumber AS '#', PokemonName AS Nombre, "
+                + "Height AS 'Altura (m)', Weight AS 'Peso (kg)', BaseHP AS PS, "
+                + "BaseAtk AS Ataque, BaseDef AS Defensa, BaseSpAtk AS "
+                + "'At. Especial', BaseSpDef AS 'Def. Especial', BaseSpd AS "
+                + "Velocidad, PokemonDescription AS Descripción FROM Pokemon A "
+                + "LEFT JOIN Pokemon_Types B ON A.PokemonID = B.PokemonID WHERE "
+                + "B.TypeID = " + TypeID + " ORDER BY DexNumber;";
+        ResultSet rs = conn.createStatement().executeQuery(sql);
+        return rs;
     }
-    
+
     /**
      * Returns the Type Chart table.
+     *
      * @return the table as a ResultSet.
      * @throws java.sql.SQLException
      */
-    public ResultSet selectDamageTaken() throws SQLException{
-        return null;
+    public ResultSet selectDamageTaken() throws SQLException {
+        Connection conn = ConnectionDB.open();
+        String sql = "SELECT A.SpanishName AS Tipo, C.SpanishName AS "
+                + "'Tipo Atacante', DamageTaken AS 'Daño Recibido' FROM "
+                + TABLE + " A LEFT JOIN TypesDamage B ON A.TypeID = B.TypeID "
+                + "LEFT JOIN " + TABLE + " C ON B.AtkTypeID = C.TypeID WHERE "
+                + "B.TypeID = " + TypeID + ";";
+        ResultSet rs = conn.createStatement().executeQuery(sql);
+        return rs;
     }
 }

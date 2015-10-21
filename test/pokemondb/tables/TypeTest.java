@@ -319,7 +319,7 @@ public class TypeTest {
 
         conn = ConnectionDB.open();
         String sql = "SELECT A.SpanishName AS Tipo, C.SpanishName AS "
-                + "'Tipo Atacante', DamageTaken AS 'Daño Recibido FROM Types A "
+                + "'Tipo Atacante', DamageTaken AS 'Daño Recibido' FROM Types A "
                 + "LEFT JOIN TypesDamage B ON A.TypeID = B.TypeID LEFT JOIN "
                 + "Types C ON B.AtkTypeID = C.TypeID WHERE B.TypeID = "
                 + type.getTypeID() + ";";
