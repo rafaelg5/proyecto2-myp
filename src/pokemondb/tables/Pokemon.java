@@ -67,9 +67,16 @@ public class Pokemon {
     public String getPokemonName() {
         return PokemonName.get();
     }
+    
+    /**
+     * @return the PokemonName property
+     */
+    public SimpleStringProperty pokemonNameProperty(){
+        return PokemonName;
+    }
 
     /**
-     * @param name
+     * @param name the name to set.
      */
     public void setPokemonName(String name) {        
         PokemonName.set(name);
@@ -81,9 +88,16 @@ public class Pokemon {
     public String getPokemonSprite() {
         return PokemonSprite.get();
     }
+    
+    /**
+     * @return the PokemonSprite property
+     */
+    public SimpleStringProperty pokemonSpriteProperty(){
+        return PokemonSprite;
+    }
 
     /**
-     * @param sprite
+     * @param sprite the sprite to set.
      */
     public void setPokemonSprite(String sprite) {
         PokemonSprite.set(sprite);
@@ -95,9 +109,16 @@ public class Pokemon {
     public String getPokemonDescription() {
         return PokemonDescription.get();
     }
+    
+    /**
+     * @return the PokemonDescription property
+     */
+    public SimpleStringProperty pokemonDescriptionProperty(){
+        return PokemonDescription;
+    }
 
     /**
-     * @param description
+     * @param description the description to set.
      */
     public void setPokemonDescription(String description) {
         PokemonDescription.set(description);
@@ -109,9 +130,16 @@ public class Pokemon {
     public int getPokemonID() {
         return PokemonID.get();
     }
+    
+    /**
+     * @return the PokemonID property
+     */
+    public SimpleIntegerProperty pokemonIDProperty(){
+        return PokemonID;
+    }
 
     /**
-     * @param id
+     * @param id the id to set.
      */
     public void setPokemonID(int id) {
         PokemonID.set(id);
@@ -123,9 +151,16 @@ public class Pokemon {
     public int getDexNumber() {
         return DexNumber.get();
     }
+    
+    /**
+     * @return the DexNumber property
+     */
+    public SimpleIntegerProperty dexNumberProperty(){
+        return DexNumber;
+    }
 
     /**
-     * @param num
+     * @param num the number to set.
      */
     public void setDexNumber(int num) {
         DexNumber.set(num);
@@ -137,9 +172,16 @@ public class Pokemon {
     public int getBaseHP() {
         return BaseHP.get();
     }
+    
+    /**
+     * @return the BaseHP property
+     */
+    public SimpleIntegerProperty baseHPProperty(){
+        return BaseHP;
+    }
 
     /**
-     * @param hp
+     * @param hp the hp to set.
      */
     public void setBaseHP(int hp) {
         BaseHP.set(hp);
@@ -151,23 +193,37 @@ public class Pokemon {
     public int getBaseAtk() {
         return BaseAtk.get();
     }
+    
+    /**
+     * @return the BaseAtk property
+     */
+    public SimpleIntegerProperty baseAtkProperty(){
+        return BaseAtk;
+    }
 
     /**
-     * @param atk
+     * @param atk the attack to set.
      */
     public void setBaseAtk(int atk) {
         BaseAtk.set(atk);
     }
 
     /**
-     * @return the BaseDef
+     * @return the BaseDef 
      */
     public int getBaseDef() {
         return BaseDef.get();
     }
+    
+    /**
+     * @return the BaseDef property
+     */
+    public SimpleIntegerProperty baseDefProperty(){
+        return BaseDef;
+    }
 
     /**
-     * @param def
+     * @param def the defense to set.
      */
     public void setBaseDef(int def) {
         BaseDef.set(def);
@@ -179,9 +235,16 @@ public class Pokemon {
     public int getBaseSpAtk() {
         return BaseSpAtk.get();
     }
+    
+    /**
+     * @return the BaseSpAtk property
+     */
+    public SimpleIntegerProperty baseSpAtkProperty(){
+        return BaseSpAtk;
+    }
 
     /**
-     * @param spAtk
+     * @param spAtk the sp. attack to set.
      */
     public void setBaseSpAtk(int spAtk) {
         BaseSpAtk.set(spAtk);
@@ -193,9 +256,16 @@ public class Pokemon {
     public int getBaseSpDef() {
         return BaseSpDef.get();
     }
+    
+    /**
+     * @return the BaseSpDef property
+     */
+    public SimpleIntegerProperty baseSpDefProperty(){
+        return BaseSpDef;
+    }
 
     /**
-     * @param spDef
+     * @param spDef the sp. defense to set.
      */
     public void setBaseSpDef(int spDef) {
         BaseSpDef.set(spDef);
@@ -207,9 +277,16 @@ public class Pokemon {
     public int getBaseSpd() {
         return BaseSpd.get();
     }
+    
+    /**
+     * @return the BaseSpd property
+     */
+    public SimpleIntegerProperty baseSpdProperty(){
+        return BaseSpd;
+    }
 
     /**
-     * @param spd
+     * @param spd the speed to set.
      */
     public void setBaseSpd(int spd) {
         BaseSpd.set(spd);
@@ -221,9 +298,16 @@ public class Pokemon {
     public double getHeight() {
         return Height.get();
     }
+    
+    /**
+     * @return the height property
+     */
+    public SimpleDoubleProperty heightProperty(){
+        return Height;
+    }
 
     /**
-     * @param height
+     * @param height the height to set.
      */
     public void setHeight(double height) {
         Height.set(height);
@@ -235,9 +319,16 @@ public class Pokemon {
     public double getWeight() {
         return Weight.get();
     }
+    
+    /**
+     * @return the weight property
+     */
+    public SimpleDoubleProperty weightProperty(){
+        return Weight;
+    }
 
     /**
-     * @param weight
+     * @param weight the weight to set.
      */
     public void setWeight(double weight) {
         Weight.set(weight);

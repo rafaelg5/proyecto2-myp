@@ -46,6 +46,13 @@ public class Ability {
     public int getAbilityID() {
         return AbilityID.get();
     }
+    
+    /**
+     * @return the AbilityID property
+     */
+    public SimpleIntegerProperty abilityIDProperty(){
+        return AbilityID;
+    }
 
     /**
      * @param id
@@ -59,6 +66,13 @@ public class Ability {
      */
     public String getAbilityName() {
         return AbilityName.get();
+    }
+    
+    /**
+     * @return the AbilityName property
+     */
+    public SimpleStringProperty abilityNameProperty(){
+        return AbilityName;
     }
 
     /**
@@ -74,6 +88,13 @@ public class Ability {
     public String getSpanishName() {
         return SpanishName.get();
     }
+    
+    /**
+     * @return the SpanishName property
+     */
+    public SimpleStringProperty spanishNameProperty(){
+        return SpanishName;
+    }
 
     /**
      * @param sName
@@ -87,6 +108,13 @@ public class Ability {
      */
     public String getAbilityDescription() {
         return AbilityDescription.get();
+    }
+    
+    /**
+     * @return the AbilityDescription property
+     */
+    public SimpleStringProperty abilityDescriptionProperty(){
+        return AbilityDescription;
     }
 
     /**
@@ -106,7 +134,8 @@ public class Ability {
     public ResultSet selectAll(String condition) throws SQLException {
         Connection conn = ConnectionDB.open();
         String sql = "SELECT SpanishName AS Nombre, AbilityName AS "
-                + "'Nombre (Inglés)', AbilityDescription AS Descripción FROM "
+                + "'Nombre (Inglés)', AbilityDescription AS Descripción, "
+                + "AbilityID AS ID FROM "
                 + TABLE + " WHERE AbilityName LIKE '%" + condition + "%' "
                 + "OR SpanishName LIKE '%" + condition + "%' "
                 + "OR AbilityDescription LIKE '%" + condition + "%'";

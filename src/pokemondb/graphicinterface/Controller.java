@@ -17,120 +17,58 @@
 package pokemondb.graphicinterface;
 
 import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableColumn.CellDataFeatures;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.util.Callback;
 import pokemondb.tables.*;
+import static pokemondb.tables.ConnectionDB.MSG;
 
 public class Controller implements Initializable {
-    
+
     @FXML
-    private TableView<ObservableList<Pokemon>> pokemonTable;
+    private TableView<Pokemon> pokemonTable;
     @FXML
-    private TableColumn<Pokemon, Integer> DexNumber;
+    private TableView<Type> typeTable;
     @FXML
-    private TableColumn<Pokemon, String> PokemonName;
+    private TableView<Attack> attackTable;
     @FXML
-    private TableColumn<Pokemon, Double> Height;
+    private TableView<Ability> abilityTable;
     @FXML
-    private TableColumn<Pokemon, Double> Weight;
-    @FXML
-    private TableColumn<Pokemon, Integer> BaseHP;
-    @FXML
-    private TableColumn<Pokemon, Integer> BaseAtk;
-    @FXML
-    private TableColumn<Pokemon, Integer> BaseDef;
-    @FXML
-    private TableColumn<Pokemon, Integer> BaseSpAtk;
-    @FXML
-    private TableColumn<Pokemon, Integer> BaseSpDef;
-    @FXML
-    private TableColumn<Pokemon, Integer> BaseSpd;
-    @FXML
-    private TableColumn<Pokemon, String> PokemonDescription;
-    @FXML
-    private TableView<ObservableList<Type>> typeTable;
-    @FXML
-    private TableView<ObservableList<Attack>> attackTable;
-    @FXML
-    private TableView<ObservableList<Ability>> abilityTable;
+    private TableView<AttackCategory> atkCategoryTable;
     @FXML
     private ImageView cover;
     @FXML
     private Pane mainPane;
+    @FXML
+    private Button button;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
         cover.fitWidthProperty().bind(mainPane.widthProperty());
         cover.fitHeightProperty().bind(mainPane.heightProperty());
-        fillPokemonTable();
-    }
-
-    private void fillPokemonTable() {
-
-        try {
-
-            ObservableList<ObservableList<Pokemon>> data
-                    = FXCollections.observableArrayList();
-            ResultSet rs = new Pokemon().selectAll("");
-
-            while (rs.next()) {
-
-                ObservableList<Pokemon> row
-                        = FXCollections.observableArrayList();
-
-                String name, sprite, desc;
-                int id, num, hp, atk, def, spatk, spdef, spd;
-                double height, weight;
-
-                name = rs.getString("Nombre");
-                sprite = rs.getString("Sprite");
-                desc = rs.getString("Descripción");
-                id = rs.getInt("ID");
-                num = rs.getInt("#");
-                hp = rs.getInt("PS");
-                atk = rs.getInt("Ataque");
-                def = rs.getInt("Defensa");
-                spatk = rs.getInt("At. Especial");
-                spdef = rs.getInt("Def. Especial");
-                spd = rs.getInt("Velocidad");
-                height = rs.getDouble("Altura");
-                weight = rs.getDouble("Peso");
-
-                Pokemon tmp = new Pokemon(name, sprite, desc, id, num, hp, atk, def,
-                        spatk, spdef, spd, height, weight);
-                /*DexNumber.setCellValueFactory(new Callback<CellDataFeatures<Pokemon, Integer>, ObservableValue<Integer>>() {
-                    @Override
-                    public ObservableValue<Integer> call(CellDataFeatures<Pokemon, Integer> p) {
-                        
-                        p.getValue();
-                        Integer i = p.getValue().getDexNumber();
-                        return null;
-                    }
-                });*/
-
-                row.add(tmp);
-                data.add(row);
-                System.out.println(pokemonTable.getColumns().get(0).getCellData(row));
-            }
-            pokemonTable.setItems(data);
-
-        } catch (SQLException e) {
-
-        }
-
+        PokemonTab tab1 = new PokemonTab(pokemonTable);
+        TypeTab tab2 = new TypeTab(typeTable);
+        AttackTab tab3 = new AttackTab(attackTable, typeTable, atkCategoryTable);
+        AbilityTab tab4 = new AbilityTab(abilityTable);
+        button.setOnAction((ActionEvent event) -> {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setHeaderText("Información");
+            alert.setContentText("Esta base de datos es de consulta "
+                    + "únicamente. No se pueden agregar o modificar "
+                    + "datos, ya que perdería su propósito.\nMás adelante "
+                    + "se implementarán nuevas funciones :)");
+            alert.getDialogPane().setPrefSize(480, 250);
+            alert.showAndWait()
+                    .filter(response -> response == ButtonType.OK);
+        });
     }
 }

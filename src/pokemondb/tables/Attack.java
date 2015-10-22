@@ -25,7 +25,7 @@ import javafx.beans.property.SimpleStringProperty;
 public class Attack {
 
     public final String TABLE = "Attacks";
-    
+
     private final SimpleIntegerProperty AttackID;
     private final SimpleIntegerProperty Power;
     private final SimpleIntegerProperty Accuracy;
@@ -34,8 +34,8 @@ public class Attack {
     private final SimpleStringProperty AttackName;
     private final SimpleStringProperty SpanishName;
     private final SimpleStringProperty AttackDescription;
-    
-    public Attack(){
+
+    public Attack() {
         this(1, 0, 0, 1, 1, "", "", "");
     }
 
@@ -60,6 +60,13 @@ public class Attack {
     }
 
     /**
+     * @return the AttackID property
+     */
+    public SimpleIntegerProperty attackIDProperty() {
+        return AttackID;
+    }
+
+    /**
      * @param atID
      */
     public void setAttackID(int atID) {
@@ -71,6 +78,13 @@ public class Attack {
      */
     public int getPower() {
         return Power.get();
+    }
+
+    /**
+     * @return the Power property
+     */
+    public SimpleIntegerProperty powerProperty() {
+        return Power;
     }
 
     /**
@@ -88,6 +102,13 @@ public class Attack {
     }
 
     /**
+     * @return the Accuracy property
+     */
+    public SimpleIntegerProperty accuracyProperty() {
+        return Accuracy;
+    }
+
+    /**
      * @param accuracy
      */
     public void setAccuracy(int accuracy) {
@@ -99,6 +120,13 @@ public class Attack {
      */
     public int getTypeID() {
         return TypeID.get();
+    }
+
+    /**
+     * @return the TypeID property
+     */
+    public SimpleIntegerProperty typeIDProperty() {
+        return TypeID;
     }
 
     /**
@@ -116,6 +144,13 @@ public class Attack {
     }
 
     /**
+     * @return the AtkCategoryID property
+     */
+    public SimpleIntegerProperty atkCategoryIDProperty() {
+        return AtkCategoryID;
+    }
+
+    /**
      * @param atkCatID
      */
     public void setAtkCategoryID(int atkCatID) {
@@ -127,6 +162,13 @@ public class Attack {
      */
     public String getAttackName() {
         return AttackName.get();
+    }
+
+    /**
+     * @return the AttackName property
+     */
+    public SimpleStringProperty attackNameProperty() {
+        return AttackName;
     }
 
     /**
@@ -144,6 +186,13 @@ public class Attack {
     }
 
     /**
+     * @return the SpanishName property
+     */
+    public SimpleStringProperty spanishNameProperty() {
+        return SpanishName;
+    }
+
+    /**
      * @param sName
      */
     public void setSpanishName(String sName) {
@@ -155,6 +204,13 @@ public class Attack {
      */
     public String getAttackDescription() {
         return AttackDescription.get();
+    }
+
+    /**
+     * @return the AttackDescription property
+     */
+    public SimpleStringProperty attackDescriptionProperty() {
+        return AttackDescription;
     }
 
     /**
@@ -177,13 +233,13 @@ public class Attack {
         String sql = "SELECT A.SpanishName AS Nombre, AttackName AS "
                 + "'Nombre (Inglés)', Power AS Poder, Accuracy AS Precisión, "
                 + "B.SpanishName AS Tipo, CategoryName AS Categoría, "
-                + "AttackDescription AS Descripción FROM " + TABLE + " A "
-                + "LEFT JOIN Types B ON A.TypeID = B.TypeID "
-                + "LEFT JOIN AtkCategory C ON A.AtkCategoryID = C.AtkCategoryID "
-                + "WHERE AttackName LIKE '%" + condition + "%' OR A.SpanishName "
-                + "LIKE '%" + condition + "%' OR AttackDescription LIKE "
-                + "'%" + condition + "%';";
-
+                + "AttackDescription AS Descripción, AttackID AS ID "
+                + "FROM " + TABLE + " A LEFT JOIN Types B ON A.TypeID = "
+                + "B.TypeID LEFT JOIN AtkCategory C ON A.AtkCategoryID = "
+                + "C.AtkCategoryID WHERE AttackName LIKE '%" + condition
+                + "%' OR A.SpanishName LIKE '%" + condition + "%' OR "
+                + "AttackDescription LIKE '%" + condition + "%';";
+        
         ResultSet rs = conn.createStatement().executeQuery(sql);
         return rs;
     }

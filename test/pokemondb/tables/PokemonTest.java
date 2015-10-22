@@ -56,7 +56,7 @@ public class PokemonTest {
                 Integer.parseInt(values[3]), Integer.parseInt(values[4]),
                 Integer.parseInt(values[5]), Integer.parseInt(values[6]),
                 Integer.parseInt(values[7]), Integer.parseInt(values[8]),
-                Integer.parseInt(values[9]), Integer.parseInt(values[10]), 
+                Integer.parseInt(values[9]), Integer.parseInt(values[10]),
                 Double.parseDouble(values[11]), Double.parseDouble(values[12]));
 
         ConnectionDB.close();
@@ -70,8 +70,8 @@ public class PokemonTest {
         int range = rand.nextInt(171) + 1;
         String sql = "SELECT PokemonName, PokemonSprite, PokemonDescription,"
                 + "PokemonID, DexNumber, BaseHP, BaseAtk, BaseDef, BaseSpAtk,"
-                + "BaseSpDef, BaseSpd, AlternateForm, Height, Weight"
-                + " FROM Pokemon WHERE PokemonID = " + range + ";";
+                + "BaseSpDef, BaseSpd, Height, Weight FROM Pokemon WHERE "
+                + "PokemonID = " + range + ";";
         ResultSet rs;
 
         rs = conn.createStatement().executeQuery(sql);
@@ -669,4 +669,237 @@ public class PokemonTest {
         }
     }
 
+    /**
+     * Test of pokemonNameProperty method, of class Pokemon.
+     *
+     * @throws java.sql.SQLException
+     */
+    @Test
+    public void testPokemonNameProperty() throws SQLException {
+        Pokemon pokemon = randomPoke();
+        Pokemon pokemon2 = randomPoke();
+
+        assertFalse(pokemon.pokemonNameProperty()
+                .equals(pokemon2.pokemonNameProperty()));
+
+        pokemon2 = pokemon;
+        assertTrue(pokemon.pokemonNameProperty()
+                .equals(pokemon2.pokemonNameProperty()));
+    }
+
+    /**
+     * Test of pokemonSpriteProperty method, of class Pokemon.
+     *
+     * @throws java.sql.SQLException
+     */
+    @Test
+    public void testPokemonSpriteProperty() throws SQLException {
+        Pokemon pokemon = randomPoke();
+        Pokemon pokemon2 = randomPoke();
+
+        assertFalse(pokemon.pokemonSpriteProperty()
+                .equals(pokemon2.pokemonSpriteProperty()));
+
+        pokemon2 = pokemon;
+        assertTrue(pokemon.pokemonSpriteProperty()
+                .equals(pokemon2.pokemonSpriteProperty()));
+    }
+
+    /**
+     * Test of pokemonDescriptionProperty method, of class Pokemon.
+     *
+     * @throws java.sql.SQLException
+     */
+    @Test
+    public void testPokemonDescriptionProperty() throws SQLException {
+        Pokemon pokemon = randomPoke();
+        Pokemon pokemon2 = randomPoke();
+
+        assertFalse(pokemon.pokemonDescriptionProperty()
+                .equals(pokemon2.pokemonDescriptionProperty()));
+
+        pokemon2 = pokemon;
+        assertTrue(pokemon.pokemonDescriptionProperty()
+                .equals(pokemon2.pokemonDescriptionProperty()));
+    }
+
+    /**
+     * Test of pokemonIDProperty method, of class Pokemon.
+     *
+     * @throws java.sql.SQLException
+     */
+    @Test
+    public void testPokemonIDProperty() throws SQLException {
+        Pokemon pokemon = randomPoke();
+        Pokemon pokemon2 = randomPoke();
+
+        assertFalse(pokemon.pokemonIDProperty()
+                .equals(pokemon2.pokemonIDProperty()));
+
+        pokemon2 = pokemon;
+        assertTrue(pokemon.pokemonIDProperty()
+                .equals(pokemon2.pokemonIDProperty()));
+    }
+
+    /**
+     * Test of dexNumberProperty method, of class Pokemon.
+     *
+     * @throws java.sql.SQLException
+     */
+    @Test
+    public void testDexNumberProperty() throws SQLException {
+        Pokemon pokemon = randomPoke();
+        Pokemon pokemon2 = randomPoke();
+
+        assertFalse(pokemon.dexNumberProperty()
+                .equals(pokemon2.dexNumberProperty()));
+
+        pokemon2 = pokemon;
+        assertTrue(pokemon.dexNumberProperty()
+                .equals(pokemon2.dexNumberProperty()));
+    }
+
+    /**
+     * Test of baseHPProperty method, of class Pokemon.
+     *
+     * @throws java.sql.SQLException
+     */
+    @Test
+    public void testBaseHPProperty() throws SQLException {
+        Pokemon pokemon = randomPoke();
+        Pokemon pokemon2 = randomPoke();
+
+        assertFalse(pokemon.baseHPProperty()
+                .equals(pokemon2.baseHPProperty()));
+
+        pokemon2 = pokemon;
+        assertTrue(pokemon.baseHPProperty()
+                .equals(pokemon2.baseHPProperty()));
+    }
+
+    /**
+     * Test of baseAtkProperty method, of class Pokemon.
+     *
+     * @throws java.sql.SQLException
+     */
+    @Test
+    public void testBaseAtkProperty() throws SQLException {
+        Pokemon pokemon = randomPoke();
+        Pokemon pokemon2 = randomPoke();
+
+        assertFalse(pokemon.baseAtkProperty()
+                .equals(pokemon2.baseAtkProperty()));
+
+        pokemon2 = pokemon;
+        assertTrue(pokemon.baseAtkProperty()
+                .equals(pokemon2.baseAtkProperty()));
+    }
+
+    /**
+     * Test of baseDefProperty method, of class Pokemon.
+     *
+     * @throws java.sql.SQLException
+     */
+    @Test
+    public void testBaseDefProperty() throws SQLException {
+        Pokemon pokemon = randomPoke();
+        Pokemon pokemon2 = randomPoke();
+
+        assertFalse(pokemon.baseDefProperty()
+                .equals(pokemon2.baseDefProperty()));
+
+        pokemon2 = pokemon;
+        assertTrue(pokemon.baseDefProperty()
+                .equals(pokemon2.baseDefProperty()));
+    }
+
+    /**
+     * Test of baseSpAtkProperty method, of class Pokemon.
+     *
+     * @throws java.sql.SQLException
+     */
+    @Test
+    public void testBaseSpAtkProperty() throws SQLException {
+        Pokemon pokemon = randomPoke();
+        Pokemon pokemon2 = randomPoke();
+
+        assertFalse(pokemon.baseSpAtkProperty()
+                .equals(pokemon2.baseSpAtkProperty()));
+
+        pokemon2 = pokemon;
+        assertTrue(pokemon.baseSpAtkProperty()
+                .equals(pokemon2.baseSpAtkProperty()));
+    }
+
+    /**
+     * Test of baseSpDefProperty method, of class Pokemon.
+     *
+     * @throws java.sql.SQLException
+     */
+    @Test
+    public void testBaseSpDefProperty() throws SQLException {
+        Pokemon pokemon = randomPoke();
+        Pokemon pokemon2 = randomPoke();
+
+        assertFalse(pokemon.baseSpDefProperty()
+                .equals(pokemon2.baseSpDefProperty()));
+
+        pokemon2 = pokemon;
+        assertTrue(pokemon.baseSpDefProperty()
+                .equals(pokemon2.baseSpDefProperty()));
+    }
+
+    /**
+     * Test of baseSpdProperty method, of class Pokemon.
+     *
+     * @throws java.sql.SQLException
+     */
+    @Test
+    public void testBaseSpdProperty() throws SQLException {
+        Pokemon pokemon = randomPoke();
+        Pokemon pokemon2 = randomPoke();
+
+        assertFalse(pokemon.baseSpdProperty()
+                .equals(pokemon2.baseSpdProperty()));
+
+        pokemon2 = pokemon;
+        assertTrue(pokemon.baseSpdProperty()
+                .equals(pokemon2.baseSpdProperty()));
+    }
+
+    /**
+     * Test of heightProperty method, of class Pokemon.
+     *
+     * @throws java.sql.SQLException
+     */
+    @Test
+    public void testHeightProperty() throws SQLException {
+        Pokemon pokemon = randomPoke();
+        Pokemon pokemon2 = randomPoke();
+
+        assertFalse(pokemon.heightProperty()
+                .equals(pokemon2.heightProperty()));
+
+        pokemon2 = pokemon;
+        assertTrue(pokemon.heightProperty()
+                .equals(pokemon2.heightProperty()));
+    }
+
+    /**
+     * Test of weightProperty method, of class Pokemon.
+     *
+     * @throws java.sql.SQLException
+     */
+    @Test
+    public void testWeightProperty() throws SQLException {
+        Pokemon pokemon = randomPoke();
+        Pokemon pokemon2 = randomPoke();
+
+        assertFalse(pokemon.weightProperty()
+                .equals(pokemon2.weightProperty()));
+
+        pokemon2 = pokemon;
+        assertTrue(pokemon.weightProperty()
+                .equals(pokemon2.weightProperty()));
+    }
 }

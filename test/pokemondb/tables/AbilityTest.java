@@ -268,4 +268,77 @@ public class AbilityTest {
                     rs.getString("Descripción"));
         }
     }
+    
+    /**
+     * Test of abilityIDProperty method, of class Ability.
+     *
+     * @throws java.sql.SQLException
+     */
+    @Test
+    public void testAbilityIDProperty() throws SQLException {
+        Ability ability = randomAbility();
+        Ability ability2 = randomAbility();
+
+        assertFalse(ability.abilityIDProperty()
+                .equals(ability2.abilityIDProperty()));
+
+        ability2 = ability;
+        assertTrue(ability.abilityIDProperty()
+                .equals(ability2.abilityIDProperty()));
+    }
+    
+    /**
+     * Test of abilityNameProperty method, of class Ability.
+     *
+     * @throws java.sql.SQLException
+     */
+    @Test
+    public void testAbilityNameProperty() throws SQLException {
+        Ability ability = randomAbility();
+        Ability ability2 = randomAbility();
+
+        assertFalse(ability.abilityNameProperty()
+                .equals(ability2.abilityNameProperty()));
+
+        ability2 = ability;
+        assertTrue(ability.abilityNameProperty()
+                .equals(ability2.abilityNameProperty()));
+    }
+    
+    /**
+     * Test of spanishNameProperty method, of class Ability.
+     *
+     * @throws java.sql.SQLException
+     */
+    @Test
+    public void testSpanishNameProperty() throws SQLException {
+        Ability ability = randomAbility();
+        Ability ability2 = randomAbility();
+
+        assertFalse(ability.spanishNameProperty()
+                .equals(ability2.spanishNameProperty()));
+
+        ability2 = ability;
+        assertTrue(ability.spanishNameProperty()
+                .equals(ability2.spanishNameProperty()));
+    }
+    
+    /**
+     * Test of abilityDescriptionProperty method, of class Ability.
+     *
+     * @throws java.sql.SQLException
+     */
+    @Test
+    public void testAbilityDescriptionProperty() throws SQLException {
+        Ability ability = randomAbility();
+        Ability ability2 = randomAbility();
+
+        assertFalse(ability.abilityDescriptionProperty()
+                .equals(ability2.abilityDescriptionProperty()));
+
+        ability2 = ability;
+        assertTrue(ability.abilityDescriptionProperty()
+                .equals(ability2.abilityDescriptionProperty()));
+    }
+    
 }

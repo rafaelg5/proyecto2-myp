@@ -8,7 +8,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <TabPane maxHeight="480.0" maxWidth="640.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pokemondb.graphicinterface.Controller">
    <tabs>
       <Tab closable="false" text="Inicio">
@@ -20,6 +19,7 @@
                         <Image url="@img/cover.jpg" />
                      </image>
                   </ImageView>
+                  <Button fx:id="button" layoutX="534.0" layoutY="14.0" mnemonicParsing="false" text="Click aquí" />
                </children>
             </Pane>
          </content>

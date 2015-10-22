@@ -355,5 +355,149 @@ public class AttackTest {
                     || rs4.getString("Poder").contains("800"));
         }
     }
+    
+    /**
+     * Test of attackIDProperty method, of class Attack.
+     *
+     * @throws java.sql.SQLException
+     */
+    @Test
+    public void testAttackIDProperty() throws SQLException {
+        Attack attack = randomAttack();
+        Attack attack2 = randomAttack();
+
+        assertFalse(attack.attackIDProperty()
+                .equals(attack2.attackIDProperty()));
+
+        attack2 = attack;
+        assertTrue(attack.attackIDProperty()
+                .equals(attack2.attackIDProperty()));
+    }
+    
+    /**
+     * Test of powerProperty method, of class Attack.
+     *
+     * @throws java.sql.SQLException
+     */
+    @Test
+    public void testPowerProperty() throws SQLException {
+        Attack attack = randomAttack();
+        Attack attack2 = randomAttack();
+
+        assertFalse(attack.powerProperty()
+                .equals(attack2.powerProperty()));
+
+        attack2 = attack;
+        assertTrue(attack.powerProperty()
+                .equals(attack2.powerProperty()));
+    }
+    
+    /**
+     * Test of accuracyProperty method, of class Attack.
+     *
+     * @throws java.sql.SQLException
+     */
+    @Test
+    public void testAccuracyProperty() throws SQLException {
+        Attack attack = randomAttack();
+        Attack attack2 = randomAttack();
+
+        assertFalse(attack.accuracyProperty()
+                .equals(attack2.accuracyProperty()));
+
+        attack2 = attack;
+        assertTrue(attack.accuracyProperty()
+                .equals(attack2.accuracyProperty()));
+    }
+    
+    /**
+     * Test of typeIDProperty method, of class Attack.
+     *
+     * @throws java.sql.SQLException
+     */
+    @Test
+    public void testTypeIDProperty() throws SQLException {
+        Attack attack = randomAttack();
+        Attack attack2 = randomAttack();
+
+        assertFalse(attack.typeIDProperty()
+                .equals(attack2.typeIDProperty()));
+
+        attack2 = attack;
+        assertTrue(attack.typeIDProperty()
+                .equals(attack2.typeIDProperty()));
+    }
+    
+    /**
+     * Test of atkCategoryIDProperty method, of class Attack.
+     *
+     * @throws java.sql.SQLException
+     */
+    @Test
+    public void testAtkCategoryIDProperty() throws SQLException {
+        Attack attack = randomAttack();
+        Attack attack2 = randomAttack();
+
+        assertFalse(attack.atkCategoryIDProperty()
+                .equals(attack2.atkCategoryIDProperty()));
+
+        attack2 = attack;
+        assertTrue(attack.atkCategoryIDProperty()
+                .equals(attack2.atkCategoryIDProperty()));
+    }
+    
+    /**
+     * Test of attackNameProperty method, of class Attack.
+     *
+     * @throws java.sql.SQLException
+     */
+    @Test
+    public void testAttackNameProperty() throws SQLException {
+        Attack attack = randomAttack();
+        Attack attack2 = randomAttack();
+
+        assertFalse(attack.attackNameProperty()
+                .equals(attack2.attackNameProperty()));
+
+        attack2 = attack;
+        assertTrue(attack.attackNameProperty()
+                .equals(attack2.attackNameProperty()));
+    }
+    
+    /**
+     * Test of spanishNameProperty method, of class Attack.
+     *
+     * @throws java.sql.SQLException
+     */
+    @Test
+    public void testSpanishNameProperty() throws SQLException {
+        Attack attack = randomAttack();
+        Attack attack2 = randomAttack();
+
+        assertFalse(attack.spanishNameProperty()
+                .equals(attack2.spanishNameProperty()));
+
+        attack2 = attack;
+        assertTrue(attack.spanishNameProperty()
+                .equals(attack2.spanishNameProperty()));
+    }
+    
+    /**
+     * Test of attackDescriptionProperty method, of class Attack.
+     *
+     * @throws java.sql.SQLException
+     */
+    @Test
+    public void testAttackDescriptionProperty() throws SQLException {
+        Attack attack = randomAttack();
+        Attack attack2 = randomAttack();
+
+        assertFalse(attack.attackDescriptionProperty()
+                .equals(attack2.attackDescriptionProperty()));
+
+        attack2 = attack;
+        assertTrue(attack.attackDescriptionProperty()
+                .equals(attack2.attackDescriptionProperty()));
+    }
 
 }

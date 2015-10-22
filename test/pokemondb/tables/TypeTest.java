@@ -352,5 +352,77 @@ public class TypeTest {
                     rs.getString("Daño Recibido"));
         }
     }
+    
+    /**
+     * Test of typeIDProperty method, of class Type.
+     *
+     * @throws java.sql.SQLException
+     */
+    @Test
+    public void testTypeIDProperty() throws SQLException {
+        Type type = randomType();
+        Type type2 = randomType();
+
+        assertFalse(type.typeIDProperty()
+                .equals(type2.typeIDProperty()));
+
+        type2 = type;
+        assertTrue(type.typeIDProperty()
+                .equals(type2.typeIDProperty()));
+    }
+    
+    /**
+     * Test of typeNameProperty method, of class Type.
+     *
+     * @throws java.sql.SQLException
+     */
+    @Test
+    public void testTypeNameProperty() throws SQLException {
+        Type type = randomType();
+        Type type2 = randomType();
+
+        assertFalse(type.typeNameProperty()
+                .equals(type2.typeNameProperty()));
+
+        type2 = type;
+        assertTrue(type.typeNameProperty()
+                .equals(type2.typeNameProperty()));
+    }
+    
+    /**
+     * Test of spanishNameProperty method, of class Type.
+     *
+     * @throws java.sql.SQLException
+     */
+    @Test
+    public void testSpanishNameProperty() throws SQLException {
+        Type type = randomType();
+        Type type2 = randomType();
+
+        assertFalse(type.spanishNameProperty()
+                .equals(type2.spanishNameProperty()));
+
+        type2 = type;
+        assertTrue(type.spanishNameProperty()
+                .equals(type2.spanishNameProperty()));
+    }
+    
+    /**
+     * Test of typeSpriteProperty method, of class Type.
+     *
+     * @throws java.sql.SQLException
+     */
+    @Test
+    public void testTypeSpriteProperty() throws SQLException {
+        Type type = randomType();
+        Type type2 = randomType();
+
+        assertFalse(type.typeSpriteProperty()
+                .equals(type2.typeSpriteProperty()));
+
+        type2 = type;
+        assertTrue(type.typeSpriteProperty()
+                .equals(type2.typeSpriteProperty()));
+    }
 
 }

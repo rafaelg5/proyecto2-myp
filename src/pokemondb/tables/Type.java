@@ -47,6 +47,13 @@ public class Type {
     public int getTypeID() {
         return TypeID.get();
     }
+    
+    /**
+     * @return the TypeID property
+     */
+    public SimpleIntegerProperty typeIDProperty(){
+        return TypeID;
+    }
 
     /**
      * @param id the TypeID to set
@@ -60,6 +67,13 @@ public class Type {
      */
     public String getTypeName() {
         return TypeName.get();
+    }
+    
+    /**
+     * @return the TypeName property
+     */
+    public SimpleStringProperty typeNameProperty(){
+        return TypeName;
     }
 
     /**
@@ -75,6 +89,13 @@ public class Type {
     public String getSpanishName() {
         return SpanishName.get();
     }
+    
+    /**
+     * @return the SpanishName property
+     */
+    public SimpleStringProperty spanishNameProperty(){
+        return SpanishName;
+    }
 
     /**
      * @param sName the SpanishName to set
@@ -88,6 +109,13 @@ public class Type {
      */
     public String getTypeSprite() {
         return TypeSprite.get();
+    }
+    
+    /**
+     * @return the TypeSprite property
+     */
+    public SimpleStringProperty typeSpriteProperty(){
+        return TypeSprite;
     }
 
     /**
@@ -107,7 +135,7 @@ public class Type {
     public ResultSet selectAll(String condition) throws SQLException {
         Connection conn = ConnectionDB.open();
         String sql = "SELECT SpanishName AS Nombre, TypeName AS "
-                + "'Nombre (Inglés)', TypeSprite AS Ícono FROM "
+                + "'Nombre (Inglés)', TypeSprite AS Ícono, TypeID AS ID FROM "
                 + TABLE + " WHERE TypeName LIKE '%" + condition + "%' "
                 + "OR SpanishName LIKE '%" + condition + "%'";
 
