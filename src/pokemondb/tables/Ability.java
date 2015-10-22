@@ -19,76 +19,81 @@ package pokemondb.tables;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javafx.beans.property.*;
 
 public class Ability {
 
     public final String TABLE = "Abilities";
-    private int AbilityID;
-    private String AbilityName;
-    private String SpanishName;
-    private String AbilityDescription;
+    private final SimpleIntegerProperty AbilityID;
+    private final SimpleStringProperty AbilityName;
+    private final SimpleStringProperty SpanishName;
+    private final SimpleStringProperty AbilityDescription;
+
+    public Ability() {
+        this(1, "", "", "");
+    }
 
     public Ability(int id, String an, String sn, String desc) {
-        AbilityID = id;
-        AbilityName = an;
-        SpanishName = sn;
-        AbilityDescription = desc;
+        AbilityID = new SimpleIntegerProperty(id);
+        AbilityName = new SimpleStringProperty(an);
+        SpanishName = new SimpleStringProperty(sn);
+        AbilityDescription = new SimpleStringProperty(desc);
     }
 
     /**
      * @return the AbilityID
      */
     public int getAbilityID() {
-        return AbilityID;
+        return AbilityID.get();
     }
 
     /**
-     * @param AbilityID the AbilityID to set
+     * @param id
      */
-    public void setAbilityID(int AbilityID) {
-        this.AbilityID = AbilityID;
+    public void setAbilityID(int id) {
+        AbilityID.set(id);
     }
 
     /**
      * @return the AbilityName
      */
     public String getAbilityName() {
-        return AbilityName;
+        return AbilityName.get();
     }
 
     /**
-     * @param AbilityName the AbilityName to set
+     * @param name
      */
-    public void setAbilityName(String AbilityName) {
-        this.AbilityName = AbilityName;
+    public void setAbilityName(String name) {
+        AbilityName.set(name);
     }
 
     /**
      * @return the SpanishName
      */
     public String getSpanishName() {
-        return SpanishName;
+        return SpanishName.get();
     }
 
     /**
-     * @param SpanishName the SpanishName to set
+     * @param sName
      */
-    public void setSpanishName(String SpanishName) {
-        this.SpanishName = SpanishName;
+    public void setSpanishName(String sName) {
+        SpanishName.set(sName);
     }
 
     /**
      * @return the AbilityDescription
      */
     public String getAbilityDescription() {
-        return AbilityDescription;
+        return AbilityDescription.get();
     }
 
     /**
-     * @param AbilityDescription the AbilityDescription to set
+     * @param description
      */
-    public void setAbilityDescription(String AbilityDescription) {
-        this.AbilityDescription = AbilityDescription;
+    public void setAbilityDescription(String description) {
+        AbilityDescription.set(description);
     }
 
     /**
@@ -124,9 +129,9 @@ public class Ability {
                 + "BaseSpAtk AS 'At. Especial', BaseSpDef AS 'Def. Especial', "
                 + "BaseSpd AS Velocidad, PokemonDescription AS Descripción FROM "
                 + "Pokemon A LEFT JOIN Pokemon_Abilities B ON A.PokemonID = "
-                + "B.PokemonID WHERE B.AbilityID = " + AbilityID + " ORDER BY "
-                + "DexNumber;";
-        
+                + "B.PokemonID WHERE B.AbilityID = " + AbilityID.get()
+                + " ORDER BY DexNumber;";
+
         ResultSet rs = conn.createStatement().executeQuery(sql);
         return rs;
     }

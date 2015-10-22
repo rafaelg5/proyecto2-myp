@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="localhost.localdomain" name="pokemondb.tables.AbilityTest" skipped="0" tests="10" time="0.46" timestamp="2015-10-21T02:57:06">
+<testsuite errors="0" failures="0" hostname="localhost.localdomain" name="pokemondb.tables.AbilityTest" skipped="0" tests="10" time="0.546" timestamp="2015-10-22T05:09:06">
   <properties>
     <property name="libs.jsp-compiler.javadoc" value="" />
     <property name="netbeans.autoupdate.country" value="US" />
@@ -70,7 +70,7 @@
     <property name="libs.j2me_common_ant.maven-pom" value="" />
     <property name="libs.spring-webmvc3.0.maven-pom" value="" />
     <property name="libs.swing-layout.maven-pom" value="" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner pokemondb.tables.AbilityTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/rgarcia/Documents/Tercer Semestre/proyecto2/build/test/results/TEST-pokemondb.tables.AbilityTest.xml crashfile=/home/rgarcia/Documents/Tercer Semestre/proyecto2/build/junitvmwatcher3630334355096187278.properties propsfile=/home/rgarcia/Documents/Tercer Semestre/proyecto2/build/junit1765059581711628678.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner pokemondb.tables.AbilityTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/rgarcia/Documents/Tercer Semestre/proyecto2/build/test/results/TEST-pokemondb.tables.AbilityTest.xml crashfile=/home/rgarcia/Documents/Tercer Semestre/proyecto2/build/junitvmwatcher7246283807065452967.properties propsfile=/home/rgarcia/Documents/Tercer Semestre/proyecto2/build/junit2193794720419397535.properties" />
     <property name="build.classes.dir" value="build/classes" />
     <property name="netbeans.accept_license_class" value="org.netbeans.license.AcceptLicense" />
     <property name="build.sysclasspath" value="ignore" />
@@ -115,7 +115,7 @@
     <property name="javadoc.splitindex" value="true" />
     <property name="file.separator" value="/" />
     <property name="libs.Java-EE-GlassFish-v3-Prelude.maven-pom" value="" />
-    <property name="javac.includesfile.binary" value="/home/rgarcia/Documents/Tercer Semestre/proyecto2/null1309880536" />
+    <property name="javac.includesfile.binary" value="/home/rgarcia/Documents/Tercer Semestre/proyecto2/null1700965346" />
     <property name="libs.junit_4.maven-pom" value="" />
     <property name="mkdist.disabled" value="false" />
     <property name="ant.file.proyecto2-impl" value="/home/rgarcia/Documents/Tercer Semestre/proyecto2/nbproject/build-impl.xml" />
@@ -452,18 +452,16 @@
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit" />
     <property name="libs.javaee-web-api-7.0.javadoc" value="/usr/local/netbeans-8.0.2/enterprise/docs/javaee-doc-api.jar" />
   </properties>
-  <testcase classname="pokemondb.tables.AbilityTest" name="testSetAbilityName" time="0.27" />
-  <testcase classname="pokemondb.tables.AbilityTest" name="testGetSpanishName" time="0.002" />
+  <testcase classname="pokemondb.tables.AbilityTest" name="testSetAbilityName" time="0.345" />
+  <testcase classname="pokemondb.tables.AbilityTest" name="testGetSpanishName" time="0.003" />
   <testcase classname="pokemondb.tables.AbilityTest" name="testSetSpanishName" time="0.004" />
   <testcase classname="pokemondb.tables.AbilityTest" name="testGetAbilityDescription" time="0.002" />
   <testcase classname="pokemondb.tables.AbilityTest" name="testSetAbilityDescription" time="0.003" />
-  <testcase classname="pokemondb.tables.AbilityTest" name="testSelectAll" time="0.004" />
-  <testcase classname="pokemondb.tables.AbilityTest" name="testSelectPokemon" time="0.011" />
-  <testcase classname="pokemondb.tables.AbilityTest" name="testSetAbilityID" time="0.003" />
+  <testcase classname="pokemondb.tables.AbilityTest" name="testSelectAll" time="0.005" />
+  <testcase classname="pokemondb.tables.AbilityTest" name="testSelectPokemon" time="0.009" />
   <testcase classname="pokemondb.tables.AbilityTest" name="testGetAbilityName" time="0.002" />
-  <testcase classname="pokemondb.tables.AbilityTest" name="testGetAbilityID" time="0.003" />
-  <system-out><![CDATA[SELECT DexNumber AS '#', PokemonName AS Nombre, Height AS 'Altura (m)', Weight AS 'Peso (kg)', BaseHP AS PS, BaseAtk AS Ataque, BaseDef AS Defensa, BaseSpAtk AS 'At. Especial', BaseSpDef AS 'Def. Especial', BaseSpd AS Velocidad, PokemonDescription AS Descripción FROM Pokemon A LEFT JOIN Pokemon_Abilities B ON A.PokemonID = B.PokemonID WHERE B.AbilityID = 76 ORDER BY DexNumber;
-SELECT DexNumber AS '#', PokemonName AS Nombre, Height AS 'Altura (m)', Weight AS 'Peso (kg)', BaseHP AS PS, BaseAtk AS Ataque, BaseDef AS Defensa, BaseSpAtk AS 'At. Especial', BaseSpDef AS 'Def. Especial', BaseSpd AS Velocidad, PokemonDescription AS Descripción FROM Pokemon A LEFT JOIN Pokemon_Abilities B ON A.PokemonID = B.PokemonID WHERE B.AbilityID = 76 ORDER BY DexNumber;
-]]></system-out>
+  <testcase classname="pokemondb.tables.AbilityTest" name="testGetAbilityID" time="0.001" />
+  <testcase classname="pokemondb.tables.AbilityTest" name="testSetAbilityID" time="0.003" />
+  <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

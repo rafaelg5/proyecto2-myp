@@ -25,12 +25,16 @@ public class ConnectionDB {
 
     private static Connection conn = null;
     
-    private final static String msg = "Hubo un problema al conectar a la base "
+    public final static String MSG = "Hubo un problema al conectar a la base "
             + "de datos. Revise que el archivo Pokemon.db está en: "
             + "proyecto2/lib/Pokemon.db.\n"
             + "Si el problema persiste, mandar correo a la "
             + "dirección: rafaelg5@ciencias.unam.mx";
 
+    /**
+     * Opens the connection to the database.
+     * @return the connection to the database.
+     */
     public static Connection open() {
         try {
             if (conn == null || conn.isClosed()) {
@@ -38,13 +42,16 @@ public class ConnectionDB {
             }
 
         } catch (SQLException e) {
-            Alert alert = new Alert(AlertType.ERROR, msg);
+            Alert alert = new Alert(AlertType.ERROR, MSG);
             alert.showAndWait()
                     .filter(response -> response == ButtonType.OK);
         }
         return conn;
     }
 
+    /**
+     * Closes the connection to the database.
+     */
     public static void close() {
 
         try {
@@ -64,7 +71,12 @@ public class ConnectionDB {
                     .filter(response -> response == ButtonType.OK);
         }
     }
-
+    
+    /**
+     * Gets the connection to a database.
+     * @return the connection
+     * @throws SQLException 
+     */
     private static Connection getConn() throws SQLException {
         try {
             Class.forName("org.sqlite.JDBC");
@@ -79,7 +91,7 @@ public class ConnectionDB {
         } catch (SQLException e) {
             conn.close();
             Alert alert = new Alert(AlertType.ERROR, e.getMessage() + "\n"
-                    + msg);
+                    + MSG);
             alert.showAndWait()
                     .filter(response -> response == ButtonType.OK);
         }

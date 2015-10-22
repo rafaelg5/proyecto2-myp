@@ -19,239 +19,228 @@ package pokemondb.tables;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javafx.beans.property.*;
 
 public class Pokemon {
 
     public final String TABLE = "Pokemon";
-    private String PokemonName;
-    private String PokemonSprite;
-    private String PokemonDescription;
-    private int PokemonID;
-    private int DexNumber;
-    private int BaseHP;
-    private int BaseAtk;
-    private int BaseDef;
-    private int BaseSpAtk;
-    private int BaseSpDef;
-    private int BaseSpd;
-    private int AlternateForm;
-    private double Height;
-    private double Weight;
+    private final SimpleStringProperty PokemonName;
+    private final SimpleStringProperty PokemonSprite;
+    private final SimpleStringProperty PokemonDescription;
+    private final SimpleIntegerProperty PokemonID;
+    private final SimpleIntegerProperty DexNumber;
+    private final SimpleIntegerProperty BaseHP;
+    private final SimpleIntegerProperty BaseAtk;
+    private final SimpleIntegerProperty BaseDef;
+    private final SimpleIntegerProperty BaseSpAtk;
+    private final SimpleIntegerProperty BaseSpDef;
+    private final SimpleIntegerProperty BaseSpd;
+    private final SimpleDoubleProperty Height;
+    private final SimpleDoubleProperty Weight;
+
+    public Pokemon() {
+        this("", "", "", 1, 1, 0, 0, 0, 0, 0, 0, 0.0D, 0.0D);
+    }
 
     public Pokemon(String name, String sprite, String desc, int id, int num,
             int hp, int atk, int def, int spAtk, int spDef, int spd,
-            int altForm, double height, double weight) {
+            double height, double weight) {
 
-        PokemonName = name;
-        PokemonSprite = sprite;
-        PokemonDescription = desc;
-        PokemonID = id;
-        DexNumber = num;
-        BaseHP = hp;
-        BaseAtk = atk;
-        BaseDef = def;
-        BaseSpAtk = spAtk;
-        BaseSpDef = spDef;
-        BaseSpd = spd;
-        AlternateForm = altForm;
-        Height = height;
-        Weight = weight;
+        PokemonName = new SimpleStringProperty(name);
+        PokemonSprite = new SimpleStringProperty(sprite);
+        PokemonDescription = new SimpleStringProperty(desc);
+        PokemonID = new SimpleIntegerProperty(id);
+        DexNumber = new SimpleIntegerProperty(num);
+        BaseHP = new SimpleIntegerProperty(hp);
+        BaseAtk = new SimpleIntegerProperty(atk);
+        BaseDef = new SimpleIntegerProperty(def);
+        BaseSpAtk = new SimpleIntegerProperty(spAtk);
+        BaseSpDef = new SimpleIntegerProperty(spDef);
+        BaseSpd = new SimpleIntegerProperty(spd);
+        Height = new SimpleDoubleProperty(height);
+        Weight = new SimpleDoubleProperty(weight);
     }
 
     /**
      * @return the PokemonName
      */
     public String getPokemonName() {
-        return PokemonName;
+        return PokemonName.get();
     }
 
     /**
-     * @param PokemonName the PokemonName to set
+     * @param name
      */
-    public void setPokemonName(String PokemonName) {
-        this.PokemonName = PokemonName;
+    public void setPokemonName(String name) {        
+        PokemonName.set(name);
     }
 
     /**
      * @return the PokemonSprite
      */
     public String getPokemonSprite() {
-        return PokemonSprite;
+        return PokemonSprite.get();
     }
 
     /**
-     * @param PokemonSprite the PokemonSprite to set
+     * @param sprite
      */
-    public void setPokemonSprite(String PokemonSprite) {
-        this.PokemonSprite = PokemonSprite;
+    public void setPokemonSprite(String sprite) {
+        PokemonSprite.set(sprite);
     }
 
     /**
      * @return the PokemonDescription
      */
     public String getPokemonDescription() {
-        return PokemonDescription;
+        return PokemonDescription.get();
     }
 
     /**
-     * @param PokemonDescription the PokemonDescription to set
+     * @param description
      */
-    public void setPokemonDescription(String PokemonDescription) {
-        this.PokemonDescription = PokemonDescription;
+    public void setPokemonDescription(String description) {
+        PokemonDescription.set(description);
     }
 
     /**
      * @return the PokemonID
      */
     public int getPokemonID() {
-        return PokemonID;
+        return PokemonID.get();
     }
 
     /**
-     * @param PokemonID the PokemonID to set
+     * @param id
      */
-    public void setPokemonID(int PokemonID) {
-        this.PokemonID = PokemonID;
+    public void setPokemonID(int id) {
+        PokemonID.set(id);
     }
 
     /**
      * @return the DexNumber
      */
     public int getDexNumber() {
-        return DexNumber;
+        return DexNumber.get();
     }
 
     /**
-     * @param DexNumber the DexNumber to set
+     * @param num
      */
-    public void setDexNumber(int DexNumber) {
-        this.DexNumber = DexNumber;
+    public void setDexNumber(int num) {
+        DexNumber.set(num);
     }
 
     /**
      * @return the BaseHP
      */
     public int getBaseHP() {
-        return BaseHP;
+        return BaseHP.get();
     }
 
     /**
-     * @param BaseHP the BaseHP to set
+     * @param hp
      */
-    public void setBaseHP(int BaseHP) {
-        this.BaseHP = BaseHP;
+    public void setBaseHP(int hp) {
+        BaseHP.set(hp);
     }
 
     /**
      * @return the BaseAtk
      */
     public int getBaseAtk() {
-        return BaseAtk;
+        return BaseAtk.get();
     }
 
     /**
-     * @param BaseAtk the BaseAtk to set
+     * @param atk
      */
-    public void setBaseAtk(int BaseAtk) {
-        this.BaseAtk = BaseAtk;
+    public void setBaseAtk(int atk) {
+        BaseAtk.set(atk);
     }
 
     /**
      * @return the BaseDef
      */
     public int getBaseDef() {
-        return BaseDef;
+        return BaseDef.get();
     }
 
     /**
-     * @param BaseDef the BaseDef to set
+     * @param def
      */
-    public void setBaseDef(int BaseDef) {
-        this.BaseDef = BaseDef;
+    public void setBaseDef(int def) {
+        BaseDef.set(def);
     }
 
     /**
      * @return the BaseSpAtk
      */
     public int getBaseSpAtk() {
-        return BaseSpAtk;
+        return BaseSpAtk.get();
     }
 
     /**
-     * @param BaseSpAtk the BaseSpAtk to set
+     * @param spAtk
      */
-    public void setBaseSpAtk(int BaseSpAtk) {
-        this.BaseSpAtk = BaseSpAtk;
+    public void setBaseSpAtk(int spAtk) {
+        BaseSpAtk.set(spAtk);
     }
 
     /**
      * @return the BaseSpDef
      */
     public int getBaseSpDef() {
-        return BaseSpDef;
+        return BaseSpDef.get();
     }
 
     /**
-     * @param BaseSpDef the BaseSpDef to set
+     * @param spDef
      */
-    public void setBaseSpDef(int BaseSpDef) {
-        this.BaseSpDef = BaseSpDef;
+    public void setBaseSpDef(int spDef) {
+        BaseSpDef.set(spDef);
     }
 
     /**
      * @return the BaseSpd
      */
     public int getBaseSpd() {
-        return BaseSpd;
+        return BaseSpd.get();
     }
 
     /**
-     * @param BaseSpd the BaseSpd to set
+     * @param spd
      */
-    public void setBaseSpd(int BaseSpd) {
-        this.BaseSpd = BaseSpd;
-    }
-
-    /**
-     * @return 1, if the Pokemon is an alternate form. 0, otherwise.
-     */
-    public int getAlternateForm() {
-        return AlternateForm;
-    }
-
-    /**
-     * @param AlternateForm the AlternateForm to set
-     */
-    public void setAlternateForm(int AlternateForm) {
-        this.AlternateForm = AlternateForm;
+    public void setBaseSpd(int spd) {
+        BaseSpd.set(spd);
     }
 
     /**
      * @return the Height
      */
     public double getHeight() {
-        return Height;
+        return Height.get();
     }
 
     /**
-     * @param Height the Height to set
+     * @param height
      */
-    public void setHeight(double Height) {
-        this.Height = Height;
+    public void setHeight(double height) {
+        Height.set(height);
     }
 
     /**
      * @return the Weight
      */
     public double getWeight() {
-        return Weight;
+        return Weight.get();
     }
 
     /**
-     * @param Weight the Weight to set
+     * @param weight
      */
-    public void setWeight(double Weight) {
-        this.Weight = Weight;
+    public void setWeight(double weight) {
+        Weight.set(weight);
     }
 
     /**
@@ -263,13 +252,14 @@ public class Pokemon {
      */
     public ResultSet selectAll(String condition) throws SQLException {
         Connection conn = ConnectionDB.open();
-        String sql = "SELECT DexNumber AS '#', PokemonName AS Nombre, "
+        String sql = "SELECT PokemonID AS ID, PokemonSprite AS Sprite,"
+                + "DexNumber AS '#', PokemonName AS Nombre, "
                 + "Height AS Altura, Weight AS Peso, BaseHP AS PS, "
                 + "BaseAtk AS Ataque, BaseDef AS Defensa, BaseSpAtk AS "
                 + "'At. Especial', BaseSpDef AS 'Def. Especial', BaseSpd AS "
                 + "Velocidad, PokemonDescription AS Descripción FROM " + TABLE
                 + " WHERE DexNumber LIKE '%" + condition + "%' OR PokemonName "
-                + "LIKE '%" + condition + "%'";
+                + "LIKE '%" + condition + "%';";
 
         ResultSet rs = conn.createStatement().executeQuery(sql);
         return rs;
@@ -287,7 +277,7 @@ public class Pokemon {
         String sql = "SELECT PokemonName AS Nombre, PokemonSprite AS Sprite "
                 + "FROM " + TABLE + " A LEFT JOIN Preevolutions B ON "
                 + "A.PokemonID = B.PreevolutionID WHERE B.PokemonID = "
-                + PokemonID + ";";
+                + PokemonID.get() + ";";
         ResultSet rs = conn.createStatement().executeQuery(sql);
         return rs;
     }
@@ -303,7 +293,7 @@ public class Pokemon {
         String sql = "SELECT PokemonName AS Nombre, PokemonSprite AS Sprite "
                 + "FROM " + TABLE + " A LEFT JOIN Evolutions B ON "
                 + "A.PokemonID = B.EvolutionID WHERE B.PokemonID = "
-                + PokemonID + ";";
+                + PokemonID.get() + ";";
         ResultSet rs = conn.createStatement().executeQuery(sql);
         return rs;
     }
@@ -319,7 +309,7 @@ public class Pokemon {
         String sql = "SELECT PokemonName AS Nombre, PokemonSprite AS Sprite "
                 + "FROM " + TABLE + " A LEFT JOIN AlternateForms B ON "
                 + "A.PokemonID = B.AlternateFormID WHERE B.PokemonID = "
-                + PokemonID + ";";
+                + PokemonID.get() + ";";
         ResultSet rs = conn.createStatement().executeQuery(sql);
         return rs;
     }
@@ -335,7 +325,7 @@ public class Pokemon {
         String sql = "SELECT SpanishName AS Habilidad, AbilityDescription AS "
                 + "Descripción FROM Abilities A LEFT JOIN "
                 + "Pokemon_Abilities B ON A.AbilityID = B.AbilityID "
-                + "WHERE B.PokemonID = " + PokemonID + ";";
+                + "WHERE B.PokemonID = " + PokemonID.get() + ";";
         ResultSet rs = conn.createStatement().executeQuery(sql);
         return rs;
     }
@@ -351,7 +341,7 @@ public class Pokemon {
         String sql = "SELECT SpanishName AS Tipo, TypeSprite AS "
                 + "Sprite FROM Types A LEFT JOIN "
                 + "Pokemon_Types B ON A.TypeID = B.TypeID "
-                + "WHERE B.PokemonID = " + PokemonID + ";";
+                + "WHERE B.PokemonID = " + PokemonID.get() + ";";
         ResultSet rs = conn.createStatement().executeQuery(sql);
         return rs;
     }

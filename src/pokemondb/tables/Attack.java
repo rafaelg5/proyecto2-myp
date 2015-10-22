@@ -19,142 +19,149 @@ package pokemondb.tables;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 
 public class Attack {
 
     public final String TABLE = "Attacks";
-    private int AttackID;
-    private int Power;
-    private int Accuracy;
-    private int TypeID;
-    private int AtkCategoryID;
-    private String AttackName;
-    private String SpanishName;
-    private String AttackDescription;
+    
+    private final SimpleIntegerProperty AttackID;
+    private final SimpleIntegerProperty Power;
+    private final SimpleIntegerProperty Accuracy;
+    private final SimpleIntegerProperty TypeID;
+    private final SimpleIntegerProperty AtkCategoryID;
+    private final SimpleStringProperty AttackName;
+    private final SimpleStringProperty SpanishName;
+    private final SimpleStringProperty AttackDescription;
+    
+    public Attack(){
+        this(1, 0, 0, 1, 1, "", "", "");
+    }
 
     public Attack(int id, int pow, int acc, int type, int cat, String name,
             String sname, String desc) {
 
-        AttackID = id;
-        Power = pow;
-        Accuracy = acc;
-        TypeID = type;
-        AtkCategoryID = cat;
-        AttackName = name;
-        SpanishName = sname;
-        AttackDescription = desc;
+        AttackID = new SimpleIntegerProperty(id);
+        Power = new SimpleIntegerProperty(pow);
+        Accuracy = new SimpleIntegerProperty(acc);
+        TypeID = new SimpleIntegerProperty(type);
+        AtkCategoryID = new SimpleIntegerProperty(cat);
+        AttackName = new SimpleStringProperty(name);
+        SpanishName = new SimpleStringProperty(sname);
+        AttackDescription = new SimpleStringProperty(desc);
     }
 
     /**
      * @return the AttackID
      */
     public int getAttackID() {
-        return AttackID;
+        return AttackID.get();
     }
 
     /**
-     * @param AttackID the AttackID to set
+     * @param atID
      */
-    public void setAttackID(int AttackID) {
-        this.AttackID = AttackID;
+    public void setAttackID(int atID) {
+        AttackID.set(atID);
     }
 
     /**
      * @return the Power
      */
     public int getPower() {
-        return Power;
+        return Power.get();
     }
 
     /**
-     * @param Power the Power to set
+     * @param power
      */
-    public void setPower(int Power) {
-        this.Power = Power;
+    public void setPower(int power) {
+        Power.set(power);
     }
 
     /**
      * @return the Accuracy
      */
     public int getAccuracy() {
-        return Accuracy;
+        return Accuracy.get();
     }
 
     /**
-     * @param Accuracy the Accuracy to set
+     * @param accuracy
      */
-    public void setAccuracy(int Accuracy) {
-        this.Accuracy = Accuracy;
+    public void setAccuracy(int accuracy) {
+        Accuracy.set(accuracy);
     }
 
     /**
      * @return the TypeID
      */
     public int getTypeID() {
-        return TypeID;
+        return TypeID.get();
     }
 
     /**
-     * @param TypeID the TypeID to set
+     * @param tID
      */
-    public void setTypeID(int TypeID) {
-        this.TypeID = TypeID;
+    public void setTypeID(int tID) {
+        TypeID.set(tID);
     }
 
     /**
      * @return the AtkCategoryID
      */
     public int getAtkCategoryID() {
-        return AtkCategoryID;
+        return AtkCategoryID.get();
     }
 
     /**
-     * @param AtkCategoryID the AtkCategoryID to set
+     * @param atkCatID
      */
-    public void setAtkCategoryID(int AtkCategoryID) {
-        this.AtkCategoryID = AtkCategoryID;
+    public void setAtkCategoryID(int atkCatID) {
+        AtkCategoryID.set(atkCatID);
     }
 
     /**
      * @return the AttackName
      */
     public String getAttackName() {
-        return AttackName;
+        return AttackName.get();
     }
 
     /**
-     * @param AttackName the AttackName to set
+     * @param name
      */
-    public void setAttackName(String AttackName) {
-        this.AttackName = AttackName;
+    public void setAttackName(String name) {
+        AttackName.set(name);
     }
 
     /**
      * @return the SpanishName
      */
     public String getSpanishName() {
-        return SpanishName;
+        return SpanishName.get();
     }
 
     /**
-     * @param SpanishName the SpanishName to set
+     * @param sName
      */
-    public void setSpanishName(String SpanishName) {
-        this.SpanishName = SpanishName;
+    public void setSpanishName(String sName) {
+        SpanishName.set(sName);
     }
 
     /**
      * @return the AttackDescription
      */
     public String getAttackDescription() {
-        return AttackDescription;
+        return AttackDescription.get();
     }
 
     /**
-     * @param AttackDescription the AttackDescription to set
+     * @param description
      */
-    public void setAttackDescription(String AttackDescription) {
-        this.AttackDescription = AttackDescription;
+    public void setAttackDescription(String description) {
+        AttackDescription.set(description);
     }
 
     /**

@@ -36,9 +36,8 @@ public class PokemonTest {
     private final int SP_ATK = 8;
     private final int SP_DEF = 9;
     private final int SPEED = 10;
-    private final int ALT_FORM = 11;
-    private final int HEIGHT = 12;
-    private final int WEIGHT = 13;
+    private final int HEIGHT = 11;
+    private final int WEIGHT = 12;
 
     private Connection conn;
     private Random rand;
@@ -57,9 +56,8 @@ public class PokemonTest {
                 Integer.parseInt(values[3]), Integer.parseInt(values[4]),
                 Integer.parseInt(values[5]), Integer.parseInt(values[6]),
                 Integer.parseInt(values[7]), Integer.parseInt(values[8]),
-                Integer.parseInt(values[9]), Integer.parseInt(values[10]),
-                Integer.parseInt(values[11]), Double.parseDouble(values[12]),
-                Double.parseDouble(values[13]));
+                Integer.parseInt(values[9]), Integer.parseInt(values[10]), 
+                Double.parseDouble(values[11]), Double.parseDouble(values[12]));
 
         ConnectionDB.close();
         return pokemon;
@@ -399,36 +397,6 @@ public class PokemonTest {
         int n = rs.getInt(SPEED + 1);
         pokemon.setBaseSpd(n);
         assertEquals(pokemon.getBaseSpd(), n);
-        ConnectionDB.close();
-    }
-
-    /**
-     * Test of getAlternateForm method, of class Pokemon.
-     *
-     * @throws java.sql.SQLException
-     */
-    @Test
-    public void testGetAlternateForm() throws SQLException {
-        Pokemon pokemon = randomPoke();
-        int n1 = Integer.parseInt(values[ALT_FORM]),
-                n2 = pokemon.getAlternateForm();
-        assertEquals(n1, n2);
-    }
-
-    /**
-     * Test of setAlternateForm method, of class Pokemon.
-     *
-     * @throws java.sql.SQLException
-     */
-    @Test
-    public void testSetAlternateForm() throws SQLException {
-        Pokemon pokemon = randomPoke();
-        assertEquals(pokemon.getAlternateForm(),
-                Integer.parseInt(values[ALT_FORM]));
-        ResultSet rs = getPokemonInfo();
-        int n = rs.getInt(ALT_FORM + 1);
-        pokemon.setAlternateForm(n);
-        assertEquals(pokemon.getAlternateForm(), n);
         ConnectionDB.close();
     }
 
