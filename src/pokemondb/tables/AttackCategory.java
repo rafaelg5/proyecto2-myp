@@ -16,16 +16,20 @@
  */
 package pokemondb.tables;
 
+import java.net.URL;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class AttackCategory {
-    
-    private String TABLE = "AtkCategory";
+
+    private final String TABLE = "AtkCategory";
 
     private SimpleIntegerProperty AtkCategoryID;
     private SimpleStringProperty CategoryName;
-    private SimpleStringProperty CategorySprite;
+    private SimpleObjectProperty<ImageView> CategorySprite;
 
     public AttackCategory() {
         this(1, "", "");
@@ -35,34 +39,47 @@ public class AttackCategory {
 
         AtkCategoryID = new SimpleIntegerProperty(id);
         CategoryName = new SimpleStringProperty(name);
-        CategorySprite = new SimpleStringProperty(sprite);
+
+        Image img;
+        ImageView i;
+
+        if (sprite.trim().equals("")) {
+            i = new ImageView();
+        } else {
+            URL url = getClass()
+                    .getResource("/pokemondb/graphicinterface/img/" + sprite);
+            img = new Image(url.toString());
+            i = new ImageView(img);
+        }
+        
+        CategorySprite = new SimpleObjectProperty<>(i);
     }
 
     /**
      * @return the AtkCategoryID
      */
-    public int getAtkCategoryID(){
+    public int getAtkCategoryID() {
         return AtkCategoryID.get();
     }
-    
+
     /**
      * @return the AtkCategoryID property
      */
     public SimpleIntegerProperty atkCategoryIDProperty() {
         return AtkCategoryID;
     }
-    
+
     /**
      * @param id the id to set
      */
-    public void setAtkCategoryID(int id){
+    public void setAtkCategoryID(int id) {
         AtkCategoryID.set(id);
     }
-    
+
     /**
      * @return the CategoryName
      */
-    public String getCategoryName(){
+    public String getCategoryName() {
         return CategoryName.get();
     }
 
@@ -72,32 +89,42 @@ public class AttackCategory {
     public SimpleStringProperty categoryNameProperty() {
         return CategoryName;
     }
-    
+
     /**
      * @param name the name to set
      */
-    public void setCategoryName(String name){
+    public void setCategoryName(String name) {
         CategoryName.set(name);
     }
-    
+
     /**
-     * @return the CategorySprite 
+     * @return the CategorySprite
      */
-    public String getCategorySprite() {
+    public ImageView getCategorySprite() {
         return CategorySprite.get();
     }
 
     /**
      * @return the CategorySprite property
      */
-    public SimpleStringProperty categorySpriteProperty() {
+    public SimpleObjectProperty<ImageView> categorySpriteProperty() {
         return CategorySprite;
     }
-    
+
     /**
      * @param sprite the sprite to set
      */
     public void setCategorySprite(String sprite) {
-        CategorySprite.set(sprite);
+        Image img;
+        if (sprite.trim().equals("")) {
+            img = null;
+        } else {
+
+            img = new Image(getClass()
+                    .getResource("/pokemondb/graphicinterface/img/" + sprite).
+                    toString());
+            System.out.println(img.getHeight());
+        }
+        CategorySprite.set(new ImageView(img));
     }
 }

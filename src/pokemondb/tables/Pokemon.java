@@ -67,18 +67,18 @@ public class Pokemon {
     public String getPokemonName() {
         return PokemonName.get();
     }
-    
+
     /**
      * @return the PokemonName property
      */
-    public SimpleStringProperty pokemonNameProperty(){
+    public SimpleStringProperty pokemonNameProperty() {
         return PokemonName;
     }
 
     /**
      * @param name the name to set.
      */
-    public void setPokemonName(String name) {        
+    public void setPokemonName(String name) {
         PokemonName.set(name);
     }
 
@@ -88,11 +88,11 @@ public class Pokemon {
     public String getPokemonSprite() {
         return PokemonSprite.get();
     }
-    
+
     /**
      * @return the PokemonSprite property
      */
-    public SimpleStringProperty pokemonSpriteProperty(){
+    public SimpleStringProperty pokemonSpriteProperty() {
         return PokemonSprite;
     }
 
@@ -109,11 +109,11 @@ public class Pokemon {
     public String getPokemonDescription() {
         return PokemonDescription.get();
     }
-    
+
     /**
      * @return the PokemonDescription property
      */
-    public SimpleStringProperty pokemonDescriptionProperty(){
+    public SimpleStringProperty pokemonDescriptionProperty() {
         return PokemonDescription;
     }
 
@@ -130,11 +130,11 @@ public class Pokemon {
     public int getPokemonID() {
         return PokemonID.get();
     }
-    
+
     /**
      * @return the PokemonID property
      */
-    public SimpleIntegerProperty pokemonIDProperty(){
+    public SimpleIntegerProperty pokemonIDProperty() {
         return PokemonID;
     }
 
@@ -151,11 +151,11 @@ public class Pokemon {
     public int getDexNumber() {
         return DexNumber.get();
     }
-    
+
     /**
      * @return the DexNumber property
      */
-    public SimpleIntegerProperty dexNumberProperty(){
+    public SimpleIntegerProperty dexNumberProperty() {
         return DexNumber;
     }
 
@@ -172,11 +172,11 @@ public class Pokemon {
     public int getBaseHP() {
         return BaseHP.get();
     }
-    
+
     /**
      * @return the BaseHP property
      */
-    public SimpleIntegerProperty baseHPProperty(){
+    public SimpleIntegerProperty baseHPProperty() {
         return BaseHP;
     }
 
@@ -193,11 +193,11 @@ public class Pokemon {
     public int getBaseAtk() {
         return BaseAtk.get();
     }
-    
+
     /**
      * @return the BaseAtk property
      */
-    public SimpleIntegerProperty baseAtkProperty(){
+    public SimpleIntegerProperty baseAtkProperty() {
         return BaseAtk;
     }
 
@@ -209,16 +209,16 @@ public class Pokemon {
     }
 
     /**
-     * @return the BaseDef 
+     * @return the BaseDef
      */
     public int getBaseDef() {
         return BaseDef.get();
     }
-    
+
     /**
      * @return the BaseDef property
      */
-    public SimpleIntegerProperty baseDefProperty(){
+    public SimpleIntegerProperty baseDefProperty() {
         return BaseDef;
     }
 
@@ -235,11 +235,11 @@ public class Pokemon {
     public int getBaseSpAtk() {
         return BaseSpAtk.get();
     }
-    
+
     /**
      * @return the BaseSpAtk property
      */
-    public SimpleIntegerProperty baseSpAtkProperty(){
+    public SimpleIntegerProperty baseSpAtkProperty() {
         return BaseSpAtk;
     }
 
@@ -256,11 +256,11 @@ public class Pokemon {
     public int getBaseSpDef() {
         return BaseSpDef.get();
     }
-    
+
     /**
      * @return the BaseSpDef property
      */
-    public SimpleIntegerProperty baseSpDefProperty(){
+    public SimpleIntegerProperty baseSpDefProperty() {
         return BaseSpDef;
     }
 
@@ -277,11 +277,11 @@ public class Pokemon {
     public int getBaseSpd() {
         return BaseSpd.get();
     }
-    
+
     /**
      * @return the BaseSpd property
      */
-    public SimpleIntegerProperty baseSpdProperty(){
+    public SimpleIntegerProperty baseSpdProperty() {
         return BaseSpd;
     }
 
@@ -298,11 +298,11 @@ public class Pokemon {
     public double getHeight() {
         return Height.get();
     }
-    
+
     /**
      * @return the height property
      */
-    public SimpleDoubleProperty heightProperty(){
+    public SimpleDoubleProperty heightProperty() {
         return Height;
     }
 
@@ -319,11 +319,11 @@ public class Pokemon {
     public double getWeight() {
         return Weight.get();
     }
-    
+
     /**
      * @return the weight property
      */
-    public SimpleDoubleProperty weightProperty(){
+    public SimpleDoubleProperty weightProperty() {
         return Weight;
     }
 
@@ -339,7 +339,7 @@ public class Pokemon {
      *
      * @param condition the DexNumber of a Pokemon or the PokemonName.
      * @return the table as a ResultSet.
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException if a database access error occurs
      */
     public ResultSet selectAll(String condition) throws SQLException {
         Connection conn = ConnectionDB.open();
@@ -360,7 +360,7 @@ public class Pokemon {
      * Returns the a Pokemon's pre-evolution table.
      *
      * @return the table as a ResultSet.
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException if a database access error occurs
      */
     public ResultSet selectPreevolutions() throws SQLException {
 
@@ -377,7 +377,7 @@ public class Pokemon {
      * Returns the a Pokemon's evolution(s) table.
      *
      * @return the table as a ResultSet.
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException if a database access error occurs
      */
     public ResultSet selectEvolutions() throws SQLException {
         Connection conn = ConnectionDB.open();
@@ -393,7 +393,7 @@ public class Pokemon {
      * Returns the a Pokemon's alternate form(s) table.
      *
      * @return the table as a ResultSet.
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException if a database access error occurs
      */
     public ResultSet selectAlternateForms() throws SQLException {
         Connection conn = ConnectionDB.open();
@@ -409,7 +409,7 @@ public class Pokemon {
      * Returns a Pokemon's abilities table.
      *
      * @return the table as a ResultSet.
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException if a database access error occurs
      */
     public ResultSet selectAbilities() throws SQLException {
         Connection conn = ConnectionDB.open();
@@ -425,7 +425,7 @@ public class Pokemon {
      * Returns a Pokemon's type(s) table.
      *
      * @return the table as a ResultSet.
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException if a database access error occurs
      */
     public ResultSet selectTypes() throws SQLException {
         Connection conn = ConnectionDB.open();

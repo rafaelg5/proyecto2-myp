@@ -19,7 +19,6 @@ package pokemondb.graphicinterface;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -29,7 +28,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import pokemondb.tables.*;
-import static pokemondb.tables.ConnectionDB.MSG;
 
 public class Controller implements Initializable {
 
@@ -56,9 +54,9 @@ public class Controller implements Initializable {
         cover.fitWidthProperty().bind(mainPane.widthProperty());
         cover.fitHeightProperty().bind(mainPane.heightProperty());
         PokemonTab tab1 = new PokemonTab(pokemonTable);
-        TypeTab tab2 = new TypeTab(typeTable);
-        AttackTab tab3 = new AttackTab(attackTable, typeTable, atkCategoryTable);
-        AbilityTab tab4 = new AbilityTab(abilityTable);
+        TypeTab tTab = new TypeTab(typeTable);
+        AttackTab aTab = new AttackTab(attackTable);
+        AbilityTab abTab = new AbilityTab(abilityTable);
         button.setOnAction((ActionEvent event) -> {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setHeaderText("Información");

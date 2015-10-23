@@ -90,7 +90,7 @@ public class ConnectionDB {
      * Gets the connection to a database.
      *
      * @return the connection
-     * @throws SQLException
+     * @throws SQLException if a database access error occurs
      */
     private static Connection getConn() throws SQLException {
         try {

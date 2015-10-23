@@ -29,49 +29,12 @@ import static org.junit.Assert.*;
  */
 public class AttackTest {
 
-    private final int ID = 0;
-    private final int POWER = 1;
-    private final int ACCURACY = 2;
-    private final int TYPE = 3;
-    private final int CATEGORY = 4;
-    private final int NAME = 5;
-    private final int S_NAME = 6;
-    private final int DESCRIPTION = 7;
+    private final Connection conn;
+    private final Random random;
 
-    private Connection conn;
-    private Random rand;
-    private String[] values;
-
-    private Attack randomAttack() throws SQLException {
-        ResultSet rs = getAttackInfo();
-
-        values = new String[rs.getMetaData().getColumnCount()];
-
-        for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
-            values[i - 1] = rs.getString(i);
-        }
-
-        Attack attack = new Attack(Integer.parseInt(values[0]),
-                Integer.parseInt(values[1]), Integer.parseInt(values[2]),
-                Integer.parseInt(values[3]), Integer.parseInt(values[4]),
-                values[5], values[6], values[7]);
-
-        ConnectionDB.close();
-        return attack;
-    }
-
-    private ResultSet getAttackInfo() throws SQLException {
+    public AttackTest() {
         conn = ConnectionDB.open();
-
-        rand = new Random();
-        int range = rand.nextInt(620) + 1;
-        String sql = "SELECT AttackID, Power, Accuracy, TypeID, AtkCategoryID, "
-                + "AttackName, SpanishName, AttackDescription FROM Attacks "
-                + "WHERE AttackID = " + range + ";";
-        ResultSet rs;
-
-        rs = conn.createStatement().executeQuery(sql);
-        return rs;
+        random = new Random();
     }
 
     /**
@@ -81,10 +44,9 @@ public class AttackTest {
      */
     @Test
     public void testGetAttackID() throws SQLException {
-        Attack attack = randomAttack();
-        int n1 = Integer.parseInt(values[ID]),
-                n2 = attack.getAttackID();
-        assertEquals(n1, n2);
+        Attack attack = new Attack();
+        int n = attack.getAttackID();
+        assertEquals(1, n);
     }
 
     /**
@@ -94,13 +56,11 @@ public class AttackTest {
      */
     @Test
     public void testSetAttackID() throws SQLException {
-        Attack attack = randomAttack();
-        assertEquals(attack.getAttackID(), Integer.parseInt(values[ID]));
-        ResultSet rs = getAttackInfo();
-        int n = rs.getInt(ID + 1);
+        Attack attack = new Attack();
+        assertEquals(1, attack.getAttackID());
+        int n = random.nextInt();
         attack.setAttackID(n);
         assertEquals(attack.getAttackID(), n);
-        ConnectionDB.close();
     }
 
     /**
@@ -110,10 +70,9 @@ public class AttackTest {
      */
     @Test
     public void testGetPower() throws SQLException {
-        Attack attack = randomAttack();
-        int n1 = Integer.parseInt(values[POWER]),
-                n2 = attack.getPower();
-        assertEquals(n1, n2);
+        Attack attack = new Attack();
+        int n = attack.getPower();
+        assertEquals(0, n);
     }
 
     /**
@@ -123,13 +82,11 @@ public class AttackTest {
      */
     @Test
     public void testSetPower() throws SQLException {
-        Attack attack = randomAttack();
-        assertEquals(attack.getPower(), Integer.parseInt(values[POWER]));
-        ResultSet rs = getAttackInfo();
-        int n = rs.getInt(POWER + 1);
+        Attack attack = new Attack();
+        assertEquals(0, attack.getPower());
+        int n = random.nextInt();
         attack.setPower(n);
         assertEquals(attack.getPower(), n);
-        ConnectionDB.close();
     }
 
     /**
@@ -139,10 +96,9 @@ public class AttackTest {
      */
     @Test
     public void testGetAccuracy() throws SQLException {
-        Attack attack = randomAttack();
-        int n1 = Integer.parseInt(values[ACCURACY]),
-                n2 = attack.getAccuracy();
-        assertEquals(n1, n2);
+        Attack attack = new Attack();
+        int n = attack.getAccuracy();
+        assertEquals(0, n);
     }
 
     /**
@@ -152,72 +108,11 @@ public class AttackTest {
      */
     @Test
     public void testSetAccuracy() throws SQLException {
-        Attack attack = randomAttack();
-        assertEquals(attack.getAccuracy(), Integer.parseInt(values[ACCURACY]));
-        ResultSet rs = getAttackInfo();
-        int n = rs.getInt(ACCURACY + 1);
+        Attack attack = new Attack();
+        assertEquals(0, attack.getAccuracy());
+        int n = random.nextInt();
         attack.setAccuracy(n);
         assertEquals(attack.getAccuracy(), n);
-        ConnectionDB.close();
-    }
-
-    /**
-     * Test of getTypeID method, of class Attack.
-     *
-     * @throws java.sql.SQLException
-     */
-    @Test
-    public void testGetTypeID() throws SQLException {
-        Attack attack = randomAttack();
-        int n1 = Integer.parseInt(values[TYPE]),
-                n2 = attack.getTypeID();
-        assertEquals(n1, n2);
-    }
-
-    /**
-     * Test of setTypeID method, of class Attack.
-     *
-     * @throws java.sql.SQLException
-     */
-    @Test
-    public void testSetTypeID() throws SQLException {
-        Attack attack = randomAttack();
-        assertEquals(attack.getTypeID(), Integer.parseInt(values[TYPE]));
-        ResultSet rs = getAttackInfo();
-        int n = rs.getInt(TYPE + 1);
-        attack.setTypeID(n);
-        assertEquals(attack.getTypeID(), n);
-        ConnectionDB.close();
-    }
-
-    /**
-     * Test of getAtkCategoryID method, of class Attack.
-     *
-     * @throws java.sql.SQLException
-     */
-    @Test
-    public void testGetAtkCategoryID() throws SQLException {
-        Attack attack = randomAttack();
-        int n1 = Integer.parseInt(values[CATEGORY]),
-                n2 = attack.getAtkCategoryID();
-        assertEquals(n1, n2);
-    }
-
-    /**
-     * Test of setAtkCategoryID method, of class Attack.
-     *
-     * @throws java.sql.SQLException
-     */
-    @Test
-    public void testSetAtkCategoryID() throws SQLException {
-        Attack attack = randomAttack();
-        assertEquals(attack.getAtkCategoryID(),
-                Integer.parseInt(values[CATEGORY]));
-        ResultSet rs = getAttackInfo();
-        int n = rs.getInt(CATEGORY + 1);
-        attack.setAtkCategoryID(n);
-        assertEquals(attack.getAtkCategoryID(), n);
-        ConnectionDB.close();
     }
 
     /**
@@ -227,10 +122,9 @@ public class AttackTest {
      */
     @Test
     public void testGetAttackName() throws SQLException {
-        Attack attack = randomAttack();
-        String s1 = values[NAME],
-                s2 = attack.getAttackName();
-        assertEquals(s1, s2);
+        Attack attack = new Attack();
+        String s = attack.getAttackName();
+        assertEquals("", s);
     }
 
     /**
@@ -240,14 +134,11 @@ public class AttackTest {
      */
     @Test
     public void testSetAttackName() throws SQLException {
-        Attack attack = randomAttack();
-        assertEquals(attack.getAttackName(),
-                values[NAME]);
-        ResultSet rs = getAttackInfo();
-        String s = rs.getString(NAME + 1);
+        Attack attack = new Attack();
+        assertEquals("", attack.getAttackName());
+        String s = "" + random.nextInt();
         attack.setAttackName(s);
         assertEquals(attack.getAttackName(), s);
-        ConnectionDB.close();
     }
 
     /**
@@ -257,10 +148,9 @@ public class AttackTest {
      */
     @Test
     public void testGetSpanishName() throws SQLException {
-        Attack attack = randomAttack();
-        String s1 = values[S_NAME],
-                s2 = attack.getSpanishName();
-        assertEquals(s1, s2);
+        Attack attack = new Attack();
+        String s = attack.getSpanishName();
+        assertEquals("", s);
     }
 
     /**
@@ -270,14 +160,11 @@ public class AttackTest {
      */
     @Test
     public void testSetSpanishName() throws SQLException {
-        Attack attack = randomAttack();
-        assertEquals(attack.getSpanishName(),
-                values[S_NAME]);
-        ResultSet rs = getAttackInfo();
-        String s = rs.getString(S_NAME + 1);
+        Attack attack = new Attack();
+        assertEquals("", attack.getSpanishName());
+        String s = "" + random.nextInt();
         attack.setSpanishName(s);
         assertEquals(attack.getSpanishName(), s);
-        ConnectionDB.close();
     }
 
     /**
@@ -287,10 +174,9 @@ public class AttackTest {
      */
     @Test
     public void testGetAttackDescription() throws SQLException {
-        Attack attack = randomAttack();
-        String s1 = values[DESCRIPTION],
-                s2 = attack.getAttackDescription();
-        assertEquals(s1, s2);
+        Attack attack = new Attack();
+        String s = attack.getAttackDescription();
+        assertEquals("", s);
     }
 
     /**
@@ -300,14 +186,11 @@ public class AttackTest {
      */
     @Test
     public void testSetAttackDescription() throws SQLException {
-        Attack attack = randomAttack();
-        assertEquals(attack.getAttackDescription(),
-                values[DESCRIPTION]);
-        ResultSet rs = getAttackInfo();
-        String s = rs.getString(DESCRIPTION + 1);
+        Attack attack = new Attack();
+        assertEquals("", attack.getAttackDescription());
+        String s = "" + random.nextInt();
         attack.setAttackDescription(s);
         assertEquals(attack.getAttackDescription(), s);
-        ConnectionDB.close();
     }
 
     /**
@@ -317,7 +200,7 @@ public class AttackTest {
      */
     @Test
     public void testSelectAll() throws SQLException {
-        Attack attack = randomAttack();
+        Attack attack = new Attack();
 
         String test = "fire";
         test = test.toLowerCase();
@@ -355,7 +238,7 @@ public class AttackTest {
                     || rs4.getString("Poder").contains("800"));
         }
     }
-    
+
     /**
      * Test of attackIDProperty method, of class Attack.
      *
@@ -363,8 +246,8 @@ public class AttackTest {
      */
     @Test
     public void testAttackIDProperty() throws SQLException {
-        Attack attack = randomAttack();
-        Attack attack2 = randomAttack();
+        Attack attack = new Attack();
+        Attack attack2 = new Attack();
 
         assertFalse(attack.attackIDProperty()
                 .equals(attack2.attackIDProperty()));
@@ -373,7 +256,7 @@ public class AttackTest {
         assertTrue(attack.attackIDProperty()
                 .equals(attack2.attackIDProperty()));
     }
-    
+
     /**
      * Test of powerProperty method, of class Attack.
      *
@@ -381,8 +264,8 @@ public class AttackTest {
      */
     @Test
     public void testPowerProperty() throws SQLException {
-        Attack attack = randomAttack();
-        Attack attack2 = randomAttack();
+        Attack attack = new Attack();
+        Attack attack2 = new Attack();
 
         assertFalse(attack.powerProperty()
                 .equals(attack2.powerProperty()));
@@ -391,7 +274,7 @@ public class AttackTest {
         assertTrue(attack.powerProperty()
                 .equals(attack2.powerProperty()));
     }
-    
+
     /**
      * Test of accuracyProperty method, of class Attack.
      *
@@ -399,8 +282,8 @@ public class AttackTest {
      */
     @Test
     public void testAccuracyProperty() throws SQLException {
-        Attack attack = randomAttack();
-        Attack attack2 = randomAttack();
+        Attack attack = new Attack();
+        Attack attack2 = new Attack();
 
         assertFalse(attack.accuracyProperty()
                 .equals(attack2.accuracyProperty()));
@@ -409,7 +292,7 @@ public class AttackTest {
         assertTrue(attack.accuracyProperty()
                 .equals(attack2.accuracyProperty()));
     }
-    
+
     /**
      * Test of typeIDProperty method, of class Attack.
      *
@@ -417,8 +300,8 @@ public class AttackTest {
      */
     @Test
     public void testTypeIDProperty() throws SQLException {
-        Attack attack = randomAttack();
-        Attack attack2 = randomAttack();
+        Attack attack = new Attack();
+        Attack attack2 = new Attack();
 
         assertFalse(attack.typeIDProperty()
                 .equals(attack2.typeIDProperty()));
@@ -427,7 +310,7 @@ public class AttackTest {
         assertTrue(attack.typeIDProperty()
                 .equals(attack2.typeIDProperty()));
     }
-    
+
     /**
      * Test of atkCategoryIDProperty method, of class Attack.
      *
@@ -435,8 +318,8 @@ public class AttackTest {
      */
     @Test
     public void testAtkCategoryIDProperty() throws SQLException {
-        Attack attack = randomAttack();
-        Attack attack2 = randomAttack();
+        Attack attack = new Attack();
+        Attack attack2 = new Attack();
 
         assertFalse(attack.atkCategoryIDProperty()
                 .equals(attack2.atkCategoryIDProperty()));
@@ -445,7 +328,7 @@ public class AttackTest {
         assertTrue(attack.atkCategoryIDProperty()
                 .equals(attack2.atkCategoryIDProperty()));
     }
-    
+
     /**
      * Test of attackNameProperty method, of class Attack.
      *
@@ -453,8 +336,8 @@ public class AttackTest {
      */
     @Test
     public void testAttackNameProperty() throws SQLException {
-        Attack attack = randomAttack();
-        Attack attack2 = randomAttack();
+        Attack attack = new Attack();
+        Attack attack2 = new Attack();
 
         assertFalse(attack.attackNameProperty()
                 .equals(attack2.attackNameProperty()));
@@ -463,7 +346,7 @@ public class AttackTest {
         assertTrue(attack.attackNameProperty()
                 .equals(attack2.attackNameProperty()));
     }
-    
+
     /**
      * Test of spanishNameProperty method, of class Attack.
      *
@@ -471,8 +354,8 @@ public class AttackTest {
      */
     @Test
     public void testSpanishNameProperty() throws SQLException {
-        Attack attack = randomAttack();
-        Attack attack2 = randomAttack();
+        Attack attack = new Attack();
+        Attack attack2 = new Attack();
 
         assertFalse(attack.spanishNameProperty()
                 .equals(attack2.spanishNameProperty()));
@@ -481,7 +364,7 @@ public class AttackTest {
         assertTrue(attack.spanishNameProperty()
                 .equals(attack2.spanishNameProperty()));
     }
-    
+
     /**
      * Test of attackDescriptionProperty method, of class Attack.
      *
@@ -489,8 +372,8 @@ public class AttackTest {
      */
     @Test
     public void testAttackDescriptionProperty() throws SQLException {
-        Attack attack = randomAttack();
-        Attack attack2 = randomAttack();
+        Attack attack = new Attack();
+        Attack attack2 = new Attack();
 
         assertFalse(attack.attackDescriptionProperty()
                 .equals(attack2.attackDescriptionProperty()));

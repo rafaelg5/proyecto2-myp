@@ -19,7 +19,6 @@ package pokemondb.graphicinterface;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -27,18 +26,13 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.image.ImageView;
 import pokemondb.tables.Attack;
-import pokemondb.tables.AttackCategory;
 import pokemondb.tables.ConnectionDB;
 import static pokemondb.tables.ConnectionDB.MSG;
-import pokemondb.tables.Type;
 
-/**
- *
- * @author rgarcia
- */
 public class AttackTab {
-    
+
     @FXML
     private final TableView<Attack> attackTable;
     @FXML
@@ -50,34 +44,25 @@ public class AttackTab {
     @FXML
     private final TableColumn<Attack, Number> acc;
     @FXML
-    private final TableColumn<Attack, Number> type;
-    //@FXML
-    //private final TableColumn<Type, String> type;
-    //@FXML
-    //private final TableColumn<AttackCategory, String> cat;
+    private final TableColumn<Attack, ImageView> type;
     @FXML
-    private final TableColumn<Attack, Number> cat;
+    private final TableColumn<Attack, ImageView> cat;
     @FXML
     private final TableColumn<Attack, String> desc;
-    
-    public AttackTab(TableView<Attack> attackTable, TableView<Type> typeTable,
-            TableView<AttackCategory> atkCategoryTable) {
+
+    public AttackTab(TableView<Attack> attackTable) {
         
         this.attackTable = attackTable;
-        
         fillAttackTable();
-        
+
         name = (TableColumn<Attack, String>) attackTable.getColumns().get(0);
         sName = (TableColumn<Attack, String>) attackTable.getColumns().get(1);
         pow = (TableColumn<Attack, Number>) attackTable.getColumns().get(2);
         acc = (TableColumn<Attack, Number>) attackTable.getColumns().get(3);
-        type = (TableColumn<Attack, Number>) attackTable.getColumns().get(4);
-        //type = (TableColumn<Type, String>) typeTable.getColumns().get(0);
-        cat = (TableColumn<Attack, Number>) attackTable.getColumns().get(5);
-        //cat = (TableColumn<AttackCategory, String>) atkCategoryTable
-        //        .getColumns().get(1);
+        type = (TableColumn<Attack, ImageView>) attackTable.getColumns().get(4);
+        cat = (TableColumn<Attack, ImageView>) attackTable.getColumns().get(5);
         desc = (TableColumn<Attack, String>) attackTable.getColumns().get(6);
-        
+
         name.setCellValueFactory(cellData
                 -> cellData.getValue().attackNameProperty());
         sName.setCellValueFactory(cellData
@@ -88,29 +73,33 @@ public class AttackTab {
                 -> cellData.getValue().accuracyProperty());
         type.setCellValueFactory(cellData
                 -> cellData.getValue().typeIDProperty());
-        //type.setCellValueFactory(cellData
-        //        -> cellData.getValue().spanishNameProperty());
-        //cat.setCellValueFactory(cellData
-        //        -> cellData.getValue().categorySpriteProperty());
+        type.setStyle("-fx-alignment: CENTER;");
         cat.setCellValueFactory(cellData
                 -> cellData.getValue().atkCategoryIDProperty());
+        cat.setStyle("-fx-alignment: CENTER;");
         desc.setCellValueFactory(cellData
                 -> cellData.getValue().attackDescriptionProperty());
     }
-    
-    private void fillAttackTable() {
+
+    /**
+     * Fills the table Attacks with database values
+     *
+     * @throws SQLException if a database access error occurs
+     */
+    private void fillAttackTable() {   
         
         try {
-            
+
             ObservableList<Attack> data
                     = FXCollections.observableArrayList();
-            ResultSet rs = new Attack().selectAll("");
-            
+
+            ResultSet rs = new Attack().selectAll("");            
+
             while (rs.next()) {
-                
+
                 String s1, s2, s3;
                 int n1, n2, n3, n4, n5;
-                
+
                 s1 = rs.getString("Nombre");
                 s2 = rs.getString("Nombre (Inglés)");
                 s3 = rs.getString("Descripción");
@@ -119,13 +108,13 @@ public class AttackTab {
                 n3 = rs.getInt("Precisión");
                 n4 = getTypeID(rs.getString("Tipo"));
                 n5 = getCategoryID(rs.getString("Categoría"));
-                
+
                 Attack tmp = new Attack(n1, n2, n3, n4, n5, s1, s2, s3);
-                
                 data.add(tmp);
             }
+
             attackTable.setItems(data);
-            
+
         } catch (SQLException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Error en la conexión");
@@ -133,10 +122,10 @@ public class AttackTab {
             alert.getDialogPane().setPrefSize(480, 250);
             alert.showAndWait()
                     .filter(response -> response == ButtonType.OK);
-            
+
         }
     }
-    
+
     private int getTypeID(String s) throws SQLException {
         Connection c = ConnectionDB.open();
         String sql = "SELECT TypeID AS Tipo FROM Types WHERE SpanishName = '"
@@ -145,7 +134,7 @@ public class AttackTab {
         int n = rs.getInt("Tipo");
         return n;
     }
-    
+
     private int getCategoryID(String s) throws SQLException {
         Connection c = ConnectionDB.open();
         String sql = "SELECT AtkCategoryID AS Categoría FROM AtkCategory "

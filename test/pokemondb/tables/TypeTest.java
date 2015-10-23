@@ -25,160 +25,81 @@ import org.junit.Test;
 
 public class TypeTest {
 
-    private final int ID = 0;
-    private final int NAME = 1;
-    private final int S_NAME = 2;
-    private final int SPRITE = 3;
-
     private Connection conn;
-    private Random rand;
-    private String[] values;
-
-    private Type randomType() throws SQLException {
-        ResultSet rs = getTypeInfo();
-
-        values = new String[rs.getMetaData().getColumnCount()];
-
-        for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
-            values[i - 1] = rs.getString(i);
-        }
-
-        Type type = new Type(Integer.parseInt(values[0]), values[1], values[2],
-                values[3]);
-
-        ConnectionDB.close();
-        return type;
-    }
-
-    private ResultSet getTypeInfo() throws SQLException {
+    Random random;
+    
+    public TypeTest(){
         conn = ConnectionDB.open();
-
-        rand = new Random();
-        int range = rand.nextInt(18) + 1;
-        String sql = "SELECT * FROM Types WHERE TypeID = " + range + ";";
-        ResultSet rs;
-
-        rs = conn.createStatement().executeQuery(sql);
-        return rs;
+        random = new Random();
     }
 
     /**
      * Test of getTypeID method, of class Type.
-     *
-     * @throws java.sql.SQLException
      */
     @Test
-    public void testGetTypeID() throws SQLException {
-        Type type = randomType();
-        int n1 = Integer.parseInt(values[ID]),
-                n2 = type.getTypeID();
-        assertEquals(n1, n2);
+    public void testGetTypeID(){
+        Type type = new Type();
+        int n = type.getTypeID();
+        assertEquals(1, n);
     }
 
     /**
      * Test of setTypeID method, of class Type.
-     *
-     * @throws java.sql.SQLException
      */
     @Test
-    public void testSetTypeID() throws SQLException {
-        Type type = randomType();
-        assertEquals(type.getTypeID(), Integer.parseInt(values[ID]));
-        ResultSet rs = getTypeInfo();
-        int n = rs.getInt(ID + 1);
+    public void testSetTypeID(){
+        Type type = new Type();
+        assertEquals(1, type.getTypeID());
+        int n = random.nextInt();
         type.setTypeID(n);
         assertEquals(type.getTypeID(), n);
-        ConnectionDB.close();
     }
 
     /**
      * Test of getTypeName method, of class Type.
-     *
-     * @throws java.sql.SQLException
      */
     @Test
-    public void testGetTypeName() throws SQLException {
-        Type type = randomType();
-        String s1 = values[NAME],
-                s2 = type.getTypeName();
-        assertEquals(s1, s2);
+    public void testGetTypeName(){
+        Type type = new Type();
+        String s = "";
+        assertEquals(type.getTypeName(), s);
     }
 
     /**
      * Test of setTypeName method, of class Type.
-     *
-     * @throws java.sql.SQLException
      */
     @Test
-    public void testSetTypeName() throws SQLException {
-        Type type = randomType();
-        assertEquals(type.getTypeName(), values[NAME]);
-
-        ResultSet rs = getTypeInfo();
-        String s = rs.getString(NAME + 1);
+    public void testSetTypeName(){
+        Type type = new Type();
+        assertEquals("", type.getTypeName());
+        String s = "" + random.nextInt();
+        System.out.println(s);
         type.setTypeName(s);
         assertEquals(type.getTypeName(), s);
-        ConnectionDB.close();
     }
 
     /**
      * Test of getSpanishName method, of class Type.
      *
-     * @throws java.sql.SQLException
      */
     @Test
-    public void testGetSpanishName() throws SQLException {
-        Type type = randomType();
-        String s1 = values[S_NAME],
-                s2 = type.getSpanishName();
-        assertEquals(s1, s2);
+    public void testGetSpanishName(){
+        Type type = new Type();
+        String s = "";
+        assertEquals(type.getSpanishName(), s);
     }
 
     /**
      * Test of setSpanishName method, of class Type.
      *
-     * @throws java.sql.SQLException
      */
     @Test
-    public void testSetSpanishName() throws SQLException {
-        Type type = randomType();
-        assertEquals(type.getSpanishName(), values[S_NAME]);
-
-        ResultSet rs = getTypeInfo();
-        String s = rs.getString(S_NAME + 1);
+    public void testSetSpanishName(){
+        Type type = new Type();
+        assertEquals("", type.getSpanishName());
+        String s = "" + random.nextInt();
         type.setSpanishName(s);
         assertEquals(type.getSpanishName(), s);
-        ConnectionDB.close();
-    }
-
-    /**
-     * Test of getTypeSprite method, of class Type.
-     *
-     * @throws java.sql.SQLException
-     */
-    @Test
-    public void testGetTypeSprite() throws SQLException {
-        Type type = randomType();
-        String s1 = values[SPRITE],
-                s2 = type.getTypeSprite();
-        assertEquals(s1, s2);
-    }
-
-    /**
-     * Test of setTypeSprite method, of class Type.
-     *
-     * @throws java.sql.SQLException
-     */
-    @Test
-    public void testSetTypeSprite() throws SQLException {
-        Type type = randomType();
-        assertEquals(type.getTypeSprite(), values[SPRITE]);
-
-        ResultSet rs = getTypeInfo();
-        String s = rs.getString(SPRITE + 1);
-        type.setTypeSprite(s);
-        assertEquals(type.getTypeSprite(), s);
-        ConnectionDB.close();
     }
 
     /**
@@ -188,7 +109,7 @@ public class TypeTest {
      */
     @Test
     public void testSelectAll() throws SQLException {
-        Type type = randomType();
+        Type type = new Type();
 
         String test = "er";
         test = test.toLowerCase();
@@ -216,10 +137,9 @@ public class TypeTest {
      */
     @Test
     public void testSelectAttacks() throws SQLException {
-        Type type = randomType();
+        Type type = new Type();
         ResultSet rs = type.selectAttacks();
 
-        conn = ConnectionDB.open();
         String sql = "SELECT A.SpanishName AS Nombre, AttackName AS "
                 + "'Nombre (Inglés)', Power AS Poder, Accuracy AS Precisión, "
                 + "B.SpanishName AS Tipo, CategorySprite AS Categoría, "
@@ -264,10 +184,9 @@ public class TypeTest {
      */
     @Test
     public void testSelectPokemon() throws SQLException {
-        Type type = randomType();
+        Type type = new Type();
         ResultSet rs = type.selectPokemon();
 
-        conn = ConnectionDB.open();
         String sql = "SELECT DexNumber AS '#', PokemonName AS Nombre, "
                 + "Height AS 'Altura (m)', Weight AS 'Peso (kg)', BaseHP AS PS, "
                 + "BaseAtk AS Ataque, BaseDef AS Defensa, BaseSpAtk AS "
@@ -317,10 +236,9 @@ public class TypeTest {
      */
     @Test
     public void testSelectDamageTaken() throws SQLException {
-        Type type = randomType();
+        Type type = new Type();
         ResultSet rs = type.selectDamageTaken();
 
-        conn = ConnectionDB.open();
         String sql = "SELECT A.SpanishName AS Tipo, C.SpanishName AS "
                 + "'Tipo Atacante', DamageTaken AS 'Daño Recibido' FROM Types A "
                 + "LEFT JOIN TypesDamage B ON A.TypeID = B.TypeID LEFT JOIN "
@@ -352,7 +270,7 @@ public class TypeTest {
                     rs.getString("Daño Recibido"));
         }
     }
-    
+
     /**
      * Test of typeIDProperty method, of class Type.
      *
@@ -360,8 +278,8 @@ public class TypeTest {
      */
     @Test
     public void testTypeIDProperty() throws SQLException {
-        Type type = randomType();
-        Type type2 = randomType();
+        Type type = new Type();
+        Type type2 = new Type();
 
         assertFalse(type.typeIDProperty()
                 .equals(type2.typeIDProperty()));
@@ -370,7 +288,7 @@ public class TypeTest {
         assertTrue(type.typeIDProperty()
                 .equals(type2.typeIDProperty()));
     }
-    
+
     /**
      * Test of typeNameProperty method, of class Type.
      *
@@ -378,8 +296,8 @@ public class TypeTest {
      */
     @Test
     public void testTypeNameProperty() throws SQLException {
-        Type type = randomType();
-        Type type2 = randomType();
+        Type type = new Type();
+        Type type2 = new Type();
 
         assertFalse(type.typeNameProperty()
                 .equals(type2.typeNameProperty()));
@@ -388,7 +306,7 @@ public class TypeTest {
         assertTrue(type.typeNameProperty()
                 .equals(type2.typeNameProperty()));
     }
-    
+
     /**
      * Test of spanishNameProperty method, of class Type.
      *
@@ -396,8 +314,8 @@ public class TypeTest {
      */
     @Test
     public void testSpanishNameProperty() throws SQLException {
-        Type type = randomType();
-        Type type2 = randomType();
+        Type type = new Type();
+        Type type2 = new Type();
 
         assertFalse(type.spanishNameProperty()
                 .equals(type2.spanishNameProperty()));
@@ -406,7 +324,7 @@ public class TypeTest {
         assertTrue(type.spanishNameProperty()
                 .equals(type2.spanishNameProperty()));
     }
-    
+
     /**
      * Test of typeSpriteProperty method, of class Type.
      *
@@ -414,8 +332,8 @@ public class TypeTest {
      */
     @Test
     public void testTypeSpriteProperty() throws SQLException {
-        Type type = randomType();
-        Type type2 = randomType();
+        Type type = new Type();
+        Type type2 = new Type();
 
         assertFalse(type.typeSpriteProperty()
                 .equals(type2.typeSpriteProperty()));

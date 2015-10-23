@@ -16,11 +16,13 @@
  */
 package pokemondb.tables;
 
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class Type {
 
@@ -28,17 +30,31 @@ public class Type {
     private final SimpleIntegerProperty TypeID;
     private final SimpleStringProperty TypeName;
     private final SimpleStringProperty SpanishName;
-    private final SimpleStringProperty TypeSprite;
-    
-    public Type(){
+    private final SimpleObjectProperty<ImageView> TypeSprite;
+
+    public Type() {
         this(1, "", "", "");
     }
 
     public Type(int id, String tn, String sn, String sprite) {
+
         TypeID = new SimpleIntegerProperty(id);
         TypeName = new SimpleStringProperty(tn);
         SpanishName = new SimpleStringProperty(sn);
-        TypeSprite = new SimpleStringProperty(sprite);
+
+        Image img;
+        ImageView i;
+
+        if (sprite.trim().equals("")) {
+            i = new ImageView();
+        } else {
+            URL url = getClass()
+                    .getResource("/pokemondb/graphicinterface/img/" + sprite);
+            img = new Image(url.toString());
+            i = new ImageView(img);
+        }
+
+        TypeSprite = new SimpleObjectProperty<>(i);
     }
 
     /**
@@ -47,11 +63,11 @@ public class Type {
     public int getTypeID() {
         return TypeID.get();
     }
-    
+
     /**
      * @return the TypeID property
      */
-    public SimpleIntegerProperty typeIDProperty(){
+    public SimpleIntegerProperty typeIDProperty() {
         return TypeID;
     }
 
@@ -68,11 +84,11 @@ public class Type {
     public String getTypeName() {
         return TypeName.get();
     }
-    
+
     /**
      * @return the TypeName property
      */
-    public SimpleStringProperty typeNameProperty(){
+    public SimpleStringProperty typeNameProperty() {
         return TypeName;
     }
 
@@ -89,11 +105,11 @@ public class Type {
     public String getSpanishName() {
         return SpanishName.get();
     }
-    
+
     /**
      * @return the SpanishName property
      */
-    public SimpleStringProperty spanishNameProperty(){
+    public SimpleStringProperty spanishNameProperty() {
         return SpanishName;
     }
 
@@ -107,14 +123,14 @@ public class Type {
     /**
      * @return the TypeSprite
      */
-    public String getTypeSprite() {
+    public ImageView getTypeSprite() {
         return TypeSprite.get();
     }
-    
+
     /**
      * @return the TypeSprite property
      */
-    public SimpleStringProperty typeSpriteProperty(){
+    public SimpleObjectProperty<ImageView> typeSpriteProperty() {
         return TypeSprite;
     }
 
@@ -122,7 +138,16 @@ public class Type {
      * @param sprite the TypeSprite to set
      */
     public void setTypeSprite(String sprite) {
-        TypeSprite.set(sprite);
+        Image img;
+        if (sprite.trim().equals("")) {
+            img = null;
+        } else {
+
+            img = new Image(getClass()
+                    .getResource("/pokemondb/graphicinterface/img/" + sprite).
+                    toString());
+        }
+        TypeSprite.set(new ImageView(img));
     }
 
     /**
@@ -130,7 +155,7 @@ public class Type {
      *
      * @param condition the TypeName of a Type or the SpanishName.
      * @return the table as a ResultSet.
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException if a database access error occurs
      */
     public ResultSet selectAll(String condition) throws SQLException {
         Connection conn = ConnectionDB.open();
@@ -147,7 +172,7 @@ public class Type {
      * Returns the Attacks' Type table.
      *
      * @return the table as a ResultSet.
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException if a database access error occurs
      */
     public ResultSet selectAttacks() throws SQLException {
         Connection conn = ConnectionDB.open();
@@ -166,7 +191,7 @@ public class Type {
      * Returns the Pokemon_Type table.
      *
      * @return the table as a ResultSet.
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException if a database access error occurs
      */
     public ResultSet selectPokemon() throws SQLException {
         Connection conn = ConnectionDB.open();
@@ -185,7 +210,7 @@ public class Type {
      * Returns the Type Chart table.
      *
      * @return the table as a ResultSet.
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException if a database access error occurs
      */
     public ResultSet selectDamageTaken() throws SQLException {
         Connection conn = ConnectionDB.open();

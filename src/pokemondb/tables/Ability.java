@@ -55,7 +55,7 @@ public class Ability {
     }
 
     /**
-     * @param id
+     * @param id the id to set
      */
     public void setAbilityID(int id) {
         AbilityID.set(id);
@@ -76,7 +76,7 @@ public class Ability {
     }
 
     /**
-     * @param name
+     * @param name the name to set
      */
     public void setAbilityName(String name) {
         AbilityName.set(name);
@@ -97,7 +97,7 @@ public class Ability {
     }
 
     /**
-     * @param sName
+     * @param sName the name to set
      */
     public void setSpanishName(String sName) {
         SpanishName.set(sName);
@@ -118,7 +118,7 @@ public class Ability {
     }
 
     /**
-     * @param description
+     * @param description the description to set
      */
     public void setAbilityDescription(String description) {
         AbilityDescription.set(description);
@@ -129,7 +129,7 @@ public class Ability {
      *
      * @param condition the AbilityName, SpanishName or AbilityDescription.
      * @return the table as a ResultSet.
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException if a database access error occurs
      */
     public ResultSet selectAll(String condition) throws SQLException {
         Connection conn = ConnectionDB.open();
@@ -148,7 +148,7 @@ public class Ability {
      * Returns the Pokemon_Ability table.
      *
      * @return the table as a ResultSet.
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException if a database access error occurs
      */
     public ResultSet selectPokemon() throws SQLException {
         Connection conn = ConnectionDB.open();

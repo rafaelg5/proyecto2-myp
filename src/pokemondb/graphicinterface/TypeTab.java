@@ -1,6 +1,5 @@
 package pokemondb.graphicinterface;
 
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javafx.collections.FXCollections;
@@ -10,6 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.image.ImageView;
 import static pokemondb.tables.ConnectionDB.MSG;
 import pokemondb.tables.Type;
 
@@ -38,43 +38,49 @@ public class TypeTab {
     @FXML
     private final TableColumn<Type, String> sName;
     @FXML
-    private final TableColumn<Type, String> sprite;
+    private final TableColumn<Type, ImageView> sprite;
 
     TypeTab(TableView<Type> typeTable) {
         this.typeTable = typeTable;
-        
+
         fillTypeTable();
 
         name = (TableColumn<Type, String>) typeTable.getColumns().get(0);
         sName = (TableColumn<Type, String>) typeTable.getColumns().get(1);
-        sprite = (TableColumn<Type, String>) typeTable.getColumns().get(2);
-        
+        sprite = (TableColumn<Type, ImageView>) typeTable.getColumns().get(2);
+
         name.setCellValueFactory(cellData
                 -> cellData.getValue().spanishNameProperty());
         sName.setCellValueFactory(cellData
                 -> cellData.getValue().typeNameProperty());
-        sprite.setCellValueFactory(cellData
+        sprite.setCellValueFactory((TableColumn.CellDataFeatures<Type, ImageView> cellData) 
                 -> cellData.getValue().typeSpriteProperty());
+        sprite.setStyle( "-fx-alignment: CENTER;");
     }
 
+    /**
+     * Fills the table Types with database values
+     *
+     * @throws SQLException if a database access error occurs
+     */
     private void fillTypeTable() {
 
         try {
 
             ObservableList<Type> data
                     = FXCollections.observableArrayList();
-            ResultSet rs = new Type().selectAll("");            
+            ResultSet rs = new Type().selectAll("");  
 
             while (rs.next()) {
 
                 String s1, s2, s3;
                 int n;
-                
+
                 s1 = rs.getString("Nombre");
                 s2 = rs.getString("Nombre (Inglés)");
                 s3 = rs.getString("Ícono");
                 n = rs.getInt("ID");
-                
+
                 Type tmp = new Type(n, s2, s1, s3);
 
                 data.add(tmp);

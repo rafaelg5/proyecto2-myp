@@ -16,11 +16,13 @@
  */
 package pokemondb.tables;
 
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class Attack {
 
@@ -29,24 +31,48 @@ public class Attack {
     private final SimpleIntegerProperty AttackID;
     private final SimpleIntegerProperty Power;
     private final SimpleIntegerProperty Accuracy;
-    private final SimpleIntegerProperty TypeID;
-    private final SimpleIntegerProperty AtkCategoryID;
+    private final SimpleObjectProperty<ImageView> TypeID;
+    private final SimpleObjectProperty<ImageView> AtkCategoryID;
     private final SimpleStringProperty AttackName;
     private final SimpleStringProperty SpanishName;
     private final SimpleStringProperty AttackDescription;
 
-    public Attack() {
-        this(1, 0, 0, 1, 1, "", "", "");
+    public Attack() throws SQLException {
+        this(1, 0, 0, 0, 0, "", "", "");
     }
 
     public Attack(int id, int pow, int acc, int type, int cat, String name,
-            String sname, String desc) {
+            String sname, String desc) throws SQLException {
 
         AttackID = new SimpleIntegerProperty(id);
         Power = new SimpleIntegerProperty(pow);
         Accuracy = new SimpleIntegerProperty(acc);
-        TypeID = new SimpleIntegerProperty(type);
-        AtkCategoryID = new SimpleIntegerProperty(cat);
+
+        ImageView iV1 = new ImageView(), iV2 = new ImageView();
+        if (type != 0 && cat != 0) {
+            Connection conn = ConnectionDB.open();
+            ResultSet r1, r2;
+            String sql1 = "SELECT TypeSprite FROM Types WHERE TypeID = " + type + ";";
+            String sql2 = "SELECT CategorySprite FROM AtkCategory WHERE "
+                    + "AtkCategoryID = " + cat + ";";
+            r1 = conn.createStatement().executeQuery(sql1);
+            r2 = conn.createStatement().executeQuery(sql2);
+            Image img1, img2;            
+
+            URL url1 = getClass()
+                    .getResource("/pokemondb/graphicinterface/img/"
+                            + r1.getString(1)),
+                    url2 = getClass()
+                    .getResource("/pokemondb/graphicinterface/img/"
+                            + r2.getString(1));
+            img1 = new Image(url1.toString());
+            img2 = new Image(url2.toString());
+            iV1 = new ImageView(img1);
+            iV2 = new ImageView(img2);
+        }
+
+        TypeID = new SimpleObjectProperty<>(iV1);
+        AtkCategoryID = new SimpleObjectProperty<>(iV2);
         AttackName = new SimpleStringProperty(name);
         SpanishName = new SimpleStringProperty(sname);
         AttackDescription = new SimpleStringProperty(desc);
@@ -67,7 +93,7 @@ public class Attack {
     }
 
     /**
-     * @param atID
+     * @param atID the id to set
      */
     public void setAttackID(int atID) {
         AttackID.set(atID);
@@ -88,7 +114,7 @@ public class Attack {
     }
 
     /**
-     * @param power
+     * @param power the power to set
      */
     public void setPower(int power) {
         Power.set(power);
@@ -109,7 +135,7 @@ public class Attack {
     }
 
     /**
-     * @param accuracy
+     * @param accuracy the accuracy to set
      */
     public void setAccuracy(int accuracy) {
         Accuracy.set(accuracy);
@@ -118,43 +144,76 @@ public class Attack {
     /**
      * @return the TypeID
      */
-    public int getTypeID() {
+    public ImageView getTypeID() {
         return TypeID.get();
     }
 
     /**
      * @return the TypeID property
      */
-    public SimpleIntegerProperty typeIDProperty() {
+    public SimpleObjectProperty<ImageView> typeIDProperty() {
         return TypeID;
     }
 
     /**
-     * @param tID
+     * @param tID the id to set
+     * @throws java.sql.SQLException
      */
-    public void setTypeID(int tID) {
-        TypeID.set(tID);
+    public void setTypeID(int tID) throws SQLException {
+
+        Connection conn = ConnectionDB.open();
+        ResultSet r;
+        String sql = "SELECT TypeSprite FROM Types WHERE TypeID = " + tID + ";";
+        r = conn.createStatement().executeQuery(sql);
+
+        Image img;
+        ImageView iV;
+
+        URL url = getClass()
+                .getResource("/pokemondb/graphicinterface/img/"
+                        + r.getString(0));
+
+        img = new Image(url.toString());
+        iV = new ImageView(img);
+
+        TypeID.set(iV);
     }
 
     /**
      * @return the AtkCategoryID
      */
-    public int getAtkCategoryID() {
+    public ImageView getAtkCategoryID() {
         return AtkCategoryID.get();
     }
 
     /**
      * @return the AtkCategoryID property
      */
-    public SimpleIntegerProperty atkCategoryIDProperty() {
+    public SimpleObjectProperty<ImageView> atkCategoryIDProperty() {
         return AtkCategoryID;
     }
 
     /**
-     * @param atkCatID
+     * @param atkCatID the id to set
+     * @throws java.sql.SQLException
      */
-    public void setAtkCategoryID(int atkCatID) {
-        AtkCategoryID.set(atkCatID);
+    public void setAtkCategoryID(int atkCatID) throws SQLException {
+        Connection conn = ConnectionDB.open();
+        ResultSet r;
+        String sql = "SELECT CategorySprite FROM AtkCategory WHERE "
+                + "AtkCategoryID = " + atkCatID + ";";
+        r = conn.createStatement().executeQuery(sql);
+
+        Image img;
+        ImageView iV;
+
+        URL url = getClass()
+                .getResource("/pokemondb/graphicinterface/img/"
+                        + r.getString(0));
+        img = new Image(url.toString());
+        iV = new ImageView(img);
+
+        TypeID.set(iV);
     }
 
     /**
@@ -172,7 +231,7 @@ public class Attack {
     }
 
     /**
-     * @param name
+     * @param name the name to set
      */
     public void setAttackName(String name) {
         AttackName.set(name);
@@ -193,7 +252,7 @@ public class Attack {
     }
 
     /**
-     * @param sName
+     * @param sName the name to set
      */
     public void setSpanishName(String sName) {
         SpanishName.set(sName);
@@ -214,7 +273,7 @@ public class Attack {
     }
 
     /**
-     * @param description
+     * @param description the description to set
      */
     public void setAttackDescription(String description) {
         AttackDescription.set(description);
@@ -226,10 +285,11 @@ public class Attack {
      * @param condition the AttackName, SpanishName, AttackDescription, TypeID
      * or Power.
      * @return the table as a ResultSet.
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException if a database access error occurs
      */
     public ResultSet selectAll(String condition) throws SQLException {
         Connection conn = ConnectionDB.open();
+
         String sql = "SELECT A.SpanishName AS Nombre, AttackName AS "
                 + "'Nombre (Inglés)', Power AS Poder, Accuracy AS Precisión, "
                 + "B.SpanishName AS Tipo, CategoryName AS Categoría, "
@@ -239,7 +299,7 @@ public class Attack {
                 + "C.AtkCategoryID WHERE AttackName LIKE '%" + condition
                 + "%' OR A.SpanishName LIKE '%" + condition + "%' OR "
                 + "AttackDescription LIKE '%" + condition + "%';";
-        
+
         ResultSet rs = conn.createStatement().executeQuery(sql);
         return rs;
     }

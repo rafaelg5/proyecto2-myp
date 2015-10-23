@@ -27,7 +27,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import pokemondb.tables.Ability;
 import static pokemondb.tables.ConnectionDB.MSG;
-import pokemondb.tables.Type;
 
 
 public class AbilityTab {
@@ -57,6 +56,10 @@ public class AbilityTab {
                 -> cellData.getValue().abilityDescriptionProperty());
     }
     
+    /**
+     * Fills the table Abilities with database values
+     * @throws SQLException if a database access error occurs
+     */
      private void fillAbilityTable() {
 
         try {

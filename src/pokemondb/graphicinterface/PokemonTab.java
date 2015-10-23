@@ -107,6 +107,10 @@ public class PokemonTab{
                 -> cellData.getValue().pokemonDescriptionProperty());
     }
     
+    /**
+     * Fills the table Pokemon with database values
+     * @throws SQLException if a database access error occurs
+     */
     private void fillPokemonTable() {
 
         try {
