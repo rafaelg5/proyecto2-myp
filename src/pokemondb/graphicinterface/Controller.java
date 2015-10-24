@@ -24,8 +24,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import pokemondb.tables.*;
 
@@ -47,12 +49,17 @@ public class Controller implements Initializable {
     private Pane mainPane;
     @FXML
     private Button button;
+    @FXML
+    private SplitPane sPane;
+    @FXML
+    private AnchorPane sPaneParent;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
         cover.fitWidthProperty().bind(mainPane.widthProperty());
         cover.fitHeightProperty().bind(mainPane.heightProperty());
+            
         PokemonTab tab1 = new PokemonTab(pokemonTable);
         TypeTab tTab = new TypeTab(typeTable);
         AttackTab aTab = new AttackTab(attackTable);

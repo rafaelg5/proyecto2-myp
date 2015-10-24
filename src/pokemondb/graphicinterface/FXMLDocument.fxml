@@ -51,7 +51,7 @@
       </Tab>
       <Tab closable="false" text="Ataques">
          <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <AnchorPane fx:id="sPaneParent" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
                   <TableView fx:id="attackTable" prefHeight="448.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
@@ -103,21 +103,39 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
                   <TextField prefHeight="31.0" prefWidth="640.0" />
-                  <SplitPane dividerPositions="0.5" layoutY="30.0" orientation="VERTICAL" prefHeight="417.0" prefWidth="640.0">
-                    <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                           <children>
-                              <SplitPane dividerPositions="0.29797979797979796" prefHeight="445.0" prefWidth="640.0">
-                                <items>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
-                                </items>
-                              </SplitPane>
-                           </children>
-                        </AnchorPane>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
-                    </items>
-                  </SplitPane>
+                  <TableView fx:id="attackTable1" layoutX="320.0" layoutY="31.0" prefHeight="208.0" prefWidth="320.0">
+                     <columns>
+                        <TableColumn prefWidth="107.0" text="Ataque" />
+                        <TableColumn prefWidth="126.0" text="Nombre (Inglés)" />
+                        <TableColumn prefWidth="75.0" text="Poder" />
+                        <TableColumn prefWidth="75.0" text="Precisión" />
+                        <TableColumn prefWidth="75.0" text="Tipo" />
+                        <TableColumn prefWidth="83.0" text="Categoría" />
+                        <TableColumn prefWidth="300.0" text="Descripción" />
+                     </columns>
+                  </TableView>
+                  <TableView fx:id="pokemonTable1" layoutY="31.0" prefHeight="416.0" prefWidth="320.0">
+                     <columns>
+                        <TableColumn fx:id="DexNumber1" prefWidth="44.0" text="#" />
+                        <TableColumn fx:id="PokemonName1" prefWidth="83.0" text="Pokemon" />
+                        <TableColumn fx:id="Height1" prefWidth="82.0" text="Altura (m)" />
+                        <TableColumn fx:id="Weight1" prefWidth="76.0" text="Peso (kg)" />
+                        <TableColumn fx:id="BaseHP1" prefWidth="43.0" text="PS" />
+                        <TableColumn fx:id="BaseAtk1" prefWidth="60.0" text="Ataque" />
+                        <TableColumn fx:id="BaseDef1" prefWidth="68.0" text="Defensa" />
+                        <TableColumn fx:id="BaseSpAtk1" prefWidth="94.0" text="At. Especial" />
+                        <TableColumn fx:id="BaseSpDef1" prefWidth="125.0" text="Def. Especial" />
+                        <TableColumn fx:id="BaseSpd1" prefWidth="81.0" text="Velocidad" />
+                        <TableColumn fx:id="PokemonDescription1" prefWidth="300.0" text="Descripción" />
+                     </columns>
+                  </TableView>
+                  <TableView fx:id="abilityTable1" layoutX="319.0" layoutY="237.0" prefHeight="210.0" prefWidth="321.0">
+                     <columns>
+                        <TableColumn prefWidth="144.0" text="Habilidad" />
+                        <TableColumn minWidth="0.0" prefWidth="141.0" text="Nombre (Inglés)" />
+                        <TableColumn minWidth="0.0" prefWidth="336.0" text="Descripción" />
+                     </columns>
+                  </TableView>
                </children>
             </AnchorPane>
         </content>

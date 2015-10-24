@@ -51,7 +51,7 @@ public class AttackTab {
     private final TableColumn<Attack, String> desc;
 
     public AttackTab(TableView<Attack> attackTable) {
-        
+
         this.attackTable = attackTable;
         fillAttackTable();
 
@@ -86,14 +86,14 @@ public class AttackTab {
      *
      * @throws SQLException if a database access error occurs
      */
-    private void fillAttackTable() {   
-        
+    private void fillAttackTable() {
+
         try {
 
             ObservableList<Attack> data
                     = FXCollections.observableArrayList();
 
-            ResultSet rs = new Attack().selectAll("");            
+            ResultSet rs = new Attack().selectAll("");
 
             while (rs.next()) {
 
