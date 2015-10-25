@@ -16,25 +16,37 @@
  */
 package pokemondb.graphicinterface;
 
+import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.Month;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.util.Callback;
 import static pokemondb.tables.ConnectionDB.MSG;
 import pokemondb.tables.Pokemon;
 
+public class PokemonTab {
 
-public class PokemonTab{
-    
     @FXML
     private final TableView<Pokemon> pokemonTable;
     @FXML
     private final TableColumn<Pokemon, Number> num;
+    @FXML
+    private final TableColumn<Pokemon, ImageView> sprite;
     @FXML
     private final TableColumn<Pokemon, String> name;
     @FXML
@@ -55,36 +67,32 @@ public class PokemonTab{
     private final TableColumn<Pokemon, Number> spd;
     @FXML
     private final TableColumn<Pokemon, String> description;
-    
-    public PokemonTab(TableView<Pokemon> pokemonTable){
+
+    public PokemonTab(TableView<Pokemon> pokemonTable) {
         this.pokemonTable = pokemonTable;
         fillPokemonTable();
-        
-        num = 
-                (TableColumn<Pokemon, Number>)pokemonTable.getColumns().get(0);
-        name = 
-                (TableColumn<Pokemon, String>)pokemonTable.getColumns().get(1);
-        height = 
-                (TableColumn<Pokemon, Number>)pokemonTable.getColumns().get(2);
-        weight = 
-                (TableColumn<Pokemon, Number>)pokemonTable.getColumns().get(3);
-        hp = 
-                (TableColumn<Pokemon, Number>)pokemonTable.getColumns().get(4);
-        atk = 
-                (TableColumn<Pokemon, Number>)pokemonTable.getColumns().get(5);        
-        def = 
-                (TableColumn<Pokemon, Number>)pokemonTable.getColumns().get(6);        
-        spAtk = 
-                (TableColumn<Pokemon, Number>)pokemonTable.getColumns().get(7);
-        spDef = 
-                (TableColumn<Pokemon, Number>)pokemonTable.getColumns().get(8);
-        spd = 
-                (TableColumn<Pokemon, Number>)pokemonTable.getColumns().get(9);
-        description = 
-                (TableColumn<Pokemon, String>)pokemonTable.getColumns().get(10);
-        
+
+        num = (TableColumn<Pokemon, Number>) pokemonTable.getColumns().get(0);
+        sprite = (TableColumn<Pokemon, ImageView>) pokemonTable.getColumns()
+                .get(1);
+        name = (TableColumn<Pokemon, String>) pokemonTable.getColumns().get(2);
+        height = (TableColumn<Pokemon, Number>) pokemonTable.getColumns()
+                .get(3);
+        weight = (TableColumn<Pokemon, Number>) pokemonTable.getColumns()
+                .get(4);
+        hp = (TableColumn<Pokemon, Number>) pokemonTable.getColumns().get(5);
+        atk = (TableColumn<Pokemon, Number>) pokemonTable.getColumns().get(6);
+        def = (TableColumn<Pokemon, Number>) pokemonTable.getColumns().get(7);
+        spAtk = (TableColumn<Pokemon, Number>) pokemonTable.getColumns().get(8);
+        spDef = (TableColumn<Pokemon, Number>) pokemonTable.getColumns().get(9);
+        spd = (TableColumn<Pokemon, Number>) pokemonTable.getColumns().get(10);
+        description = (TableColumn<Pokemon, String>) pokemonTable.getColumns()
+                .get(11);
+
         num.setCellValueFactory(cellData
                 -> cellData.getValue().dexNumberProperty());
+        sprite.setCellValueFactory(cellData
+                -> cellData.getValue().SpriteProperty());
         name.setCellValueFactory(cellData
                 -> cellData.getValue().pokemonNameProperty());
         height.setCellValueFactory(cellData
@@ -106,9 +114,10 @@ public class PokemonTab{
         description.setCellValueFactory(cellData
                 -> cellData.getValue().pokemonDescriptionProperty());
     }
-    
+
     /**
      * Fills the table Pokemon with database values
+     *
      * @throws SQLException if a database access error occurs
      */
     private void fillPokemonTable() {
@@ -139,8 +148,9 @@ public class PokemonTab{
                 d1 = rs.getDouble("Altura");
                 d2 = rs.getDouble("Peso");
 
-                Pokemon tmp = new Pokemon(s1, s2, s3, n1, n2, n3, n4, n5, n6, 
+                Pokemon tmp = new Pokemon(s1, s2, s3, n1, n2, n3, n4, n5, n6,
                         n7, n8, d1, d2);
+                tmp.setSprite();
 
                 data.add(tmp);
             }

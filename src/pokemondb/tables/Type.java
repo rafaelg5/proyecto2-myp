@@ -44,16 +44,15 @@ public class Type {
 
         Image img;
         ImageView i;
-
         if (sprite.trim().equals("")) {
             i = new ImageView();
         } else {
             URL url = getClass()
-                    .getResource("/pokemondb/graphicinterface/img/" + sprite);
+                    .getResource("/pokemondb/graphicinterface/img/types/" + 
+                            sprite);
             img = new Image(url.toString());
             i = new ImageView(img);
         }
-
         TypeSprite = new SimpleObjectProperty<>(i);
     }
 
@@ -217,8 +216,7 @@ public class Type {
         String sql = "SELECT A.SpanishName AS Tipo, C.SpanishName AS "
                 + "'Tipo Atacante', DamageTaken AS 'Daño Recibido' FROM "
                 + TABLE + " A LEFT JOIN TypesDamage B ON A.TypeID = B.TypeID "
-                + "LEFT JOIN " + TABLE + " C ON B.AtkTypeID = C.TypeID WHERE "
-                + "B.TypeID = " + TypeID.get() + ";";
+                + "LEFT JOIN " + TABLE + " C ON B.AtkTypeID = C.TypeID;";
         ResultSet rs = conn.createStatement().executeQuery(sql);
         return rs;
     }

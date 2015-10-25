@@ -60,10 +60,10 @@ public class Attack {
             Image img1, img2;            
 
             URL url1 = getClass()
-                    .getResource("/pokemondb/graphicinterface/img/"
+                    .getResource("/pokemondb/graphicinterface/img/types/"
                             + r1.getString(1)),
                     url2 = getClass()
-                    .getResource("/pokemondb/graphicinterface/img/"
+                    .getResource("/pokemondb/graphicinterface/img/categories/"
                             + r2.getString(1));
             img1 = new Image(url1.toString());
             img2 = new Image(url2.toString());

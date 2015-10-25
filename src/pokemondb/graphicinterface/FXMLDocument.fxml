@@ -32,17 +32,18 @@
                <children>
                   <TableView fx:id="pokemonTable" prefHeight="447.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn fx:id="DexNumber" prefWidth="44.0" text="#" />
-                      <TableColumn fx:id="PokemonName" prefWidth="83.0" text="Pokemon" />
-                        <TableColumn fx:id="Height" prefWidth="82.0" text="Altura (m)" />
-                        <TableColumn fx:id="Weight" prefWidth="76.0" text="Peso (kg)" />
-                        <TableColumn fx:id="BaseHP" prefWidth="43.0" text="PS" />
-                        <TableColumn fx:id="BaseAtk" prefWidth="60.0" text="Ataque" />
-                        <TableColumn fx:id="BaseDef" prefWidth="68.0" text="Defensa" />
-                        <TableColumn fx:id="BaseSpAtk" prefWidth="94.0" text="At. Especial" />
-                        <TableColumn fx:id="BaseSpDef" prefWidth="125.0" text="Def. Especial" />
-                        <TableColumn fx:id="BaseSpd" prefWidth="81.0" text="Velocidad" />
-                        <TableColumn fx:id="PokemonDescription" prefWidth="300.0" text="Descripción" />
+                      <TableColumn fx:id="DexNumber" maxWidth="40.0" minWidth="25.0" prefWidth="40.0" style="-fx-alignment: CENTER;" text="#" />
+                        <TableColumn maxWidth="300.0" minWidth="175.0" prefWidth="230.0" sortable="false" style="-fx-alignment: CENTER;" text="Sprite" />
+                      <TableColumn fx:id="PokemonName" maxWidth="150.0" minWidth="100.0" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Pokemon" />
+                        <TableColumn fx:id="Height" maxWidth="82.0" minWidth="82.0" prefWidth="82.0" style="-fx-alignment: CENTER;" text="Altura (m)" />
+                        <TableColumn fx:id="Weight" maxWidth="76.0" minWidth="76.0" prefWidth="76.0" style="-fx-alignment: CENTER;" text="Peso (kg)" />
+                        <TableColumn fx:id="BaseHP" maxWidth="36.0" minWidth="36.0" prefWidth="36.0" style="-fx-alignment: CENTER;" text="PS" />
+                        <TableColumn fx:id="BaseAtk" maxWidth="59.0" minWidth="59.0" prefWidth="59.0" style="-fx-alignment: CENTER;" text="Ataque" />
+                        <TableColumn fx:id="BaseDef" maxWidth="66.0" minWidth="66.0" prefWidth="66.0" style="-fx-alignment: CENTER;" text="Defensa" />
+                        <TableColumn fx:id="BaseSpAtk" maxWidth="92.0" minWidth="92.0" prefWidth="92.0" style="-fx-alignment: CENTER;" text="At. Especial" />
+                        <TableColumn fx:id="BaseSpDef" maxWidth="101.0" minWidth="101.0" prefWidth="101.0" style="-fx-alignment: CENTER;" text="Def. Especial" />
+                        <TableColumn fx:id="BaseSpd" maxWidth="78.0" minWidth="78.0" prefWidth="78.0" style="-fx-alignment: CENTER;" text="Velocidad" />
+                        <TableColumn fx:id="PokemonDescription" maxWidth="1575.0" minWidth="400.0" prefWidth="1575.0" style="-fx-alignment: CENTER-LEFT;" text="Descripción" />
                     </columns>
                   </TableView>
                </children>
@@ -55,7 +56,7 @@
                <children>
                   <TableView fx:id="attackTable" prefHeight="448.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn prefWidth="107.0" text="Nombre" />
+                      <TableColumn prefWidth="107.0" text="Ataque" />
                       <TableColumn prefWidth="126.0" text="Nombre (Inglés)" />
                         <TableColumn prefWidth="75.0" text="Poder" />
                         <TableColumn prefWidth="75.0" text="Precisión" />
@@ -74,9 +75,9 @@
                <children>
                   <TableView fx:id="typeTable" prefHeight="446.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn prefWidth="225.0" text="Nombre" />
-                        <TableColumn minWidth="0.0" prefWidth="223.0" text="Nombre (Inglés)" />
-                        <TableColumn minWidth="3.0" prefWidth="173.0" text="Ícono" />
+                      <TableColumn prefWidth="225.0" text="Tipo" />
+                        <TableColumn minWidth="0.0" prefWidth="223.0" text="Tipo atacante" />
+                        <TableColumn minWidth="3.0" prefWidth="173.0" text="Daño recibido" />
                     </columns>
                   </TableView>
                </children>
@@ -89,7 +90,7 @@
                <children>
                   <TableView fx:id="abilityTable" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn prefWidth="144.0" text="Nombre" />
+                      <TableColumn prefWidth="144.0" text="Habilidad" />
                         <TableColumn minWidth="0.0" prefWidth="141.0" text="Nombre (Inglés)" />
                       <TableColumn minWidth="0.0" prefWidth="336.0" text="Descripción" />
                     </columns>

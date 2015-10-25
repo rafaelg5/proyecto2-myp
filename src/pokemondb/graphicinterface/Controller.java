@@ -29,6 +29,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import pokemondb.graphicinterface.TypeTab.Damage;
 import pokemondb.tables.*;
 
 public class Controller implements Initializable {
@@ -36,7 +37,7 @@ public class Controller implements Initializable {
     @FXML
     private TableView<Pokemon> pokemonTable;
     @FXML
-    private TableView<Type> typeTable;
+    private TableView<Damage> typeTable;
     @FXML
     private TableView<Attack> attackTable;
     @FXML
@@ -75,5 +76,6 @@ public class Controller implements Initializable {
             alert.showAndWait()
                     .filter(response -> response == ButtonType.OK);
         });
-    }
+    }    
+    
 }

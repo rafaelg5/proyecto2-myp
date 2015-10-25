@@ -73,7 +73,6 @@ public class TypeTest {
         Type type = new Type();
         assertEquals("", type.getTypeName());
         String s = "" + random.nextInt();
-        System.out.println(s);
         type.setTypeName(s);
         assertEquals(type.getTypeName(), s);
     }

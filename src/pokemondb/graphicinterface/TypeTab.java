@@ -1,7 +1,9 @@
 package pokemondb.graphicinterface;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -10,6 +12,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
+import pokemondb.tables.ConnectionDB;
 import static pokemondb.tables.ConnectionDB.MSG;
 import pokemondb.tables.Type;
 
@@ -32,30 +35,33 @@ import pokemondb.tables.Type;
 public class TypeTab {
 
     @FXML
-    private final TableView<Type> typeTable;
+    private final TableView<Damage> typeTable;
     @FXML
-    private final TableColumn<Type, String> name;
+    private final TableColumn<Damage, ImageView> type;
     @FXML
-    private final TableColumn<Type, String> sName;
+    private final TableColumn<Damage, ImageView> aType;
     @FXML
-    private final TableColumn<Type, ImageView> sprite;
+    private final TableColumn<Damage, Number> dmg;
 
-    TypeTab(TableView<Type> typeTable) {
+    TypeTab(TableView<Damage> typeTable) {
         this.typeTable = typeTable;
 
         fillTypeTable();
 
-        name = (TableColumn<Type, String>) typeTable.getColumns().get(0);
-        sName = (TableColumn<Type, String>) typeTable.getColumns().get(1);
-        sprite = (TableColumn<Type, ImageView>) typeTable.getColumns().get(2);
+        type = (TableColumn<Damage, ImageView>) typeTable.getColumns().get(0);
+        aType = (TableColumn<Damage, ImageView>) typeTable.getColumns().get(1);
+        dmg = (TableColumn<Damage, Number>) typeTable.getColumns().get(2);
 
-        name.setCellValueFactory(cellData
-                -> cellData.getValue().spanishNameProperty());
-        sName.setCellValueFactory(cellData
-                -> cellData.getValue().typeNameProperty());
-        sprite.setCellValueFactory((TableColumn.CellDataFeatures<Type, ImageView> cellData) 
-                -> cellData.getValue().typeSpriteProperty());
-        sprite.setStyle( "-fx-alignment: CENTER;");
+        type.setCellValueFactory(cellData
+                -> cellData.getValue().type.typeSpriteProperty());
+        type.setStyle("-fx-alignment: CENTER;");
+        aType.setCellValueFactory(cellData
+                -> cellData.getValue().attacking.typeSpriteProperty());
+        aType.setStyle("-fx-alignment: CENTER;");
+        dmg.setCellValueFactory(cellData
+                -> cellData.getValue().damage);
+        dmg.setStyle("-fx-alignment: CENTER;");
+        
     }
 
     /**
@@ -67,23 +73,34 @@ public class TypeTab {
 
         try {
 
-            ObservableList<Type> data
-                    = FXCollections.observableArrayList();
-            ResultSet rs = new Type().selectAll("");  
+            ObservableList<Damage> data = FXCollections.observableArrayList(),
+                    data2 = FXCollections.observableArrayList();
+            ResultSet rs = new Type().selectDamageTaken();
 
             while (rs.next()) {
 
-                String s1, s2, s3;
-                int n;
+                String s1, s2;
+                double d;
 
-                s1 = rs.getString("Nombre");
-                s2 = rs.getString("Nombre (Inglés)");
-                s3 = rs.getString("Ícono");
-                n = rs.getInt("ID");
+                s1 = rs.getString("Tipo");
+                s2 = rs.getString("Tipo Atacante");
+                d = rs.getDouble("Daño recibido");
+                Connection conn = ConnectionDB.open();
+                
+                String sql1 = "SELECT * FROM Types WHERE SpanishNAME = '"
+                        + s1 + "';",
+                sql2 = "SELECT * FROM Types WHERE SpanishNAME = '"
+                        + s2 + "';";
+                ResultSet rs2 = conn.createStatement().executeQuery(sql1),
+                        rs3 = conn.createStatement().executeQuery(sql2);
+                
+                Type tmp1 = new Type(rs2.getInt(1), rs2.getString(2), 
+                        rs2.getString(3), rs2.getString(4));
+                Type tmp2 = new Type(rs3.getInt(1), rs3.getString(2), 
+                        rs3.getString(3), rs3.getString(4));
 
-                Type tmp = new Type(n, s2, s1, s3);
-
-                data.add(tmp);
+                Damage damage = new Damage(tmp1, tmp2, d);
+                data.add(damage);
             }
             typeTable.setItems(data);
 
@@ -96,6 +113,20 @@ public class TypeTab {
                     .filter(response -> response == ButtonType.OK);
 
         }
+    }  
+    
+    public class Damage{
+        
+        private final Type type;
+        private final Type attacking;
+        public final SimpleDoubleProperty damage;
+        
+        public Damage(Type t1, Type t2, double dam){
+            type = t1;
+            attacking = t2;
+            damage = new SimpleDoubleProperty(dam);
+        }       
+        
     }
 
 }

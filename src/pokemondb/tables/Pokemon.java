@@ -16,16 +16,20 @@
  */
 package pokemondb.tables;
 
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javafx.beans.property.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class Pokemon {
 
     public final String TABLE = "Pokemon";
     private final SimpleStringProperty PokemonName;
     private final SimpleStringProperty PokemonSprite;
+    private SimpleObjectProperty<ImageView> Sprite;
     private final SimpleStringProperty PokemonDescription;
     private final SimpleIntegerProperty PokemonID;
     private final SimpleIntegerProperty DexNumber;
@@ -59,7 +63,9 @@ public class Pokemon {
         BaseSpd = new SimpleIntegerProperty(spd);
         Height = new SimpleDoubleProperty(height);
         Weight = new SimpleDoubleProperty(weight);
-    }
+        Sprite = new SimpleObjectProperty<>();
+    }    
+    
 
     /**
      * @return the PokemonName
@@ -101,6 +107,39 @@ public class Pokemon {
      */
     public void setPokemonSprite(String sprite) {
         PokemonSprite.set(sprite);
+    }
+    
+    /**
+     * @return the Sprite
+     */
+    public ImageView getSprite() {
+        return Sprite.get();
+    }
+
+    /**
+     * @return the Sprite property
+     */
+    public SimpleObjectProperty<ImageView> SpriteProperty() {
+        return Sprite;
+    }    
+    
+    /**
+     * Sets a sprite for the Pokemon
+     */
+    public void setSprite(){
+        Image img;
+        ImageView i;
+        String sp = PokemonSprite.get();
+        if (sp.trim().equals("")) {
+            i = new ImageView();
+        } else {
+            URL url = getClass()
+                    .getResource("/pokemondb/graphicinterface/img/pokemon/" + 
+                            "gen1/" + sp);
+            img = new Image(url.toString());
+            i = new ImageView(img);
+        }
+        Sprite.set(i);
     }
 
     /**
@@ -350,7 +389,7 @@ public class Pokemon {
                 + "'At. Especial', BaseSpDef AS 'Def. Especial', BaseSpd AS "
                 + "Velocidad, PokemonDescription AS Descripción FROM " + TABLE
                 + " WHERE DexNumber LIKE '%" + condition + "%' OR PokemonName "
-                + "LIKE '%" + condition + "%';";
+                + "LIKE '%" + condition + "%' ORDER BY DexNumber;";
 
         ResultSet rs = conn.createStatement().executeQuery(sql);
         return rs;

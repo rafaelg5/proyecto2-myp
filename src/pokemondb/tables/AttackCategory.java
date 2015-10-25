@@ -47,7 +47,8 @@ public class AttackCategory {
             i = new ImageView();
         } else {
             URL url = getClass()
-                    .getResource("/pokemondb/graphicinterface/img/" + sprite);
+                    .getResource("/pokemondb/graphicinterface/img/categories/" 
+                            + sprite);
             img = new Image(url.toString());
             i = new ImageView(img);
         }
