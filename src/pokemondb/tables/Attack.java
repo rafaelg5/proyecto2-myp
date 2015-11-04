@@ -61,10 +61,10 @@ public class Attack {
 
             URL url1 = getClass()
                     .getResource("/pokemondb/graphicinterface/img/types/"
-                            + r1.getString(1)),
+                            + r1.getString(1) + ".gif"),
                     url2 = getClass()
                     .getResource("/pokemondb/graphicinterface/img/categories/"
-                            + r2.getString(1));
+                            + r2.getString(1) + ".png");
             img1 = new Image(url1.toString());
             img2 = new Image(url2.toString());
             iV1 = new ImageView(img1);

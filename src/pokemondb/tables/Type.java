@@ -49,7 +49,8 @@ public class Type {
         } else {
             URL url = getClass()
                     .getResource("/pokemondb/graphicinterface/img/types/" + 
-                            sprite);
+                            sprite + ".gif");
+            
             img = new Image(url.toString());
             i = new ImageView(img);
         }
